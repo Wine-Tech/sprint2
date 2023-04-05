@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simulador Financeiro</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="titulo">Simulador Financeiro</div>
+
+  <div class="inputs">
+    <span class="span_input">Informe a quantidade de garrafas de vinho que sua empresa produziu nessa safra de vinho:
+    <input type="number" id="input_vinho"></span><br>
+    <span class="span_input">Informe a quantidade de garrafas de vinho que foram perdidas nessa safra de vinho:
+    <input type="number" id="input_perda"></span><br>
+    <span class="span_input">Informe o quanto sua empresa cobra em média por garrafa:
+    <input type="number" id="input_preco"></span><br><br>
+    
+    <button onclick="calculoPerda()" class="btn_calculoPerda">Calcular estimativa de perda</button><br><br>
+  </div>
+
+  <div id="div_resultado"></div>
+</body>
+</html>
+
+<script>
+  function calculoPerda(){
+    var vinhoQt = Number(input_vinho.value);
+    var vinhoPreco = Number(input_preco.value);
+    var vinhoPerda = Number(input_perda.value);
+    var porcentagemPerda = (vinhoPerda * 100) / vinhoQt;
+
+    var precoTotal = vinhoQt * vinhoPreco;
+
+    var perdaDinheiro = precoTotal * (porcentagemPerda / 100);
+
+    div_resultado.innerHTML = `<div class="modificarlado"><div class="div_mensagem">
+      <span id="mensagem_porcentagem">Com esses números o seu total de perda em porcentagem é de <b id="porcentagem">${porcentagemPerda}%</b>.</span><br><br><br>
+<div class="modificar">
+
+    <div class="resultados">
+      <div class="resultadocor">Com uma porcentagem de perda de <b id="porcentagem">${porcentagemPerda}%</b> total por problemas de monitoramento de temperatura e umidade temos que:<br><br>
+
+      - A quantidade total produzida é de: <b class="maior">${vinhoQt}</b> garrafas de vinho.<br>
+      - A quantidade <b>perdida</b> desse total é de: <b class="maior">${vinhoPerda}</b> garrafas de vinho.<br>
+      - O lucro total com essas garrafas seria de: R$<b class="maior">${precoTotal}</b>.<br>
+      - O dinheiro <b>perdido</b> desse total é de: <b class="maiorCor">R$${perdaDinheiro}</b>.</div>
+    </div>
+
+    <div class="resultados2">
+     <div class="resultadocor2"> Com uma porcentagem de perda de <b id="porcentagem">${porcentagemPerda / 2}%</b> por problemas de monitoramento de temperatura e umidade temos que:<br><br>
+
+      - A quantidade total produzida é de: <b class="maior">${vinhoQt}</b> garrafas de vinho.<br>
+      - A quantidade <b>perdida</b> desse total é de: <b class="maior">${vinhoPerda / 2}</b> garrafas de vinho.<br>
+      - O lucro total com essas garrafas seria de: R$<b class="maior">${precoTotal}</b>.<br>
+      - O dinheiro <b>perdido</b> desse total é de: <b class="maiorCor">R$${perdaDinheiro / 2}</b>.</div>
+    </div>
+
+    <div class="resultados3">
+     <div class="resultadocor3"> Com uma porcentagem de perda de <b id="porcentagem">${porcentagemPerda / 4}%</b> total por problemas de monitoramento de temperatura e umidade temos que:<br><br>
+
+      - A quantidade total produzida é de: <b class="maior">${vinhoQt}</b> garrafas de vinho.<br>
+      - A quantidade <b>perdida</b> desse total é de: <b class="maior">${vinhoPerda / 4}</b> garrafas de vinho.<br>
+      - O lucro total com essas garrafas seria de: R$<b class="maior">${precoTotal}</b>.<br>
+      - O dinheiro <b>perdido</b> desse total é de: <b class="maiorCor">R$${perdaDinheiro / 4}</b>.</div>
+    </div>
+    </div>
+    
+
+
+    <br><br>
+    <p class="mensagem1">"Não quero perder essa quantidade de dinheiro e trabalho, <b class="destaque"><i>o que eu faço?</i>"</b></p>
+
+    <p class="adquira">Contrate nossos serviços!</p> 
+
+    <p class="texto_contrate">Contrate o trabalho da STTU e acabe com a perda de vinhos. Cadastre-se aqui.<br><br>
+
+    Curioso como nosso trabalho funciona? De uma olhada no nosso <b class="diagrama">Diagrama de Negócios!<b></div><br></p></span>
+
+      <div style="width: 30%; margin-left: 30%"><img src="Diagrama Vinícola.png" width="640px" alt="Diagrama de Negócio - STU"></div>
+    `;
+  }
+</script>

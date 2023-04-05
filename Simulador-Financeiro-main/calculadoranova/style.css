@@ -1,0 +1,137 @@
+body{
+    background-color: rgb(24, 61, 74);
+    font-family:'Times New Roman', Times, serif;
+}
+.titulo{
+    text-align: center;
+    font-size:50px;
+    color:rgb(255, 255, 255);
+    margin-bottom: 20px;
+}
+.inputs{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.span_input{
+    color: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    margin: 20px;
+    font-size: 20px;
+}
+input{
+    width: 300px;
+    height: 30px;
+    margin-top: 10px;
+    
+    background-color: rgb(255, 255, 255);
+    border: 2px solid rgb(255, 255, 255);
+    border-radius: 20px;
+    
+    font-size: 18px;
+    color: rgb(0, 43, 71);
+    text-align: center;
+}
+.btn_calculoPerda{
+    width: 300px;
+    height: 40px;
+
+    background-color: rgb(12, 54, 109);
+    color: rgb(91, 147, 221);
+
+    font-size: 18px;
+    font-weight: bold;
+    
+    border: 1px solid rgb(110, 163, 250);
+    border-radius: 20px;
+}
+.div_mensagem{
+    text-align: center;
+     
+    color:rgb(255, 255, 255);
+}
+.resultados{
+    width: 200px;
+    height: fit-content;
+    margin: auto;
+    font-size: 20px;
+    margin-bottom: 50px;
+    border: 1px solid rgb(255, 0, 0);
+    padding: 10px;
+    border-radius: 20px;
+}
+
+.resultados2{
+    width: 200px;
+    height: fit-content;
+    margin: auto;
+    font-size: 20px;
+    margin-bottom: 50px;
+    border: 1px solid rgb(255, 173, 9);
+    padding: 10px;
+    border-radius: 20px;
+}
+.resultados3{
+    width: 200px;
+    height: fit-content;
+    margin: auto;
+    font-size: 20px;
+    margin-bottom: 50px;
+    border: 1px solid rgb(252, 249, 64);
+    padding: 10px;
+    border-radius: 20px;
+}
+.mensagem1{
+    font-size:22px;
+}
+.destaque{
+    font-size:24px;
+}
+.adquira{
+    font-size: 40px;
+    font-weight: bold;
+}
+.texto_contrate{
+    font-size: 22px;
+}
+.diagrama{
+    font-size: 28px;
+}
+.maior{
+    font-size:26px;
+    color: rgb(255, 255, 255);
+}
+.maiorCor{
+    font-size:30px;
+    color: rgb(255, 255, 255);
+}
+#porcentagem{
+    font-size: 26px;
+    color: rgb(0, 0, 0);
+}
+.maiorVermelho{
+    font-size: 26px;
+    color:rgb(212, 53, 53);
+}
+#mensagem_porcentagem{
+    font-size: 20px;
+    
+}
+
+.modificar {
+    display: flex;
+}
+
+.resultadocor {
+    color:red;
+}
+
+.resultadocor2 {
+    color:orange;
+}
+.resultadocor3 {
+    color:yellow;
+}
