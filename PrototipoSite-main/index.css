@@ -20,22 +20,24 @@ header {
 
 }
 
-.logoEmpresa {}
+.logoEmpresa {
+    width: 85%;
+    height: 80%;
+}
 
 .nav {
     display: flex;
-    gap: 150px;    
+    gap: 160px;    
 }
 .nav a{
     text-decoration: none;
-    
+    width: 40%;
 }
 
 .itemMenu {
     font-family: 'Poppins', sans-serif;
     color: white;
-    font-size: x-large;
-    font-weight: 500;
+    font-size: medium;
 }
 
 .entrar {
@@ -68,13 +70,14 @@ header {
 
 .conteudo1 {
     display: flex;
-
     align-items: center;
     justify-content: space-around;
     background: linear-gradient(68.15deg, #114264 85.61%);
     border-top: 0.4px solid blue
 }
-
+.tablet{
+    margin-top: 12px;
+}
 .slogan {
     display: flex;
     flex-direction: row;
@@ -196,14 +199,14 @@ header {
     background-color: whitesmoke;
     align-items: center;
     position: relative;
-    top: 10px;
-    width: 30rem;
-    height: 12rem;
+    margin-top: -4%;
+    width: 40rem;
+    height: 17rem;
     padding: 30px;
-    margin-right: 300px;
     box-shadow: 20px 20px 30px rgb(35, 35, 35);
     border-radius: 25px;
     font-size: x-large;
+    margin-left: 5%;
 }
 
 .card4 {
