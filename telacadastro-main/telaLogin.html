@@ -46,7 +46,7 @@
             </div>
 
             <div class="justify-center">
-                <button>Entrar</button>
+                <button onclick="enter()">Entrar</button>
             </div>
 
         </div>
@@ -56,4 +56,14 @@
 
 </html>
 <script>
+    function enter(){
+        var login = (iptEmail.value);
+        var senha = (iptSenha.value); 
+        if(login == "luma" && senha == "123"){
+            alert("Usuário logado com sucesso")
+        } else{
+            alert("Usuário ou senha incorretos")
+        } 
+    }
+
 </script>
