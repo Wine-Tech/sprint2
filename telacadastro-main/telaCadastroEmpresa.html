@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <link rel="stylesheet" href="./style.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro | Wine Tech</title>
+</head>
+
+<body>
+
+    <div class="header">
+        <div class="container1">
+            <img id="imgLogo" src="./logoempresa.png">
+            <ul class="navbar">
+                <li class="agora"><a href="../PrototipoSite-main/index.html">Home</a></li>
+                <li><a href="#">Produtos</a></li>
+                <li><a href="#">Sobre nós</a></li>
+                <li><a href="#">Contato</a></li>
+                <li><a href="telaLogin.html">Login</a></li>
+                <li><a href="#">Cadastre-se</a></li>
+            </ul>
+        </div>
+    </div>
+
+
+    <div class="container">
+
+        <div class="card">
+
+            <h1>Cadastro da Empresa</h1>
+
+            <div class="label-float">
+                <input id="iptEmpresa" placeholder=" " required>
+                <label for="iptEmpresa" id="labEmpresa">Razão social</label>
+            </div>
+
+            <div class="label-float">
+                <input id="iptCNPJ" placeholder=" " required>
+                <label for="iptCNPJ" id="labCNPJ">CNPJ</label>
+            </div>
+
+            <div class="label-float">
+                <input id="iptTelefone" placeholder=" " required>
+                <label for="iptTelefone" id="labTelefone">Telefone</label>
+            </div>
+
+            <div class="label-float">
+                <input id="iptDominio" placeholder=" " required>
+                <label for="iptDominio" id="labDominio">Domínio de E-mail</label>
+            </div>
+
+            <div class="label-float">
+                <input id="iptCEP" placeholder=" " required>
+                <label for="iptCEP" id="labCEP">CEP</label>
+            </div>
+
+            <div class="label-float">
+                <input id="iptRua" placeholder=" " required>
+                <label for="iptRua" id="labRua">Rua</label>
+            </div>
+
+            <div class="label-float">
+                <input id="iptNumero" placeholder=" " required>
+                <label for="iptNumero" id="labNumero">Nº</label>
+            </div>
+
+            <div class="label-float">
+                <input id="iptComplemento" placeholder=" " required>
+                <label for="iptComplemento" id="labComplemento">Complemento</label>
+            </div>
+
+            <div class="label-float">
+                <input id="iptBairro" placeholder=" " required>
+                <label for="iptBairro" id="labBairro">Bairro</label>
+            </div>
+
+            <div class="label-float">
+                <input id="iptCidade" placeholder=" " required>
+                <label for="iptCidade" id="labCidade">Cidade</label>
+            </div>
+
+
+            <div class="label-float">
+                <input id="iptEstado" placeholder=" " required>
+                <label for="iptEstado" id="labEstado">Estado</label>
+            </div>
+
+            <div class="label-float">
+                <input id="iptUF" placeholder=" " required>
+                <label for="iptUF" id="labUF">UF</label>
+            </div>
+
+            <div id="divMsgErro" class="msgErro">
+            </div>
+
+            <div class="justify-center">
+                <button id="btnProsseguir" onclick="cadastrar()">Prosseguir</button>
+            </div>
+
+        </div>
+
+    </div>
+</body>
+
+</html>
+<script>
+
+    function cadastrar() {
+        var empresa = iptEmpresa.value;
+        var cnpj = iptCNPJ.value;
+        var telefone = iptTelefone.value;
+        var dominio = iptDominio.value;
+        var cep = iptCEP.value;
+        var rua = iptRua.value;
+        var numRua = iptNumero.value;
+        var complemento = iptComplemento.value;
+        var bairro = iptBairro.value;
+        var cidade = iptCidade.value;
+        var estado = iptEstado.value;
+
+
+        if (empresa == "" || cnpj == "" || telefone == "" || dominio == "" || cep == "" || rua == "" || numRua == "" || complemento == "" || bairro == "" || cidade == "" || estado == "") {
+            divMsgErro.innerHTML = 'Preencha todos os campos'
+        } else {
+            document.getElementById("btnProsseguir").onclick = function () {
+                location.href = "./telaCadastroUsuario.html";
+            }
+            alert(`Empresa cadastrada com sucesso!
+Agora, crie o primeiro usuário para o sistema`)
+        }
+    }
+</script>

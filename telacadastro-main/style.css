@@ -134,7 +134,7 @@ h1 {
 }
 
 .msgErro {
-    color: #fd4c4c;
+    color: #fdff82;
     display: flex;
     justify-content: center;
 }
@@ -143,8 +143,8 @@ button {
     background-color: #af4e4e;
     /* border-color: #ffffff; */
     border-style:none;
-    width: 120px;
-    color: #e6a094;
+    width: 160px;
+    color: #f4bbb1;
     padding: 7px;
     font-weight: bold;
     font-size: 18pt;
@@ -163,4 +163,11 @@ button:hover {
 .justify-center {
     display: flex;
     justify-content: center;
+}
+
+.cadGeral {
+    width: 300px;
+    height: 200px;
+    margin: 50px;
+    background-color: #af4e4e4c;
 }

@@ -27,64 +27,19 @@
 
 
     <div class="container">
-
-        <div class="card">
-
-            <h1>Cadastre-se</h1>
-
-            <div class="label-float">
-                <input id="iptEmpresa" placeholder=" " required>
-                <label for="iptEmpresa" id="labEmpresa">Razão social</label>
-            </div>
-
-            <div class="label-float">
-                <input id="iptCNPJ" placeholder=" " required>
-                <label for="iptCNPJ" id="labCNPJ">CNPJ</label>
-            </div>
-
-            <div class="label-float">
-                <input id="iptEmail" placeholder=" " required>
-                <label for="iptEmail" id="labEmail">E-mail</label>
-            </div>
-
-            <div class="label-float">
-                <input type="password" id="iptSenha" placeholder=" " required>
-                <label for="iptSenha" id="labSenha">Senha</label>
-            </div>
-
-            <div class="label-float">
-                <input type="password" id="iptRepetirSenha" placeholder=" " required>
-                <label for="iptRepetirSenha" id="labRepetirSenha">Repita sua senha</label>
-            </div>
-
-            <div id="divMsgErro" class="msgErro">
-            </div>
-
-            <div class="justify-center">
-                <button onclick="cadastrar()">Enviar</button>
-            </div>
-
-        </div>
-
+        <button id="btnCadEmpresa" class="cadGeral">Cadastro da Empresa</button>
+        <button id="btnCadUsuario" class="cadGeral">Cadastro do Usuário</button>
     </div>
 </body>
 
 </html>
+
 <script>
-    function cadastrar() {
-        var empresa = iptEmpresa.value;
-        var cnpj = iptCNPJ.value;
-        var email = iptEmail.value;
-        var senha = iptSenha.value;
-        var repetirSenha = iptRepetirSenha.value;
-
-
-        if (empresa == "" || cnpj == "" || email == "" || senha == "" || repetirSenha == "") {
-            divMsgErro.innerHTML = 'Preencha todos os campos'
-        } else if (senha == repetirSenha) {
-            alert('Cadastro efetuado com sucesso');
-        } else {
-            divMsgErro.innerHTML = 'Por favor, verifique sua senha e tente novamente';
-        }
-    }
+    document.getElementById("btnCadEmpresa").onclick = function () {
+                location.href = "./telaCadastroEmpresa.html";
+            }
+    
+    document.getElementById("btnCadUsuario").onclick = function () {
+                location.href = "./telaCadastroUsuario.html";
+            }
 </script>

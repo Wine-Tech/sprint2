@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <link rel="stylesheet" href="./style.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro | Wine Tech</title>
+</head>
+
+<body>
+
+    <div class="header">
+        <div class="container1">
+            <img id="imgLogo" src="./logoempresa.png">
+            <ul class="navbar">
+                <li class="agora"><a href="../PrototipoSite-main/index.html">Home</a></li>
+                <li><a href="#">Produtos</a></li>
+                <li><a href="#">Sobre nós</a></li>
+                <li><a href="#">Contato</a></li>
+                <li><a href="telaLogin.html">Login</a></li>
+                <li><a href="#">Cadastre-se</a></li>
+            </ul>
+        </div>
+    </div>
+
+
+    <div class="container">
+
+        <div class="card">
+
+            <h1>Cadastro do Usuário</h1>
+
+            <div class="label-float">
+                <input id="iptNomeCompleto" placeholder=" " required>
+                <label for="iptNomeCompleto" id="labNomeCompleto">Nome completo</label>
+            </div>
+            
+
+            <div class="label-float">
+                <input id="iptEmail" placeholder=" " required>
+                <label for="iptEmail" id="labEmail">E-mail</label>
+            </div>
+
+            <div class="label-float">
+                <input type="password" id="iptSenha" placeholder=" " required>
+                <label for="iptSenha" id="labSenha">Senha</label>
+            </div>
+
+            <div class="label-float">
+                <input type="password" id="iptRepetirSenha" placeholder=" " required>
+                <label for="iptRepetirSenha" id="labRepetirSenha">Repita sua senha</label>
+            </div>
+
+            <div id="divMsgErro" class="msgErro">
+            </div>
+
+            <div class="justify-center">
+                <button onclick="cadastrar()">Enviar</button>
+            </div>
+
+        </div>
+
+    </div>
+</body>
+
+</html>
+<script>
+    function cadastrar() {
+        var nomeCompleto = iptNomeCompleto.value;
+        var email = iptEmail.value;
+        var senha = iptSenha.value;
+        var repetirSenha = iptRepetirSenha.value;
+
+
+        if (nomeCompleto == "" || email == "" || senha == "" || repetirSenha == "") {
+            divMsgErro.innerHTML = 'Preencha todos os campos'
+        } else if (senha == repetirSenha) {
+            alert('Cadastro efetuado com sucesso');
+        } else {
+            divMsgErro.innerHTML = 'Por favor, verifique sua senha e tente novamente';
+        }
+    }
+</script>
