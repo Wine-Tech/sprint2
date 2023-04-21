@@ -102,15 +102,17 @@ insert into dadoSensor values
 select * from dadoSensor;
 
 
-select cadastroEmpresa.empresa, 
+select 
+cadastroEmpresa.empresa, 
 cadastroEmpresa.cnpj, 
-cadastroEmpresa.telefone, 
-endereco.rua, 
+cadastroEmpresa.telefone from cadastroEmpresa;
+    
+select 
+endereco.rua,
+endereco.cep,
 endereco.bairro,
-endereco.cidade,
-loginUsuario.emailUsuario,
-loginUsuario.nomeUsuario from cadastroEmpresa
-    join endereco
-		on fkCadastroEmpresa = idCadastroEmpresa  
-			join loginUsuario
-				on fkCadastroEmpresa = idCadastroEmpresa;
+endereco.cidade from endereco;
+
+select 
+loginUsuario.nomeUsuario,
+loginUsuario.emailUsuario from loginUsuario;
