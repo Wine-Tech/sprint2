@@ -6,21 +6,21 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro | Wine Tech</title>
+    <title>Cadastro | STTU</title>
 </head>
 
 <body>
 
     <div class="header">
-        <div class="container1">
+        <div class="nav">
             <img id="imgLogo" src="./logoempresa.png">
             <ul class="navbar">
-                <li class="agora"><a href="../PrototipoSite-main/index.html">Home</a></li>
+                <li><a href="../PrototipoSite-main/index.html">Home</a></li>
                 <li><a href="#">Produtos</a></li>
                 <li><a href="#">Sobre nós</a></li>
                 <li><a href="#">Contato</a></li>
-                <li><a href="telaLogin.html">Login</a></li>
-                <li><a href="#">Cadastre-se</a></li>
+                <li><a class="login" href="telaLogin.html">Login</a></li>
+                <li><a class="cad" href="telaCadastro.html">Cadastre-se</a></li>
             </ul>
         </div>
     </div>
@@ -125,11 +125,9 @@
         if (empresa == "" || cnpj == "" || telefone == "" || dominio == "" || cep == "" || rua == "" || numRua == "" || complemento == "" || bairro == "" || cidade == "" || estado == "") {
             divMsgErro.innerHTML = 'Preencha todos os campos'
         } else {
-            document.getElementById("btnProsseguir").onclick = function () {
-                location.href = "./telaCadastroUsuario.html";
+            document.getElementById("btnProsseguir").onclick = function () { location.href = "./telaCadastroUsuario.html";
             }
-            alert(`Empresa cadastrada com sucesso!
-Agora, crie o primeiro usuário para o sistema`)
+            
         }
     }
 </script>

@@ -1,16 +1,33 @@
 /* FONTE EXTERNA */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;1,200;1,300;1,400;1,500&display=swap');
+
 
 * {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
+
+/* SCROLLBAR */
+::-webkit-scrollbar {
+    width: 12px;
+  }
+  
+::-webkit-scrollbar-track {
+    background: rgba(0,0,0, 0.2);
+  }
+  
+::-webkit-scrollbar-thumb {
+    background-color: #cf2b46;
+    border-radius: 20px;
+  }
 
 /* BACKGROUND */
 body {
-    background: linear-gradient(43.15deg, #4b2b31 25%, #114264 85.61%);
+    overflow: overlay;
+    background: linear-gradient(68.15deg, #2F2325 15%, #114264 85.61%);
     /* background-size: cover; */
     /* background-repeat: no-repeat; */
     background-attachment: fixed;
+    /* box-sizing: border-box; */
     margin: 0;
     padding: 0;
 }
@@ -20,8 +37,8 @@ body {
     margin-top: 15px;
 }
 
-.container1 {
-    width: 80%;
+.nav {
+    width: 95%;
     margin: auto;
     display: flex;
 }
@@ -31,7 +48,7 @@ body {
     background-color: #0000004b;
 }
 
-.header .container1 {
+.header .nav {
     justify-content: space-between;
 }
 
@@ -40,13 +57,8 @@ body {
     color: #ebe1e9;
 }
 
-.agora {
-    font-weight: 800;
-    color: #ebe1e9;
-}
-
 .navbar {
-    width: 530px;
+    width: 600px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -57,6 +69,44 @@ body {
 li {
     margin-right: 20px;
     /* margin-left: 20px; */
+}
+
+a {
+    transition: all ease-in .3s;
+}
+
+a:hover {
+    border-bottom: 3px solid #1972b2;
+}
+
+.login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #1972b2;
+    /* box-shadow: 10px 10px 15px rgb(35, 35, 35); */
+    border-radius: 15px;
+    width: 10vh;
+    height: 30px;
+    color: white;
+}
+
+.login:hover, .cad:hover {
+    background-color: #cf2b46;
+    color: white;
+    transition: all .4s ease-in-out;
+}
+
+.cad {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #1972b2;
+    /* box-shadow: 10px 10px 15px rgb(35, 35, 35); */
+    border-radius: 15px;
+    width: 17vh;
+    height: 30px;
+    color: white;
 }
 
 .titulo {
@@ -75,26 +125,28 @@ li {
 }
 
 .card {
-    background-color: #e2a1a12f;
+    background-color: whitesmoke;
     padding: 30px;
-    border-radius: 4%;
-    /* box-shadow: 3px 3px 1px 0px #00000060; */
+    border-radius: 50px;
+    box-shadow: 3px 3px 1px 0px #00000060;
     width: 400px;
+    margin-bottom: 100px;
 }
 
 h1 {
     text-align: center;
-    margin-bottom: 20px;
-    color: #FFFFFF;
+    margin-bottom: 40px;
+    margin-top: 10px;
+    color: #1972b2;
 }
 
 .label-float input {
     width: 100%;
-    padding: 5px 5px;
+    padding: 5px 5px 5px 0px;
     display: inline-block;
     border: 0;
-    border-bottom: 2px solid #ebe1e9;
-    color: #FFFFFF;
+    border-bottom: 2px solid #252628;
+    color: #000000;
     background-color: transparent;
     outline: none;
     min-width: 180px;
@@ -107,17 +159,21 @@ h1 {
     font-size: 18px;
     position: relative;
     padding-top: 20px;
-    margin-top: 5%;
-    margin-bottom: 5%;
+    margin-top: 7%;
+    margin-bottom: 7%;
 }
 
 .label-float input:focus {
-    border-bottom: 2px solid #e6a094;
+    border-bottom: 2px solid #058ae9;
+}
+.label-float input:valid {
+    border-bottom: 2px solid #0f4267;
 }
 
 .label-float label {
     /* font-size: 60px; */
-    color: #ebe1e9;
+    color: #252628;
+    font-weight: 500;
     /* pointer-event: none; */
     position: absolute;
     top: 0;
@@ -126,25 +182,31 @@ h1 {
     transition: all .3s ease-out;
 }
 
-.label-float input:focus+label,
+.label-float input:focus+label {
+    font-size: 18px;
+    margin-top: 0;
+    color: #058ae9;
+}
+
 .label-float input:valid+label {
     font-size: 18px;
     margin-top: 0;
-    color: #e6a094;
+    color: #0f4267;
 }
 
 .msgErro {
-    color: #fdff82;
+    color: #970303;
     display: flex;
+    font-weight: 700;
     justify-content: center;
 }
 
 button {
-    background-color: #af4e4e;
+    background-color: #1972b2;
     /* border-color: #ffffff; */
     border-style:none;
     width: 160px;
-    color: #f4bbb1;
+    color: #fff;
     padding: 7px;
     font-weight: bold;
     font-size: 18pt;
@@ -156,8 +218,7 @@ button {
 }
 
 button:hover {
-    background-color: #e6a094;
-    color: #f1e6e3;
+    background-color: #cf2b46;
 }
 
 .justify-center {

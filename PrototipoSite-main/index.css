@@ -8,9 +8,10 @@ body {
     font-size: 100%;
     font-family: 'Poppins', sans-serif;
     background: linear-gradient(68.15deg, #2F2325 15%, #114264 85.61%);
+    overflow: overlay;
 }
 
-header {
+/* header {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -18,58 +19,104 @@ header {
     padding-top: 10px;
     background: linear-gradient(68.15deg, #114264 85.61%);
     width: auto;
+} */
 
-}
+/* SCROLLBAR */
+::-webkit-scrollbar {
+    width: 12px;
+  }
+  
+::-webkit-scrollbar-track {
+    background: rgba(0,0,0, 0.2);
+  }
+  
+::-webkit-scrollbar-thumb {
+    background-color: #cf2b46;
+    border-radius: 20px;
+  }
 
-.logoEmpresa {
-    width: 195%;
-    /* height: 130%; */
-    margin-top: -20px;
+/* NAVBAR */
+#imgLogo {
+    margin-top: 15px;
 }
 
 .nav {
+    width: 95%;
+    margin: auto;
     display: flex;
-    gap: 160px; 
-    margin-top: 15px;
-       
 }
-.nav a{
+
+.header {
+    border-bottom: 3px solid #ebe1e9;
+    background-color: #0000004b;
+}
+
+.header .nav {
+    justify-content: space-between;
+}
+
+.header a {
     text-decoration: none;
-    width: 40%;
+    color: #ebe1e9;
 }
 
-.itemMenu {
-    font-family: 'Poppins', sans-serif;
-    color: white;
-    font-size: medium;
+.navbar {
+    width: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    list-style: none;
+    color: #ebe1e9;
 }
 
-.entrar {
+li {
+    margin-right: 20px;
+    /* margin-left: 20px; */
+}
+
+a {
+    transition: all ease-in .3s;
+}
+
+a:hover {
+    border-bottom: 3px solid #1972b2;
+}
+
+.login {
     display: flex;
     justify-content: center;
+    align-items: center;
     background-color: #1972b2;
-    box-shadow: 10px 10px 15px rgb(35, 35, 35);
+    /* box-shadow: 10px 10px 15px rgb(35, 35, 35); */
     border-radius: 15px;
-    width: 20vh;
+    width: 10vh;
     height: 30px;
-    /* margin-right: 50px; */
     color: white;
-    font-size: medium;
-    font-style: oblique;
 }
 
-.cadastrar {
+.login:hover, .cad:hover {
+    background-color: #cf2b46;
+    color: white;
+    transition: all .4s ease-in-out;
+}
+
+.cad {
     display: flex;
     justify-content: center;
+    align-items: center;
     background-color: #1972b2;
-    box-shadow: 10px 10px 15px rgb(35, 35, 35);
+    /* box-shadow: 10px 10px 15px rgb(35, 35, 35); */
     border-radius: 15px;
-    width: 20vh;
+    width: 17vh;
     height: 30px;
-    /* margin-right: 50px; */
     color: white;
-    font-size: medium;
-    font-style: oblique;
+}
+
+.titulo {
+    font-family: 'Courier New', Courier, monospace;
+    color: #ebe1e9;
+    width: fit-content;
+    font-weight: 500;
 }
 
 .conteudo1 {
