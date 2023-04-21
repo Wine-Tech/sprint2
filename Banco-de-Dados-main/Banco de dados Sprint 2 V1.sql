@@ -100,7 +100,7 @@ insert into cadastroSensor values
     (null, 'DHT11','Ativo',2,4,1);
 
 select cadastroSensor.idSensor,cadastroSensor.fkCadastroEmpresa from cadastroSensor
-	order by fkCadastroEmpresa;
+	order by idSensor;
 create table dadoSensor(
 	idDadoSensor int,
     temperatura varchar(45),
@@ -112,13 +112,31 @@ create table dadoSensor(
     );
     
 insert into dadoSensor values
-	(1,'19', '54', '2023-04-18 11:52:30', 1),
-    (1,'15', '57', '2023-04-18 12:45:30',1),
-    (1,'18', '56', '2023-04-18 13:54:25',1),
-    (1,'21', '58', '2023-04-18 14:55:25',1);
+	(1,'15', '54', '2023-04-18 00:00:00', 1),
+    (2,'15', '55', '2023-04-18 01:00:00',1),
+    (3,'15', '56', '2023-04-18 02:00:00',1),
+    (4,'15', '56', '2023-04-18 03:00:00',1),
+    (5,'16', '57', '2023-04-18 04:00:00',1),
+    (6,'17', '55', '2023-04-18 05:00:00',1),
+    (7,'18', '56', '2023-04-18 06:00:00',1),
+    (8,'17', '55', '2023-04-18 07:00:00',1),
+    (9,'19', '54', '2023-04-18 08:00:00',1),
+    (10,'20', '53', '2023-04-18 09:00:00',1),
+    (11,'21', '55', '2023-04-18 10:00:00',1),
+    (12,'21', '56', '2023-04-18 11:00:00',1),
+    (13,'22', '55', '2023-04-18 12:00:00',1),
+    (14,'23', '54', '2023-04-18 13:00:00',1),
+    (15,'20', '57', '2023-04-18 14:00:00',1),
+    (16,'20', '56', '2023-04-18 15:00:00',1),
+    (17,'20', '56', '2023-04-18 16:00:00',1),
+    (18,'19', '57', '2023-04-18 17:00:00',1),
+    (19,'19', '57', '2023-04-18 18:00:00',1),
+    (20,'18', '58', '2023-04-18 19:00:00',1),
+    (21,'18', '58', '2023-04-18 20:00:00',1),
+    (22,'15', '58', '2023-04-18 21:00:00',1),
+    (23,'16', '58', '2023-04-18 22:00:00',1),
+    (24,'15', '58', '2023-04-18 23:00:00',1);
 select * from dadoSensor;
-
-
 select 
 cadastroEmpresa.empresa, 
 cadastroEmpresa.cnpj, 
@@ -132,4 +150,32 @@ loginUsuario.emailUsuario from cadastroEmpresa
 		on endereco.fkCadastroEmpresa = idCadastroEmpresa
 			join loginUsuario
 				on loginUsuario.fkCadastroEmpresa = idCadastroEmpresa;
+                
+select 
+cadastroEmpresa.empresa,
+localSensor.nomeLocal,
+localSensor.tamanhoLocal,
+cadastroSensor.tipoSensor,
+cadastroSensor.statusSensor
+	from cadastroEmpresa
+		join localSensor
+			on localSensor.fkCadastroEmpresa = cadastroEmpresa.idCadastroEmpresa
+				join cadastroSensor
+					on cadastroSensor.fkLocalSensor = localSensor.idLocalSensor
+						where idCadastroEmpresa = 1 and idLocalSensor = 1;
+				
+				
+                
+                
+                
+-- não mexer nos comentarios abaixo
+-- dadoSensor.temperatura,
+-- dadoSensor.umidadeSensor              
+                
+					-- 	join dadoSensor
+						-- 	on dadoSensor.fkCadastroSensor = cadastroSensor.idSensor
+							-- 	where idCadastroEmpresa = 1;
+								
+
+
     
