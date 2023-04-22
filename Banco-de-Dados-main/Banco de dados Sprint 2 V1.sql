@@ -61,6 +61,7 @@ create table localSensor(
     constraint fkEnderecoLocalSensor foreign key (fkEndereco) references endereco(idEndereco),
     constraint primary key (idLocalSensor, fkEndereco, fkCadastroEmpresa)
     );
+    
 insert into localSensor values
     (1,1,1, 'Galpão','Setor A','80m²'),
     (2,1,1,	'Galpão','Setor B','60m²'),
@@ -81,6 +82,9 @@ create table cadastroSensor(
     constraint fkLocalSensor foreign key(fkLocalSensor,fkEndereco, fkCadastroEmpresa) references localSensor(idLocalSensor,fkEndereco, fkCadastroEmpresa),
     constraint chkStatusSensor check (statusSensor in ('ativo','inativo','Manutenção'))
     );
+    
+
+    
 insert into cadastroSensor values
 	(null, 'DHT11','Ativo',1,1,1),
     (null, 'DHT11','Ativo',1,2,1),
@@ -101,6 +105,7 @@ insert into cadastroSensor values
 
 select cadastroSensor.idSensor,cadastroSensor.fkCadastroEmpresa from cadastroSensor
 	order by idSensor;
+
 create table dadoSensor(
 	idDadoSensor int,
     temperatura varchar(45),
@@ -151,30 +156,46 @@ loginUsuario.emailUsuario from cadastroEmpresa
 			join loginUsuario
 				on loginUsuario.fkCadastroEmpresa = idCadastroEmpresa;
                 
-select 
+
+	    select 
 cadastroEmpresa.empresa,
-localSensor.nomeLocal,
+-- localSensor.nomeLocal,
+-- localSensor.tamanhoLocal,
+cadastroSensor.tipoSensor,
+cadastroSensor.statusSensor,
+dadoSensor.temperatura,
+dadoSensor.umidadeSensor,
+dadoSensor.dataHoraSensor
+	from cadastroEmpresa
+	-- join localSensor
+		-- on localSensor.fkCadastroEmpresa = cadastroEmpresa.idCadastroEmpresa
+				join cadastroSensor
+					on cadastroSensor.fkCadastroEmpresa = cadastroEmpresa.idCadastroEmpresa
+						join dadoSensor
+							on dadoSensor.fkCadastroSensor= cadastroSensor.idSensor
+								where idDadoSensor >=1;						
+				
+select 
+cadastroEmpresa.empresa,localSensor.nomeLocal,
 localSensor.tamanhoLocal,
 cadastroSensor.tipoSensor,
-cadastroSensor.statusSensor
+cadastroSensor.statusSensor,
+dadoSensor.temperatura,
+dadoSensor.umidadeSensor,
+dadoSensor.dataHoraSensor
 	from cadastroEmpresa
 		join localSensor
 			on localSensor.fkCadastroEmpresa = cadastroEmpresa.idCadastroEmpresa
 				join cadastroSensor
 					on cadastroSensor.fkLocalSensor = localSensor.idLocalSensor
-						where idCadastroEmpresa = 1 and idLocalSensor = 1;
-				
-				
+						join dadoSensor
+							on dadoSensor.fkCadastroSensor = cadastroSensor.idSensor
+								where idCadastroEmpresa = 1 and idLocalSensor >=1 and idlocalSensor = 1 and umidadeSensor < 56 and idDadoSensor >=1 
+									
+                                
+                                -- where idCadastroEmpresa >=1 and idlocalSensor >=1 and idlocalSensor >=1 and idDadoSensor >= 1 and idSensor >=1;            
                 
-                
-                
--- não mexer nos comentarios abaixo
--- dadoSensor.temperatura,
--- dadoSensor.umidadeSensor              
-                
-					-- 	join dadoSensor
-						-- 	on dadoSensor.fkCadastroSensor = cadastroSensor.idSensor
-							-- 	where idCadastroEmpresa = 1;
+			
 								
 
 
