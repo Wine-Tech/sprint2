@@ -103,8 +103,7 @@ insert into cadastroSensor values
     (null, 'DHT11','Ativo',2,3,1),
     (null, 'DHT11','Ativo',2,4,1);
 
-select cadastroSensor.idSensor,cadastroSensor.fkCadastroEmpresa from cadastroSensor
-	order by idSensor;
+select * from cadastroSensor;
 
 create table dadoSensor(
 	idDadoSensor int,
@@ -184,16 +183,22 @@ dadoSensor.temperatura,
 dadoSensor.umidadeSensor,
 dadoSensor.dataHoraSensor
 	from cadastroEmpresa
-		join localSensor
+		 join localSensor
 			on localSensor.fkCadastroEmpresa = cadastroEmpresa.idCadastroEmpresa
-				join cadastroSensor
+				 join cadastroSensor
 					on cadastroSensor.fkLocalSensor = localSensor.idLocalSensor
-						join dadoSensor
+						 join dadoSensor
 							on dadoSensor.fkCadastroSensor = cadastroSensor.idSensor
-								where idCadastroEmpresa = 1 and idLocalSensor >=1 and idlocalSensor = 1 and umidadeSensor < 56 and idDadoSensor >=1 
-									
+								where idCadastroEmpresa = 1 and idLocalSensor >= 1   and idDadoSensor >=1;
+
+						select * from dadoSensor
+							join cadastroSensor
+								on idSensor = fkCadastroSensor
+									join cadastroEmpresa
+										on cadastroEmpresa.idCadastroEmpresa = cadastroSensor.fkCadastroEmpresa
+											join localSensor 
+												on localSensor.idSensor= cadastroEmpresa.fkLocalSensor;
                                 
-                                -- where idCadastroEmpresa >=1 and idlocalSensor >=1 and idlocalSensor >=1 and idDadoSensor >= 1 and idSensor >=1;            
                 
 			
 								
