@@ -1,6 +1,7 @@
 create database wineTech;
 use wineTech;
 drop database winetech;
+
 create table cadastroEmpresa(
 	idCadastroEmpresa int primary key auto_increment,
     empresa varchar(60),
@@ -8,12 +9,15 @@ create table cadastroEmpresa(
     telefone varchar(45),
     dominio varchar(45)
     );
+    
 insert into cadastroEmpresa values
 	(null,'vinicula 3 irmãos','11012345678901','(11)96544-4447','@vinicuirmaoslaltda.com.br'),
     (null,'Aurora Viniculas','45698753215988', '(11)98665-7789','@auroravinicula.com.br'),
     (null,'Vinícula Mooca','47780175648942', '(11)98662-4579','@viniculamooca.com.br'),
     (null,'Sapopemba Vinicula ltda','48975315976547', '(11)95547-5468','@sapopembavinicula.com.br');
+    
 select * from cadastroEmpresa;
+
 create table endereco(
 	idEndereco int,
     cep char(8),
@@ -28,12 +32,14 @@ create table endereco(
     constraint fkEmpresaEndereco foreign key (fkCadastroEmpresa) references cadastroEmpresa (idCadastroEmpresa),
     constraint primary key(idEndereco, fkCadastroEmpresa)
     );
+    
 insert into endereco values
 	(1,'01234578','Rua dos santos','25','Patriarca','São Paulo','Ao lado da estação do metro','São Paulo', 'SP', 1),
 	(1,'09543587','Rua dos metalurgicos','50','São miguel','São Paulo','De Frente ao hospital municipal São miguel','São Paulo', 'SP', 2),
 	(1,'17945615','R. Borges de Figueiredo','3003','mooca','São Paulo','Proximo a estação de trem mooca','São Paulo', 'SP', 3),
 	(1,'01237896','Avenida Sapopemba ','41','Sapopemba','São Paulo','Ao lado da estação Sapopemba','São Paulo', 'SP', 4);
-    select * from endereco;
+
+select * from endereco;
 
 create table loginUsuario(
 	idLogin int,
@@ -44,12 +50,15 @@ create table loginUsuario(
     constraint fkCadastroEmpresa foreign key (fkCadastroEmpresa) references cadastroEmpresa (idCadastroEmpresa),
     constraint primary key (idLogin, fkCadastroEmpresa)
     );
+    
 insert into loginUsuario values 
 	(1,'joaosouza@vinicuirmaoslaltda.com.br', 'jo@oSouza2023','João Souza Algusto',1),
 	(1,'vitoriathiago@auroravinicula.com.br', 'vitori@Thiago2023','Vitoria Thiago Santos',2),
 	(1,'arthursantos@viniculamooca.com.br', '@rthurSantos2023','Arthur Santos Souza',3),
 	(1,'vitoriathiago@auroravinicula.com.br', 'vitori@Thiago2023','Kamila Araujo Silveira',4);
-    select * from loginusuario;
+
+select * from loginusuario;
+
 create table localSensor(
 	idLocalSensor int,
     fkCadastroEmpresa int,
@@ -57,9 +66,8 @@ create table localSensor(
     nomeLocal varchar(45),
     descricao varchar(45),
     tamanhoLocal varchar(45),
-    constraint fkCadastroEmpresaLocalSensor foreign key(fkCadastroEmpresa) references endereco(fkCadastroEmpresa),
-    constraint fkEnderecoLocalSensor foreign key (fkEndereco) references endereco(idEndereco),
-    constraint primary key (idLocalSensor, fkEndereco, fkCadastroEmpresa)
+    constraint fkCadastroEmpresaLocalSensor foreign key(fkCadastroEmpresa, fkEndereco) references endereco(fkCadastroEmpresa, idEndereco),
+    constraint primary key (idLocalSensor, fkCadastroEmpresa, fkEndereco)
     );
     
 insert into localSensor values
@@ -71,37 +79,29 @@ insert into localSensor values
     (2,3,1, 'Estoque','Estoque 2','66m²'),
     (1,4,1, 'Container','Container A','150m²'),
     (2,4,1, 'container ','Container B','120m²');
-    select * from localSensor;
+
+select * from localSensor;
+
 create table cadastroSensor(
 	idSensor int primary key auto_increment,
-    tipoSensor varchar(45),
-    statusSensor varchar(45),
-    fkLocalSensor int,
     fkCadastroEmpresa int,
     fkEndereco int,
-    constraint fkLocalSensor foreign key(fkLocalSensor,fkEndereco, fkCadastroEmpresa) references localSensor(idLocalSensor,fkEndereco, fkCadastroEmpresa),
+    fkLocalSensor int,
+    tipoSensor varchar(45),
+    statusSensor varchar(45),
+    constraint fkLocalSensor foreign key(fkCadastroEmpresa,fkEndereco,fkLocalSensor) references localSensor(fkCadastroEmpresa,fkEndereco,idLocalSensor),
     constraint chkStatusSensor check (statusSensor in ('ativo','inativo','Manutenção'))
     );
-    
 
-    
-insert into cadastroSensor values
-	(null, 'DHT11','Ativo',1,1,1),
-    (null, 'DHT11','Ativo',1,2,1),
-    (null, 'DHT11','Ativo',1,3,1),
-    (null, 'DHT11','Ativo',1,4,1),
-    (null, 'DHT11','Ativo',2,1,1),
-    (null, 'DHT11','Ativo',2,2,1),
-    (null, 'DHT11','Ativo',2,3,1),
-    (null, 'DHT11','Ativo',2,4,1),
-    (null, 'DHT11','Ativo',1,1,1),
-    (null, 'DHT11','Ativo',1,2,1),
-    (null, 'DHT11','Ativo',1,3,1),
-    (null, 'DHT11','Ativo',1,4,1),
-    (null, 'DHT11','Ativo',2,1,1),
-    (null, 'DHT11','Ativo',2,2,1),
-    (null, 'DHT11','Ativo',2,3,1),
-    (null, 'DHT11','Ativo',2,4,1);
+insert into cadastroSensor(idSensor, fkCadastroEmpresa, fkEndereco, fkLocalSensor, tipoSensor, statusSensor) values
+	(null,1,1,1,'DHT11','Ativo'),
+    (null,2,1,2,'DHT11','Ativo'),
+    (null,3,1,1,'DHT11','Ativo'),
+    (null,4,1,2,'DHT11','Ativo'),
+    (null,1,1,1,'DHT11','Ativo'),
+    (null,2,1,2,'DHT11','Ativo'),
+    (null,3,1,1,'DHT11','Ativo'),
+    (null,4,1,2,'DHT11','Ativo');
 
 select * from cadastroSensor;
 
@@ -140,7 +140,9 @@ insert into dadoSensor values
     (22,'15', '58', '2023-04-18 21:00:00',1),
     (23,'16', '58', '2023-04-18 22:00:00',1),
     (24,'15', '58', '2023-04-18 23:00:00',1);
+    
 select * from dadoSensor;
+
 select 
 cadastroEmpresa.empresa, 
 cadastroEmpresa.cnpj, 
@@ -190,6 +192,45 @@ dadoSensor.dataHoraSensor
 						 join dadoSensor
 							on dadoSensor.fkCadastroSensor = cadastroSensor.idSensor
 								where idCadastroEmpresa = 1 and idLocalSensor >= 1   and idDadoSensor >=1;
+
+select * from cadastroempresa -- ok
+join endereco
+	on endereco.fkCadastroEmpresa = idCadastroempresa
+        join localsensor
+			on localsensor.fkCadastroempresa = idCadastroempresa and localsensor.fkendereco = endereco.idendereco
+				join cadastrosensor
+					on cadastrosensor.fkCadastroempresa = localsensor.fkcadastroempresa
+                       and cadastrosensor.fkendereco = localsensor.fkendereco
+                       and cadastrosensor.fklocalsensor = localsensor.idlocalsensor
+				 join dadosensor on dadosensor.fkcadastrosensor = cadastrosensor.idsensor; -- RESOLVIDO!!!!!!!
+                -- where cadastroempresa.empresa like '%3%';
+	
+
+select * from cadastrosensor;
+-- where fkCadastroempresa = 1;
+ -- ok
+	-- join cadastroempresa
+		-- on fkCadastroempresa = idcadastroempresa;
+
+select * from localSensor -- ok só com where
+	join cadastrosensor
+		on fkLocalsensor = idlocalsensor;
+-- where localsensor.fkcadastroempresa = 1 and cadastrosensor.fkcadastroempresa = 1;
+            
+select * from cadastroempresa -- erro
+	join localsensor
+		on localsensor.fkCadastroEmpresa = idCadastroEmpresa
+			join cadastroSensor
+				on fkLocalsensor = idLocalsensor;
+
+select * from localsensor;
+select * from cadastrosensor;
+
+select * from dadosensor
+	join cadastrosensor
+		on fkCadastrosensor = idCadastrosensor
+			join cadastroempresa
+				on fkCadastroempresa = idcadastroempresa;
 
 						select * from dadoSensor
 							join cadastroSensor
