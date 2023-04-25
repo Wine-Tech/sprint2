@@ -1,6 +1,7 @@
 body{
-    background-color: rgb(24, 61, 74);
+  background: linear-gradient(50.15deg,#2F2325 15% , #114264 85.61%);
     font-family:'Times New Roman', Times, serif;
+
 }
 .titulo{
     text-align: center;
@@ -110,7 +111,7 @@ input{
 }
 #porcentagem{
     font-size: 26px;
-    color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
 }
 .maiorVermelho{
     font-size: 26px;
