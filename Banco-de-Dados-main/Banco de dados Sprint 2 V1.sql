@@ -107,7 +107,7 @@ select * from cadastroSensor;
 
 create table dadoSensor(
 	idDadoSensor int,
-    temperatura varchar(45),
+    temperaturaSensor varchar(45),
     umidadeSensor varchar(45),
     dataHoraSensor datetime,
     fkCadastroSensor int,
@@ -117,29 +117,53 @@ create table dadoSensor(
     
 insert into dadoSensor values
 	(1,'15', '54', '2023-04-18 00:00:00', 1),
-    (2,'15', '55', '2023-04-18 01:00:00',1),
-    (3,'15', '56', '2023-04-18 02:00:00',1),
-    (4,'15', '56', '2023-04-18 03:00:00',1),
-    (5,'16', '57', '2023-04-18 04:00:00',1),
-    (6,'17', '55', '2023-04-18 05:00:00',1),
-    (7,'18', '56', '2023-04-18 06:00:00',1),
-    (8,'17', '55', '2023-04-18 07:00:00',1),
-    (9,'19', '54', '2023-04-18 08:00:00',1),
-    (10,'20', '53', '2023-04-18 09:00:00',1),
-    (11,'21', '55', '2023-04-18 10:00:00',1),
-    (12,'21', '56', '2023-04-18 11:00:00',1),
-    (13,'22', '55', '2023-04-18 12:00:00',1),
-    (14,'23', '54', '2023-04-18 13:00:00',1),
-    (15,'20', '57', '2023-04-18 14:00:00',1),
-    (16,'20', '56', '2023-04-18 15:00:00',1),
-    (17,'20', '56', '2023-04-18 16:00:00',1),
-    (18,'19', '57', '2023-04-18 17:00:00',1),
-    (19,'19', '57', '2023-04-18 18:00:00',1),
-    (20,'18', '58', '2023-04-18 19:00:00',1),
-    (21,'18', '58', '2023-04-18 20:00:00',1),
-    (22,'15', '58', '2023-04-18 21:00:00',1),
-    (23,'16', '58', '2023-04-18 22:00:00',1),
-    (24,'15', '58', '2023-04-18 23:00:00',1);
+    (2,'15', '55', '2023-04-18 02:00:00',1),
+    (3,'15', '56', '2023-04-18 04:00:00',1),
+    (4,'15', '56', '2023-04-18 06:00:00',1),
+    (5,'16', '57', '2023-04-18 08:00:00',1),
+    (6,'17', '55', '2023-04-18 10:00:00',1),
+    (7,'18', '56', '2023-04-18 12:00:00',1),
+    (8,'17', '55', '2023-04-18 14:00:00',1),
+    (9,'19', '54', '2023-04-18 16:00:00',1),
+    (10,'20', '53', '2023-04-18 18:00:00',1),
+    (11,'21', '55', '2023-04-18 20:00:00',1),
+    (12,'21', '56', '2023-04-18 22:00:00',1),
+    (1,'22', '55', '2023-04-18 00:00:00',2),
+    (2,'23', '54', '2023-04-18 02:00:00',2),
+    (3,'20', '57', '2023-04-18 04:00:00',2),
+    (4,'20', '56', '2023-04-18 06:00:00',2),
+    (5,'20', '56', '2023-04-18 08:00:00',2),
+    (6,'19', '57', '2023-04-18 10:00:00',2),
+    (7,'19', '57', '2023-04-18 12:00:00',2),
+    (8,'18', '58', '2023-04-18 14:00:00',2),
+    (9,'18', '58', '2023-04-18 16:00:00',2),
+    (10,'15', '58', '2023-04-18 18:00:00',2),
+    (11,'16', '58', '2023-04-18 20:00:00',2),
+    (12,'15', '58', '2023-04-18 22:00:00',2),
+    (1,'15', '58', '2023-04-18 00:00:00',3),
+    (2,'15', '58', '2023-04-18 02:00:00',3),
+    (3,'15', '58', '2023-04-18 04:00:00',3),
+    (4,'15', '58', '2023-04-18 06:00:00',3),
+    (5,'15', '58', '2023-04-18 08:00:00',3),
+    (6,'15', '58', '2023-04-18 10:00:00',3),
+    (7,'15', '58', '2023-04-18 12:00:00',3),
+    (8,'15', '58', '2023-04-18 14:00:00',3),
+    (9,'15', '58', '2023-04-18 16:00:00',3),
+    (10,'15', '58', '2023-04-18 18:00:00',3),
+    (11,'15', '58', '2023-04-18 20:00:00',3),
+    (12,'15', '58', '2023-04-18 22:00:00',3),
+    (1,'15', '58', '2023-04-18 00:00:00',4),
+    (2,'15', '58', '2023-04-18 02:00:00',4),
+    (3,'15', '58', '2023-04-18 04:00:00',4),
+    (4,'15', '58', '2023-04-18 06:00:00',4),
+    (5,'15', '58', '2023-04-18 08:00:00',4),
+    (6,'15', '58', '2023-04-18 10:00:00',4),
+    (7,'15', '58', '2023-04-18 12:00:00',4),
+    (8,'15', '58', '2023-04-18 14:00:00',4),
+    (9,'15', '58', '2023-04-18 16:00:00',4),
+    (10,'15', '58', '2023-04-18 18:00:00',4),
+    (11,'15', '58', '2023-04-18 20:00:00',4),
+    (12,'15', '58', '2023-04-18 22:00:00',4);
     
 select * from dadoSensor;
 
@@ -164,7 +188,7 @@ cadastroEmpresa.empresa,
 -- localSensor.tamanhoLocal,
 cadastroSensor.tipoSensor,
 cadastroSensor.statusSensor,
-dadoSensor.temperatura,
+dadoSensor.temperaturaSensor,
 dadoSensor.umidadeSensor,
 dadoSensor.dataHoraSensor
 	from cadastroEmpresa
@@ -174,14 +198,14 @@ dadoSensor.dataHoraSensor
 					on cadastroSensor.fkCadastroEmpresa = cadastroEmpresa.idCadastroEmpresa
 						join dadoSensor
 							on dadoSensor.fkCadastroSensor= cadastroSensor.idSensor
-								where idDadoSensor >=1;						
+								where idDadoSensor >=6 and idCadastroEmpresa = 1;						
 				
 select 
 cadastroEmpresa.empresa,localSensor.nomeLocal,
 localSensor.tamanhoLocal,
 cadastroSensor.tipoSensor,
 cadastroSensor.statusSensor,
-dadoSensor.temperatura,
+dadoSensor.temperaturaSensor,
 dadoSensor.umidadeSensor,
 dadoSensor.dataHoraSensor
 	from cadastroEmpresa
@@ -190,8 +214,7 @@ dadoSensor.dataHoraSensor
 				 join cadastroSensor
 					on cadastroSensor.fkLocalSensor = localSensor.idLocalSensor
 						 join dadoSensor
-							on dadoSensor.fkCadastroSensor = cadastroSensor.idSensor
-								where idCadastroEmpresa = 1 and idLocalSensor >= 1   and idDadoSensor >=1;
+							on dadoSensor.fkCadastroSensor = cadastroSensor.idSensor;
 
 select * from cadastroempresa -- ok
 join endereco
@@ -204,8 +227,28 @@ join endereco
                        and cadastrosensor.fklocalsensor = localsensor.idlocalsensor
 				 join dadosensor on dadosensor.fkcadastrosensor = cadastrosensor.idsensor; -- RESOLVIDO!!!!!!!
                 -- where cadastroempresa.empresa like '%3%';
-	
-
+select 
+cadastroEmpresa.empresa,
+cadastroEmpresa.cnpj,
+endereco.rua,
+endereco.bairro,
+endereco.cidade,
+localSensor.nomeLocal,
+localSensor.descricao,
+cadastrosensor.tipoSensor,
+cadastrosensor.statusSensor,
+dadoSensor.temperaturaSensor,
+dadoSensor.umidadeSensor,
+dadoSensor.dataHoraSensor
+from cadastroEmpresa
+	join endereco
+		on endereco.fkCadastroEmpresa = idCadastroempresa
+			join localsensor
+				on localsensor.fkCadastroempresa = idCadastroempresa and localsensor.fkendereco = endereco.idendereco
+					join cadastrosensor
+						on cadastrosensor.fkCadastroempresa = localsensor.fkcadastroempresa and cadastrosensor.fkendereco = localsensor.fkendereco and cadastrosensor.fklocalsensor = localsensor.idlocalsensor
+							join dadosensor on dadosensor.fkcadastrosensor = cadastrosensor.idsensor
+								where idCadastroEmpresa <= 2 and idDadoSensor >= 6 and localsensor.idLocalSensor <= 2 ;
 select * from cadastrosensor;
 -- where fkCadastroempresa = 1;
  -- ok
