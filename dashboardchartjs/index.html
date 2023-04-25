@@ -15,13 +15,14 @@
 
     <div class="header">
         <div class="nav">
-            <img id="imgLogo" src="C:\Users\enzob\Documents\sprint 2\logoempresa.png">
+            <img id="imgLogo" src="../PrototipoSite-main/logoEmpresaFoolter.png">
             <ul class="navbar">
-                <li><a href="../PrototipoSite-main/index.html">Home</a></li>
+                <li><a href="./index.html">Home</a></li>
                 <li><a href="#">Produtos</a></li>
                 <li><a href="#">Sobre nós</a></li>
                 <li><a href="#">Contato</a></li>
-               
+                <li><a class="login" href="../telacadastro-main/telaLogin.html">Login</a></li>
+                <li><a class="cad" href="../telacadastro-main/telaCadastro.html">Cadastre-se</a></li>
             </ul>
         </div>
     </div>
@@ -31,9 +32,9 @@
     <section class="container1">
         <div class="cardAlerta">
             <div class="conteudoAlerta">
-              <div class="tituloAlerta">
-                ALERTA !
-              </div> 
+                <div class="tituloAlerta">
+                    ALERTA !
+                </div>
                 - SENSOR 22 DO ARMAZÉM 1 <br>
                 - SENSOR 37 DO ARMAZÉM 2 <br>
                 ESTÃO ACIMA DO IDEAL
@@ -41,37 +42,39 @@
         </div>
 
     </section>
-<section class="container4">
-    <img class="metricaTemperatura" src="../temperatura.png" alt="">
-    <img class="metricaUmidade" src="../umidade.png" alt="">
-</section>
+    <section class="container4">
+        <img class="metricaTemperatura" src="../metricas/temperatura.png" alt="">
+        <img class="metricaUmidade" src="../metricas/umidade.png" alt="">
+    </section>
 
 
     <section class="container2">
-       
+
         <div class="tabela1">
             <h1 class="tituloTabela">Temperatura e umidade diària</h1>
             <canvas id="myChart" style="position:realtive; height:40vh; width:50vw"></canvas>
         </div>
-        <div class="card1"><div class="conteudo1">
-            
-            Temperatura máxima no dia <br>
-            <div class="porcentagem1">
-                30ºC
+        <div class="card1">
+            <div class="conteudo1">
+
+                Temperatura máxima no dia <br>
+                <div class="porcentagem1">
+                    30ºC
+                </div>
+
             </div>
-            
+
         </div>
-            
-        </div>
-        <div class="card2"><div class="conteudo1">
-            
-            Umidade máxima no dia <br>
-            <div class="porcentagem2">
-                57%
+        <div class="card2">
+            <div class="conteudo1">
+
+                Umidade máxima no dia <br>
+                <div class="porcentagem2">
+                    57%
+                </div>
+
             </div>
-           
-        </div>
-           
+
         </div>
     </section>
 
@@ -82,26 +85,28 @@
             <h1 class="tituloTabela">Média temperatura e umidade semanal</h1>
             <canvas id="myChart2" style="position:relative; height:40vh; width:50vw"></canvas>
         </div>
-        <div class="card3"><div class="conteudo1">
-            Média
-            da temperatura semanal <br>
-            <div class="porcentagem3">
-                24ºC
+        <div class="card3">
+            <div class="conteudo1">
+                Média
+                da temperatura semanal <br>
+                <div class="porcentagem3">
+                    24ºC
+                </div>
+
             </div>
-           
+
         </div>
-           
-        </div>
-        <div class="card4"><div class="conteudo1">
-            Média
-            da umidade semanal <br>
-            <div class="porcentagem4
+        <div class="card4">
+            <div class="conteudo1">
+                Média
+                da umidade semanal <br>
+                <div class="porcentagem4
             ">
-                59%
+                    59%
+                </div>
+
             </div>
-          
-        </div>
-           
+
 
     </section>
 
@@ -116,46 +121,46 @@
     Chart.defaults.color = '#FFFFFF';
 
     const optionsCritUmidade = {
-  plugins: {
-    annotation: {
-      annotations: {
-        line1: {
-          type: 'line',
-          yMin: 50,
-          yMax: 60,
-          borderColor: '#F89E26',
-          borderWidth: 2,
+        plugins: {
+            annotation: {
+                annotations: {
+                    line1: {
+                        type: 'line',
+                        yMin: 50,
+                        yMax: 60,
+                        borderColor: '#F89E26',
+                        borderWidth: 2,
+                    }
+                }
+            }
         }
-      }
-    }
-  }
-};
+    };
 
     const labels = [
         '25/06/2001 00:00:00',
-        
+
         '25/06/2001 02:00:00',
-        
+
         '25/06/2001 04:00:00',
-        
+
         '25/06/2001 06:00:00',
-        
+
         '25/06/2001 08:00:00',
-        
+
         '25/06/2001 10:00:00',
-        
+
         '25/06/2001 12:00:00',
-       
+
         '25/06/2001 14:00:00',
-       
+
         '25/06/2001 16:00:00',
-        
+
         '25/06/2001 18:00:00',
-        
+
         '25/06/2001 20:00:00',
-       
+
         '26/06/2001 22:00:00',
-        
+
     ];
 
     const labels2 = [
@@ -204,7 +209,7 @@
             // backgroundColor: "rgb(52, 161, 235)",
             //  borderColor: "rgb(52, 161, 235)",
             data: [50, 55, 52, 55, 60, 54, 50, 50, 56, 58, 55, 60],
-           
+
         }
         ]
     };

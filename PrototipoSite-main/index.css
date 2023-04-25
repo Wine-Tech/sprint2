@@ -69,13 +69,8 @@ body {
     color: #ebe1e9;
 }
 
-li {
-    margin-right: 20px;
-    /* margin-left: 20px; */
-}
-
 a {
-    transition: all ease-in .3s;
+    transition: all .3s ease-out ;
 }
 
 a:hover {
@@ -92,12 +87,7 @@ a:hover {
     width: 10vh;
     height: 30px;
     color: white;
-}
-
-.login:hover, .cad:hover {
-    background-color: #cf2b46;
-    color: white;
-    transition: all .4s ease-in-out;
+    transition: all .3s ease-out;
 }
 
 .cad {
@@ -110,15 +100,16 @@ a:hover {
     width: 17vh;
     height: 30px;
     color: white;
+    transition: all .3s ease-out;
 }
 
-.titulo {
-    font-family: 'Courier New', Courier, monospace;
-    color: #ebe1e9;
-    width: fit-content;
-    font-weight: 500;
+.login:hover, .cad:hover {
+    background-color: #cf2b46;
+    color: white;
+    
 }
 
+/* DIVISÃO DE CONTEÚDO */
 .conteudo1 {
     display: flex;
     align-items: center;

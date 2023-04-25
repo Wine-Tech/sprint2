@@ -28,6 +28,7 @@
 
     <div class="container">
 
+        <form method="get" action="."></form>
         <div class="card">
 
             <h1>Cadastro da Empresa</h1>
@@ -53,7 +54,7 @@
             </div>
 
             <div class="label-float">
-                <input id="iptCEP" placeholder=" " required>
+                <input id="iptCEP" placeholder=" " required maxlength="8" onblur="pesquisacep(this.value)">
                 <label for="iptCEP" id="labCEP">CEP</label>
             </div>
 
@@ -69,7 +70,7 @@
 
             <div class="label-float">
                 <input id="iptComplemento" placeholder=" " required>
-                <label for="iptComplemento" id="labComplemento">Complemento</label>
+                <label for="iptComplemento" id="labComplemento">Complemento <i>(opcional)</i></label>
             </div>
 
             <div class="label-float">
@@ -88,10 +89,10 @@
                 <label for="iptEstado" id="labEstado">Estado</label>
             </div>
 
-            <div class="label-float">
+            <!-- <div class="label-float">
                 <input id="iptUF" placeholder=" " required>
                 <label for="iptUF" id="labUF">UF</label>
-            </div>
+            </div> -->
 
             <div id="divMsgErro" class="msgErro">
             </div>
@@ -122,7 +123,7 @@
         var estado = iptEstado.value;
 
 
-        if (empresa == "" || cnpj == "" || telefone == "" || dominio == "" || cep == "" || rua == "" || numRua == "" || complemento == "" || bairro == "" || cidade == "" || estado == "") {
+        if (empresa == "" || cnpj == "" || telefone == "" || dominio == "" || cep == "" || rua == "" || numRua == "" || bairro == "" || cidade == "" || estado == "") {
             divMsgErro.innerHTML = 'Preencha todos os campos'
         } else {
             document.getElementById("btnProsseguir").onclick = function () { location.href = "./telaCadastroUsuario.html";
@@ -131,3 +132,78 @@
         }
     }
 </script>
+
+
+<!-- API VIACEP -->
+<script>
+    
+    function limpa_formulário_cep() {
+            //Limpa valores do formulário de cep.
+            document.getElementById('iptRua').value=("");
+            document.getElementById('iptBairro').value=("");
+            document.getElementById('iptCidade').value=("");
+            document.getElementById('iptEstado').value=("");
+            // document.getElementById('ibge').value=("");
+    }
+
+    function meu_callback(conteudo) {
+        if (!("erro" in conteudo)) {
+            //Atualiza os campos com os valores.
+            document.getElementById('iptRua').value=(conteudo.logradouro);
+            document.getElementById('iptBairro').value=(conteudo.bairro);
+            document.getElementById('iptCidade').value=(conteudo.localidade);
+            document.getElementById('iptEstado').value=(conteudo.uf);
+            // document.getElementById('iptEstado').readOnly = true;
+            // document.getElementById('ibge').value=(conteudo.ibge);
+        } //end if.
+        else {
+            //CEP não Encontrado.
+            limpa_formulário_cep();
+            alert("CEP não encontrado.");
+        }
+    }
+        
+    function pesquisacep(valor) {
+
+        //Nova variável "cep" somente com dígitos.
+        var cep = valor.replace(/\D/g, '');
+
+        //Verifica se campo cep possui valor informado.
+        if (cep != "") {
+
+            //Expressão regular para validar o CEP.
+            var validacep = /^[0-9]{8}$/;
+
+            //Valida o formato do CEP.
+            if(validacep.test(cep)) {
+
+                //Preenche os campos com "..." enquanto consulta webservice.
+                document.getElementById('iptRua').value="...";
+                document.getElementById('iptBairro').value="...";
+                document.getElementById('iptCidade').value="...";
+                document.getElementById('iptEstado').value="...";
+                // document.getElementById('ibge').value="...";
+
+                //Cria um elemento javascript.
+                var script = document.createElement('script');
+
+                //Sincroniza com o callback.
+                script.src = 'https://viacep.com.br/ws/'+ cep + '/json/?callback=meu_callback';
+
+                //Insere script no documento e carrega o conteúdo.
+                document.body.appendChild(script);
+
+            } //end if.
+            else {
+                //cep é inválido.
+                limpa_formulário_cep();
+                alert("Formato de CEP inválido.");
+            }
+        } //end if.
+        else {
+            //cep sem valor, limpa formulário.
+            limpa_formulário_cep();
+        }
+    };
+
+    </script>
