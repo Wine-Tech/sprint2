@@ -19,7 +19,6 @@ body {
     background-attachment: fixed; */
 }
 
-/* NAVBAR */
 #imgLogo {
     margin-top: 15px;
 }
@@ -53,8 +52,13 @@ body {
     color: #ebe1e9;
 }
 
+li {
+    margin-right: 20px;
+    /* margin-left: 20px; */
+}
+
 a {
-    transition: all .3s ease-out ;
+    transition: all ease-in .3s;
 }
 
 a:hover {
@@ -71,7 +75,13 @@ a:hover {
     width: 10vh;
     height: 30px;
     color: white;
-    transition: all .3s ease-out;
+}
+
+.login:hover,
+.cad:hover {
+    background-color: #cf2b46;
+    color: white;
+    transition: all .4s ease-in-out;
 }
 
 .cad {
@@ -84,16 +94,15 @@ a:hover {
     width: 17vh;
     height: 30px;
     color: white;
-    transition: all .3s ease-out;
 }
 
-.login:hover, .cad:hover {
-    background-color: #cf2b46;
-    color: white;
-    
+.titulo {
+    font-family: 'Courier New', Courier, monospace;
+    color: #ebe1e9;
+    width: fit-content;
+    font-weight: 500;
 }
 
-/* DIVISÃO DE CONTEÚDO */
 .container1 {
      display: flex; 
     width: 100%;
