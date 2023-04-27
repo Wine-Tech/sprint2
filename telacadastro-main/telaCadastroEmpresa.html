@@ -126,9 +126,7 @@
         if (empresa == "" || cnpj == "" || telefone == "" || dominio == "" || cep == "" || rua == "" || numRua == "" || bairro == "" || cidade == "" || estado == "") {
             divMsgErro.innerHTML = 'Preencha todos os campos'
         } else {
-            document.getElementById("btnProsseguir").onclick = function () { location.href = "./telaCadastroUsuario.html";
-            }
-            
+            document.getElementById("btnProsseguir").onclick = location.href = "./telaCadastroUsuario.html"
         }
     }
 </script>

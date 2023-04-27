@@ -46,7 +46,7 @@
             </div>
 
             <div class="justify-center">
-                <button onclick="enter()">Entrar</button>
+                <button id="btnLogin" onclick="enter()">Entrar</button>
             </div>
 
         </div>
@@ -60,7 +60,8 @@
         var login = (iptEmail.value);
         var senha = (iptSenha.value); 
         if(login == "luma" && senha == "123"){
-            alert("Usuário logado com sucesso")
+            document.getElementById("btnLogin").onclick =
+                location.href = "../dashboardchartjs/index.html"; 
         } else{
             divMsgErro.innerHTML = 'Usuário ou senha incorretos';
         } 
