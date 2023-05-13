@@ -382,4 +382,11 @@ a:hover {
     font-size: medium;
     display:flex;
     /* margin-left: 6%; */
+    align-items: center;
+    
+}
+
+.direitos2 {
+    margin-left: 100vh;
+    
 }
