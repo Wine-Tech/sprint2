@@ -127,7 +127,7 @@ box-shadow: 20px 20px 30px rgb(35, 35, 35);
     display: flex; 
    width: 100%;
    height: 15vh;
-   margin-top: 3vh;
+   margin-top: 10vh;
    justify-content: space-evenly;
  
 
@@ -259,4 +259,12 @@ border-radius: 25px;
     justify-content: center;
     color: whitesmoke;
     font-size: xx-large;
+}
+select{
+    background-color: #1972b2;
+    color: rgb(252, 252, 252);
+    width: 15vh;
+    height: 5vh;
+    border-radius: 25px;
+    font-size: large;
 }
