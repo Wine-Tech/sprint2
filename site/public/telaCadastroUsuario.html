@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <link rel="stylesheet" href="./style.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro | STTU</title>
+</head>
+
+<body>
+
+    <div class="header">
+        <div class="nav">
+            <img id="imgLogo" src="./logoempresa.png">
+            <ul class="navbar">
+                <li><a href="../PrototipoSite-main/index.html">Home</a></li>
+                <li><a href="#">Produtos</a></li>
+                <li><a href="#">Sobre nós</a></li>
+                <li><a href="#">Contato</a></li>
+                <li><a class="login" href="telaLogin.html">Login</a></li>
+                <li><a class="cad" href="telaCadastro.html">Cadastre-se</a></li>
+            </ul>
+        </div>
+    </div>
+
+
+    <div class="container">
+
+        <div class="card">
+
+            <h1>Cadastro do Usuário</h1>
+
+            <div class="label-float">
+                <input type="text" id="iptCodAcesso" placeholder=" " required onblur="validarEmpresa()">
+                <label for="iptCodAcesso" id="labCodAcesso">Código de Acesso</label>
+                <span style="font-size: 12px">Código de acesso fornecido pela empresa</span>
+            </div>
+
+            <div id="divLiberarUser" class="liberarUsuario">
+                <div class="label-float">
+                    <input id="iptNomeCompleto" placeholder=" " required>
+                    <label for="iptNomeCompleto" id="labNomeCompleto">Nome completo</label>
+                </div>
+
+
+                <div class="label-float">
+                    <input id="iptEmail" placeholder=" " required>
+                    <label for="iptEmail" id="labEmail">E-mail</label>
+                </div>
+
+
+                <div class="label-float">
+                    <input type="password" id="iptSenha" placeholder=" " required>
+                    <label for="iptSenha" id="labSenha">Senha</label>
+                </div>
+
+                <div class="label-float">
+                    <input type="password" id="iptRepetirSenha" placeholder=" " required>
+                    <label for="iptRepetirSenha" id="labRepetirSenha">Repita sua senha</label>
+                </div>
+            </div>
+
+            <div id="divMsgErro" class="msgErro">
+            </div>
+
+            <div class="justify-center">
+                <button onclick="cadastrar()">Enviar</button>
+            </div>
+
+        </div>
+
+    </div>
+</body>
+
+</html>
+<script>
+    var codAcessoEmpresa = 0;
+    var jsonResponse = [];
+
+    function validarEmpresa() {
+        var codAcesso = iptCodAcesso.value;
+
+        fetch("/usuarios/validarEmpresa", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                codAcessoServer: codAcesso
+            })
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+
+                    jsonResponse = json.length;
+
+                    if (jsonResponse > 0) {
+                        var empresa = json[0];
+                        codAcessoEmpresa = empresa.id;
+                        divMsgErro.innerHTML = "<b style='color:green'>Código de acesso encontrado</b>";
+                        document.getElementById('divLiberarUser').style.display = 'block'
+                    } else {
+                        document.getElementById('divLiberarUser').style.display = 'none'
+                        divMsgErro.innerHTML = "banana";
+                    }
+
+
+                });
+
+            } else {
+                divMsgErro.innerHTML = "Código de Acesso não encontrado!"
+                throw ("Houve um erro ao tentar realizar o cadastro!");
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+            // finalizarAguardar();
+        });
+
+        return false;
+
+    }
+
+    function cadastrar() {
+        var nomeCompleto = iptNomeCompleto.value;
+        var email = iptEmail.value;
+        var senha = iptSenha.value;
+        // var codAcesso = iptCodAcesso.value;
+        var repetirSenha = iptRepetirSenha.value;
+
+
+        if (nomeCompleto == "" || email == "" || senha == "" || repetirSenha == "") {
+            divMsgErro.innerHTML = 'Preencha todos os campos'
+        } else if (senha != repetirSenha) {
+            divMsgErro.innerHTML = 'Por favor, verifique sua senha e tente novamente';
+        } else {
+            divMsgErro.innerHTML = ''
+
+            fetch("/usuarios/cadastrarUsuario", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    // crie um atributo que recebe o valor recuperado aqui
+                    // Agora vá para o arquivo routes/usuario.js
+                    nomeCompletoServer: nomeCompleto,
+                    emailServer: email,
+                    senhaServer: senha,
+                    codAcessoServer: codAcessoEmpresa
+
+                })
+            }).then(function (resposta) {
+
+                console.log("resposta: ", resposta);
+
+                if (resposta.ok) {
+                    divMsgErro.innerHTML = 'Aguarde...'
+
+                    setTimeout(() => {
+                        window.location = "telaLogin.html";
+                    }, "2000")
+
+                } else {
+                    throw ("Houve um erro ao tentar realizar o cadastro!");
+                }
+            }).catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+                // finalizarAguardar();
+            });
+
+            return false;
+
+        }
+
+    }
+</script>

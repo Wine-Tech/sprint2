@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <link rel="stylesheet" href="./style.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | STTU</title>
+</head>
+
+<body>
+
+    <div class="header">
+        <div class="nav">
+            <img id="imgLogo" src="./logoempresa.png">
+            <ul class="navbar">
+                <li><a href="../PrototipoSite-main/index.html">Home</a></li>
+                <li><a href="#">Produtos</a></li>
+                <li><a href="#">Sobre nós</a></li>
+                <li><a href="#">Contato</a></li>
+                <li><a class="login" href="telaLogin.html">Login</a></li>
+                <li><a class="cad" href="telaCadastro.html">Cadastre-se</a></li>
+            </ul>
+        </div>
+    </div>
+
+
+    <div class="container">
+
+        <div class="card">
+
+            <h1>Login</h1>
+
+            <div class="label-float">
+                <input id="iptEmail" placeholder=" " required>
+                <label for="iptEmail" id="labEmail">E-mail</label>
+            </div>
+
+            <div class="label-float">
+                <input type="password" id="iptSenha" placeholder=" " required>
+                <label for="iptSenha" id="labSenha">Senha</label>
+            </div>
+
+            <div id="divMsgErro" class="msgErro">
+            </div>
+
+            <div class="justify-center">
+                <button id="btnLogin" onclick="entrar()">Entrar</button>
+            </div>
+
+        </div>
+
+    </div>
+</body>
+
+</html>
+<script>
+    function entrar(){
+        var email = iptEmail.value;
+        var senha = iptSenha.value; 
+        if(email == "" || senha == ""){
+            divMsgErro.innerHTML = 'Preencha todos os campos'
+        } else{
+            fetch("/usuarios/autenticar", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    emailServer: email,
+                    senhaServer: senha
+                })
+            }).then(function (resposta) {
+                console.log("ESTOU NO THEN DO entrar()!")
+    
+                if (resposta.ok) {
+                    divMsgErro.innerHTML = 'Aguarde...'
+
+                    console.log(resposta);
+    
+                    resposta.json().then(json => {
+                        console.log(json);
+                        console.log(JSON.stringify(json));
+    
+                        sessionStorage.EMAIL_USUARIO = json.email;
+                        sessionStorage.NOME_USUARIO = json.nome;
+                        sessionStorage.FK_EMPRESA = json.fkEmpresa;
+                        sessionStorage.ID_USUARIO = json.id;
+    
+                        setTimeout(function () {
+                            window.location = "dashboard.html";
+                        }, 2000); // apenas para exibir o loading
+    
+                    });
+    
+                } else {
+    
+                    console.log("Houve um erro ao tentar realizar o login!");
+    
+                    divMsgErro.innerHTML = `Usuário ou senha incorreto`
+                }
+    
+            }).catch(function (erro) {
+                console.log(erro);
+            })
+    
+            return false;
+            divMsgErro.innerHTML = '';
+        }
+
+    }
+    
+
+</script>

@@ -1,2 +1,0 @@
-# Simulador-Financeira
-Simulador Financeiro

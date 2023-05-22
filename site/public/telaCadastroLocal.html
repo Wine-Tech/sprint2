@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <link rel="stylesheet" href="./style.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="sessao.js"></script>
+    <title>Cadastro | STTU</title>
+</head>
+
+<body>
+
+    <div class="header">
+        <div class="nav">
+            <img id="imgLogo" src="./logoempresa.png">
+            <ul class="navbar">
+                <li><a href="../PrototipoSite-main/index.html">Home</a></li>
+                <li><a href="#">Produtos</a></li>
+                <li><a href="#">Sobre nós</a></li>
+                <li><a href="#">Contato</a></li>
+                <li><a class="login" href="telaLogin.html">Login</a></li>
+                <li><a class="cad" href="telaCadastro.html">Cadastre-se</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="containerLocal">
+        <div id="divLocalTitulo" class="">
+            <h1 id="h1Local">Cadastrar Locais</h1>
+        </div>
+    </div>
+
+    <div class="containerLocal">
+
+        <div class="cardLocal">
+            <h1 id="h1_TituloLocal">Adicionando local 1</h1>
+
+            <div class="label-float">
+                <input id="iptNomeLocal" placeholder=" " required>
+                <label for="iptNomeLocal" id="labNomeLocal">Nome do local</label>
+            </div>
+
+
+            <div class="label-float">
+                <input id="iptDescricao" placeholder=" " required>
+                <label for="iptDescricao" id="labDescricao">Descricao</label>
+            </div>
+
+            <div class="label-float">
+                <input type="number" id="iptTamanho" placeholder=" " required>
+                <label for="iptTamanho" id="labTamanho">Tamanho (em m²)</label>
+            </div>
+
+            <div id="divMsgErro" class="msgErro">
+            </div>
+
+            <div class="botoesLocal">
+                <button onclick="cadastrar()">Adicionar um novo</button><button
+                    onclick="prosseguir()">Prosseguir</button>
+            </div>
+
+
+        </div>
+
+    </div>
+    </div>
+</body>
+
+</html>
+<script>
+    var tituloLocal = 1;
+    var idEmpresa = 0;
+
+
+    fetch("/usuarios/buscarEmpresa").then(function (resposta) {
+            if (resposta.ok) {
+                if (resposta.status == 204) {
+                    // var feed = document.getElementById("feed_container");
+                    // var mensagem = document.createElement("span");
+                    // mensagem.innerHTML = "Nenhum resultado encontrado."
+                    // feed.appendChild(mensagem);
+                    throw "Nenhum resultado encontrado!!";
+                }
+
+                resposta.json().then(function (resposta) {
+                    console.log("Dados recebidos: ", JSON.stringify(resposta));
+                    var procurarEmpresa = resposta[0]
+
+                    idEmpresa = procurarEmpresa.id;
+
+                });
+            } else {
+                throw ('Houve um erro na API!');
+            }
+        }).catch(function (resposta) {
+            console.error(resposta);
+            // finalizarAguardar();
+        });
+
+    function cadastrar() {
+        var nomeLocal = iptNomeLocal.value;
+        var descricao = iptDescricao.value;
+        var tamanho = Number(iptTamanho.value);
+
+        // divMsgErro.innerHTML += "AAA"
+        if (nomeLocal == "" || descricao == "" || tamanho == 0) {
+            divMsgErro.innerHTML = 'Preencha todos os campos'
+        } else {
+            divMsgErro.innerHTML = ''
+
+        }
+        //fetch?????
+        
+
+        //campo do fetch para cadastro
+        fetch("/usuarios/cadastrarLocal", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                nomeLocalServer: nomeLocal,
+                descricaoServer: descricao,
+                tamanhoServer: tamanho,
+                idEmpresaServer: idEmpresa
+            })
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            divMsgErro.innerHTML = "Aguarde..."
+
+
+            if (resposta.ok) {
+
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+
+                    sessionStorage.ID_LOCALSENSOR = json.id;
+
+                    setTimeout(() => {
+                        tituloLocal++;
+                        divMsgErro.innerHTML = '';
+                        h1_TituloLocal.innerHTML = `Adicionando local ${tituloLocal}`
+                        document.getElementById('iptNomeLocal').value = ''
+                        document.getElementById('iptDescricao').value = ''
+                        document.getElementById('iptTamanho').value = '';
+                    }, "2000")
+
+                });
+
+            } else {
+                throw ("Houve um erro ao tentar realizar o cadastro!");
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+            // finalizarAguardar();
+        });
+
+        return false;
+    }
+
+
+    function prosseguir() {
+
+        if (tituloLocal == 1) {
+            divMsgErro.innerHTML = `Adicione pelo menos um local`
+        } else {
+            divMsgErro.innerHTML = "Aguarde..."
+            setTimeout(() => {
+                window.location = "telaCadastroUsuario.html";
+            }, "2000")
+        }
+
+    }
+</script>
