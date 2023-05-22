@@ -60,33 +60,33 @@ input{
     color:rgb(255, 255, 255);
 }
 .resultados{
-    width: 200px;
+    width: 40vh;
     height: fit-content;
     margin: auto;
     font-size: 20px;
     margin-bottom: 50px;
-    border: 1px solid rgb(255, 0, 0);
+    border: 5px solid rgb(255, 0, 0);
     padding: 10px;
     border-radius: 20px;
 }
 
 .resultados2{
-    width: 200px;
+    width: 40vh;
     height: fit-content;
     margin: auto;
     font-size: 20px;
     margin-bottom: 50px;
-    border: 1px solid rgb(255, 173, 9);
+    border: 5px solid rgb(255, 173, 9);
     padding: 10px;
     border-radius: 20px;
 }
 .resultados3{
-    width: 200px;
+    width: 40vh;
     height: fit-content;
     margin: auto;
     font-size: 20px;
     margin-bottom: 50px;
-    border: 1px solid rgb(252, 249, 64);
+    border: 5px solid rgb(252, 249, 64);
     padding: 10px;
     border-radius: 20px;
 }
@@ -106,17 +106,45 @@ input{
 .diagrama{
     font-size: 28px;
 }
-.maior{
+.maior1{
     font-size:26px;
-    color: rgb(255, 255, 255);
+    color: red;
 }
-.maiorCor{
+.maiorCor1{
     font-size:30px;
-    color: rgb(255, 255, 255);
+    color: red;
 }
-#porcentagem{
+
+.maior2{
+    font-size:26px;
+    color: orange;
+}
+.maiorCor2{
+    font-size:30px;
+    color: orange;
+}
+
+.maior3{
+    font-size:26px;
+    color: yellow;
+}
+.maiorCor3{
+    font-size:30px;
+    color: yellow;
+}
+#porcentagem1{
     font-size: 26px;
-    color: rgb(255, 255, 255);
+    color: red;
+}
+
+#porcentagem2{
+    font-size: 26px;
+    color: orange;
+}
+
+#porcentagem3{
+    font-size: 26px;
+    color: yellow;
 }
 .maiorVermelho{
     font-size: 26px;
@@ -129,15 +157,16 @@ input{
 
 .modificar {
     display: flex;
+   
 }
 
 .resultadocor {
-    color:red;
+    color:whitesmoke;
 }
 
 .resultadocor2 {
-    color:orange;
+    color:whitesmoke;
 }
 .resultadocor3 {
-    color:yellow;
+    color:whitesmoke;
 }

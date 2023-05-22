@@ -102,7 +102,6 @@ a:hover {
     width: fit-content;
     font-weight: 500;
 }
-
 .container1 {
      display: flex; 
     width: 100%;
@@ -128,7 +127,7 @@ box-shadow: 20px 20px 30px rgb(35, 35, 35);
     display: flex; 
    width: 100%;
    height: 15vh;
-   margin-top: 5vh;
+   margin-top: 3vh;
    justify-content: space-evenly;
  
 
@@ -141,7 +140,15 @@ box-shadow: 20px 20px 30px rgb(35, 35, 35);
     justify-content: space-around;
 
 }
-
+.tituloEscolha{
+font-size: xx-large;
+color:  #ebe1e9;
+}
+.button{
+width: 15vh;
+height: 5vh;
+border-radius: 25px;
+}
 
 .container3 {
     display: flex;
@@ -252,25 +259,4 @@ box-shadow: 20px 20px 30px rgb(35, 35, 35);
     justify-content: center;
     color: whitesmoke;
     font-size: xx-large;
-}
-select{
-    text-align: center;
-    border-radius: 25px;
-    width: 30vh;
-    height: 60px;
-    margin-top: 5vh;
-    margin-left: 43%;
-    /* margin-top: 2%; */
-    font-family: 'Poppins', sans-serif;
-    box-shadow: 10px 10px 15px rgb(35, 35, 35);
-    background-color: #1972b2;
-    color: white;
-    font-size: medium;
-}
-button{
-    width: 10vh;
-    height: 5vh;
-    border-radius: 25px;
-    background-color: #1972b2;
-    color: whitesmoke;
 }
