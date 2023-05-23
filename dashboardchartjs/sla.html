@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Implementando o ChartJS</title>
+    <link rel="stylesheet" href="sla.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+
+    <div class="header">
+        <div class="nav">
+            <img id="imgLogo" src="../PrototipoSite-main/logoEmpresaFoolter.png">
+            <ul class="navbar">
+                <li><a href="../PrototipoSite-main/index.html">Home</a></li>
+                <li><a href="#">usuario</a></li>
+                <li><a href="#">cadastrar Local</a></li>
+                <li><a href="#">Contato</a></li>
+               
+            </ul>
+        </div>
+    </div>
+
+
+
+    <section class="container1">
+        <div class="cardAlerta">
+            <div class="conteudoAlerta">
+              <div class="tituloAlerta">
+                ALERTA !
+              </div> 
+                - SENSOR 22 DO ARMAZÉM 1 <br>
+                - SENSOR 37 DO ARMAZÉM 2 <br>
+                ESTÃO ACIMA DO IDEAL
+            </div>
+        </div>
+
+    </section>
+
+
+<section class="container4">
+    <img class="metricaTemperatura" src="temperatura.png" alt="">
+    <img class="metricaUmidade" src="umidade.png" alt="">
+</section>
+
+
+    <section class="container2">
+       
+        <div class="tabela1">
+
+<div>
+    <h1 class="tituloEscolha">escolha o local: </h1> 
+       <select name="" id="button">
+<option value="">ARMAZÉM 1</option>
+<option value="">ARMAZÉM 2</option>
+    </select>
+</div>
+
+            <h1 class="tituloTabela">Temperatura e umidade diària</h1>
+            <canvas id="myChart" style="position:realtive; height:40vh; width:50vw"></canvas>
+        </div>
+        <div class="card1"><div class="conteudo1">
+            
+            Temperatura máxima no dia <br>
+            <div class="porcentagem1">
+                30ºC
+            </div>
+            
+        </div>
+            
+        </div>
+        <div class="card2"><div class="conteudo1">
+            
+            Umidade máxima no dia <br>
+            <div class="porcentagem2">
+                57%
+            </div>
+           
+        </div>
+           
+        </div>
+    </section>
+
+
+
+
+    <section class="container3">
+
+        </div>
+        <div class="tabela2">
+
+            <div>
+                <h1 class="tituloEscolha">escolha o local: </h1> 
+                   <select name="" id="button">
+            <option value="">ARMAZÉM 1</option>
+            <option value="">ARMAZÉM 2</option>
+                </select>
+            </div>
+
+            <h1 class="tituloTabela">Média temperatura e umidade semanal</h1>
+            <canvas id="myChart2" style="position:relative; height:40vh; width:50vw"></canvas>
+        </div>
+        <div class="card3"><div class="conteudo1">
+            Média
+            da temperatura semanal <br>
+            <div class="porcentagem3">
+                24ºC
+            </div>
+           
+        </div>
+           
+        </div>
+        <div class="card4"><div class="conteudo1">
+            Média
+            da umidade semanal <br>
+            <div class="porcentagem4
+            ">
+                59%
+            </div>
+          
+        </div>
+           
+
+    </section>
+
+
+
+
+
+
+
+</body>
+<script>
+    Chart.defaults.color = '#FFFFFF';
+
+    const optionsCritUmidade = {
+  plugins: {
+    annotation: {
+      annotations: {
+        line1: {
+          type: 'line',
+          yMin: 50,
+          yMax: 60,
+          borderColor: '#F89E26',
+          borderWidth: 2,
+        }
+      }
+    }
+  }
+};
+
+    const labels = [
+        '25/06/2001 00:00:00',
+        
+        '25/06/2001 02:00:00',
+        
+        '25/06/2001 04:00:00',
+        
+        '25/06/2001 06:00:00',
+        
+        '25/06/2001 08:00:00',
+        
+        '25/06/2001 10:00:00',
+        
+        '25/06/2001 12:00:00',
+       
+        '25/06/2001 14:00:00',
+       
+        '25/06/2001 16:00:00',
+        
+        '25/06/2001 18:00:00',
+        
+        '25/06/2001 20:00:00',
+       
+        '26/06/2001 22:00:00',
+        
+    ];
+
+    const labels2 = [
+        'Segunda',
+        'Terça',
+        'Quarta',
+        'Quinta',
+        'Sexta',
+        'Sábado',
+        'Domingo'
+
+    ];
+
+    const data = {
+        labels: labels,
+        datasets: [{
+            label: "Temperatura",
+            backgroundColor: "rgb(212, 145, 78)",
+            borderColor: "rgb(212, 145, 78)",
+            data: [12, 10, 12, 15, 20, 22, 22, 30, 15, 13, 12, 22],
+        },
+        {
+            label: "Umidade",
+            backgroundColor: "rgb(108, 91, 217)",
+            borderColor: "rgb(108, 91, 217)",
+            data: [53, 58, 54, 57, 57, 55, 55, 53, 54, 53, 57, 57],
+        }
+        ],
+        optionsCritUmidade
+    };
+
+    const data2 = {
+        labels: labels2,
+        datasets: [{
+            label: "Média da Temperatura",
+            backgroundColor: "rgb(212, 145, 78)",
+            borderColor: "rgb(212, 145, 78)",
+            // backgroundColor: "rgb(52, 235, 98)",
+            // borderColor: "rgb(52, 235, 98)",
+            data: [15, 20, 25, 19, 23, 30, 10, 12, 24, 20],
+        },
+        {
+            label: "Média da Umidade",
+            backgroundColor: "rgb(108, 91, 217)",
+            borderColor: "rgb(108, 91, 217)",
+            // backgroundColor: "rgb(52, 161, 235)",
+            //  borderColor: "rgb(52, 161, 235)",
+            data: [50, 55, 52, 55, 60, 54, 50, 50, 56, 58, 55, 60],
+           
+        }
+        ]
+    };
+
+    const config = {
+        type: `line`,
+        data: data,
+        options: {}
+    };
+
+    const config2 = {
+        type: `bar`,
+        data: data2,
+        options: {}
+    };
+
+
+</script>
+
+<script>
+    const myChart = new Chart(
+        document.getElementById('myChart'),
+        config
+    );
+
+    const myChart2 = new Chart(
+        document.getElementById('myChart2'),
+        config2
+    );
+
+</script>
+
+</html>
