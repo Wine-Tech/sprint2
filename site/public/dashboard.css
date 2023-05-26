@@ -127,12 +127,198 @@ box-shadow: 20px 20px 30px rgb(35, 35, 35);
 .container4 {
     display: flex; 
    width: 100%;
-   height: 15vh;
-   margin-top: 3vh;
-   justify-content: space-evenly;
+   height: 13vh;
+   margin-top: 5vh;
+   justify-content: center;
  
 
 }
+
+
+.tituloMetricaPrincipal{
+    display: flex;
+    justify-content: center;
+   
+      color: whitesmoke;
+      font-size: xx-large;
+  }
+
+
+  .tituloMetrica{
+    
+      color: whitesmoke;
+      font-size: xx-large;
+  }
+
+.cardMetricaCriticoTemp{
+    display: flex;
+    justify-content: center;
+    text-align: center ;
+   width: 20vh ;
+    height: 8vh ;
+ color: whitesmoke;
+    border-radius: 25px;
+    margin-left: 3vh;
+    margin-right: 40vh;
+    border: 5px solid rgb(219, 0, 0);
+    box-shadow: 20px 20px 30px rgb(35, 35, 35);
+    font-size: large;
+    font-style: oblique;
+    font-weight: 700;
+}
+
+
+.cardMetricaCriticoUmi{
+    display: flex;
+    justify-content: center;
+    text-align: center ;
+   width: 20vh ;
+    height: 8vh ;
+ color: whitesmoke;
+    border-radius: 25px;
+    margin-left: 3vh;
+    margin-right: 34vh;
+    border: 5px solid rgb(54, 44, 238);
+    box-shadow: 20px 20px 30px rgb(35, 35, 35);
+    font-size: large;
+    font-style: oblique;
+    font-weight: 700;
+}
+
+
+.cardMetricaCriticoAbaixoTemp{
+    display: flex;
+    justify-content: center;
+    text-align: center ;
+   width: 20vh ;
+    height: 8vh ;
+ color: whitesmoke;
+    border-radius: 25px;
+    margin-left: 3vh;
+    border: 5px solid rgb(219, 247, 39);
+    box-shadow: 20px 20px 30px rgb(35, 35, 35);
+    font-size: large;
+    font-style: oblique;
+    font-weight: 700;
+}
+
+
+.cardMetricaIdealTemp{
+    display: flex;
+    justify-content: center;
+    text-align: center ;
+   width: 20vh ;
+    height: 8vh ;
+    color: whitesmoke;
+    border-radius: 25px;
+    margin-left: 3vh;
+    border: 5px solid  rgb(202, 173, 41); 
+    box-shadow: 20px 20px 30px rgb(35, 35, 35);
+    font-size: large;
+    font-style: oblique;
+    font-weight: 700;
+}
+
+.cardMetricaAlertaTemp{
+    display: flex;
+    justify-content: center;
+    text-align: center ;
+   width: 20vh ;
+    height: 8vh ;
+    color: whitesmoke;
+    border-radius: 25px;
+    margin-left: 3vh;
+    border: 5px solid rgb(255, 166, 0);
+    box-shadow: 20px 20px 30px rgb(35, 35, 35);
+    font-size: large;
+    font-style: oblique;
+    font-weight: 700;
+}
+
+
+.cardMetricaAlertaAbaixoTemp{
+    display: flex;
+    justify-content: center;
+    text-align: center ;
+   width: 20vh ;
+    height: 8vh ;
+    color: whitesmoke;
+    border-radius: 25px;
+    margin-left: 3vh;
+    border: 5px solid rgb(95, 228, 131);
+    box-shadow: 20px 20px 30px rgb(35, 35, 35);
+    font-size: large;
+    font-style: oblique;
+    font-weight: 700;
+}
+
+
+.cardMetricaCriticoAbaixoUmi{
+    display: flex;
+    justify-content: center;
+    text-align: center ;
+   width: 20vh ;
+    height: 8vh ;
+ color: whitesmoke;
+    border-radius: 25px;
+    margin-left: 3vh;
+    border: 5px solid rgb(196, 176, 255);
+    box-shadow: 20px 20px 30px rgb(35, 35, 35);
+    font-size: large;
+    font-style: oblique;
+    font-weight: 700;
+}
+
+
+.cardMetricaIdealUmi{
+    display: flex;
+    justify-content: center;
+    text-align: center ;
+   width: 20vh ;
+    height: 8vh ;
+    color: whitesmoke;
+    border-radius: 25px;
+    margin-left: 3vh;
+    border: 5px solid  rgb(80, 129, 208); 
+    box-shadow: 20px 20px 30px rgb(35, 35, 35);
+    font-size: large;
+    font-style: oblique;
+    font-weight: 700;
+}
+
+.cardMetricaAlertaUmi{
+    display: flex;
+    justify-content: center;
+    text-align: center ;
+   width: 20vh ;
+    height: 8vh ;
+    color: whitesmoke;
+    border-radius: 25px;
+    margin-left: 3vh;
+    border: 5px solid rgb(43, 68, 193);
+    box-shadow: 20px 20px 30px rgb(35, 35, 35);
+    font-size: large;
+    font-style: oblique;
+    font-weight: 700;
+}
+
+
+.cardMetricaAlertaAbaixoUmi{
+    display: flex;
+    justify-content: center;
+    text-align: center ;
+   width: 20vh ;
+    height: 8vh ;
+    color: whitesmoke;
+    border-radius: 25px;
+    margin-left: 3vh;
+    border: 5px solid rgb(63, 151, 210);
+    box-shadow: 20px 20px 30px rgb(35, 35, 35);
+    font-size: large;
+    font-style: oblique;
+    font-weight: 700;
+}
+
 
 .container2 {
     display: flex;
@@ -220,13 +406,6 @@ box-shadow: 20px 20px 30px rgb(35, 35, 35);
     font-style: oblique; 
    
 }
-.conteudoAlerta{
-   margin-top: 3vh;
-    
-}
-.tituloAlerta{
-    font-size: xx-large;
-}
 .conteudo1{
     margin-top: 3vh;
     color: whitesmoke;
@@ -252,4 +431,29 @@ box-shadow: 20px 20px 30px rgb(35, 35, 35);
     justify-content: center;
     color: whitesmoke;
     font-size: xx-large;
+}
+.conteudoEscolha{
+   
+    width: 100%;
+    height: 15vh;
+   
+}
+.tituloEscolha{
+    margin-top: 5vh;
+  margin-left: 34%;
+    color: whitesmoke;
+    font-size: xx-large;
+}
+
+select{
+  width: 20vh;
+  height: 5vh;
+  display: flex;
+  justify-content: center;
+  margin-left: 45%;
+    background-color: #1972b2;
+    color: whitesmoke;
+    border-radius: 25px;
+    font-size: x-large;
+    font-weight: 500;
 }

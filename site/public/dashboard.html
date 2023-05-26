@@ -27,24 +27,74 @@
     </div>
 
 
+   <h1 class="tituloMetricaPrincipal">Nivel de Alerta</h1>
 
-    <section class="container1">
-        <div class="cardAlerta">
-            <div class="conteudoAlerta">
-                <div class="tituloAlerta">
-                    ALERTA !
-                </div>
-                - SENSOR 22 DO ARMAZÉM 1 <br>
-                - SENSOR 37 DO ARMAZÉM 2 <br>
-                ESTÃO ACIMA DO IDEAL
-            </div>
+    <section class="container4">
+
+        <h1 class="tituloMetrica" > Temperatura </h1>
+
+        <div class="cardMetricaCriticoAbaixoTemp">
+            critico menor que: <br>
+             12C
+        </div>
+        <div class="cardMetricaAlertaAbaixoTemp">
+             alerta entre: <br>
+              xC e xC
+        </div>
+        <div class="cardMetricaIdealTemp">
+            ideal entre: <br>
+            xC e xC
+        </div>
+        <div class="cardMetricaAlertaTemp">
+             alerta entre: <br>
+              xC e xC
+        </div>
+        <div class="cardMetricaCriticoTemp">
+            critica maior que: <br>
+             24C
+        </div>
+    </section>
+
+
+   
+
+    <section class="container4">
+
+        <h1 class="tituloMetrica" > Umidade</h1>
+
+        <div class="cardMetricaCriticoAbaixoUmi">
+            critica menor que: <br>
+            50%
+        </div>
+        <div class="cardMetricaAlertaAbaixoUmi">
+             alerta entre: <br>
+             x% e x%
+        </div>
+        <div class="cardMetricaIdealUmi">
+             ideal  entre: <br>
+             x% e x%
+        </div>
+        <div class="cardMetricaAlertaUmi">
+            alerta entre: <br>
+             x% e x%
+        </div>
+        <div class="cardMetricaCriticoUmi">
+            critica maior que: <br>
+             50%
         </div>
 
     </section>
-    <section class="container4">
-        <img class="metricaTemperatura" src="temperatura.png" alt="">
-        <img class="metricaUmidade" src="umidade.png" alt="">
-    </section>
+
+
+    <div class="conteudoEscolha">
+        <h1 class="tituloEscolha">escolha um local para ver os dados: </h1>
+        <select name="" id="button">
+            <option value="">ARMAZÉM 1</option>
+            <option value="">ARMAZÉM 2</option>
+        </select>
+    </div>
+
+
 
 
     <section class="container2">
@@ -90,8 +140,7 @@
         </div>
         <div class="card3">
             <div class="conteudo1">
-                Média
-                da temperatura semanal <br>
+                Temperatura mínima no dia<br>
                 <div class="porcentagem3">
                     24ºC
                 </div>
@@ -102,10 +151,9 @@
 
         <div class="card4">
             <div class="conteudo1">
-                Média
-                da umidade semanal <br>
+                Umidade mínima no dia <br>
                 <div class="porcentagem4">
-                59%
+                    59%
                 </div>
 
             </div>
@@ -236,9 +284,9 @@
 
 <script>
 
-    
+
     let proximaAtualizacao;
-    
+
     window.onload = obterDadosGraficos();
 
     function obterDadosGraficos() {
@@ -275,7 +323,7 @@
     function plotarGrafico(resposta, idLocal) {
 
         console.log('iniciando plotagem do gráfico...');
-        
+
         // Criando estrutura para plotar gráfico - labels
         let labels = [];
 
@@ -313,8 +361,8 @@
             dados.datasets[0].data.push(registro.umidade);
             dados.datasets[1].data.push(registro.temperatura);
         }
-        
-        
+
+
         // let dados2 = {
         //     labels: labels2,
         //     datasets: [{
