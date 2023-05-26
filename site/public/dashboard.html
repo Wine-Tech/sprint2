@@ -7,11 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Implementando o ChartJS</title>
     <link rel="stylesheet" href="dashboard.css">
+    <script src="alertas.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
-
+    <div id="alerta"></div>
 
     <div class="header">
         <div class="nav">
@@ -27,24 +28,74 @@
     </div>
 
 
+   <h1 class="tituloMetricaPrincipal">Nivel de Alerta</h1>
 
-    <section class="container1">
-        <div class="cardAlerta">
-            <div class="conteudoAlerta">
-                <div class="tituloAlerta">
-                    ALERTA !
-                </div>
-                - SENSOR 22 DO ARMAZÉM 1 <br>
-                - SENSOR 37 DO ARMAZÉM 2 <br>
-                ESTÃO ACIMA DO IDEAL
-            </div>
+    <section class="container4">
+
+        <h1 class="tituloMetrica" > Temperatura </h1>
+
+        <div class="cardMetricaCriticoAbaixoTemp">
+            CRITICO BAIXO <br>
+             12ºC
+        </div>
+        <div class="cardMetricaAlertaAbaixoTemp">
+             ALERTA <br>
+              xºC ~ xºC
+        </div>
+        <div class="cardMetricaIdealTemp">
+            IDEAL <br>
+            xºC ~ xºC
+        </div>
+        <div class="cardMetricaAlertaTemp">
+             ALERTA <br>
+              xºC ~ xºC
+        </div>
+        <div class="cardMetricaCriticoTemp">
+            CRITICO ALTO <br>
+             24ºC
+        </div>
+    </section>
+
+
+   
+
+    <section class="container4">
+
+        <h1 class="tituloMetrica" > Umidade</h1>
+
+        <div class="cardMetricaCriticoAbaixoUmi">
+            CRITICO BAIXO <br>
+            50%
+        </div>
+        <div class="cardMetricaAlertaAbaixoUmi">
+             ALERTA <br>
+             x% ~ x%
+        </div>
+        <div class="cardMetricaIdealUmi">
+             IDEAL <br>
+             x% ~ x%
+        </div>
+        <div class="cardMetricaAlertaUmi">
+            ALERTA <br>
+             x% ~ x%
+        </div>
+        <div class="cardMetricaCriticoUmi">
+            CRITICO ALTO <br>
+             60%
         </div>
 
     </section>
-    <section class="container4">
-        <img class="metricaTemperatura" src="temperatura.png" alt="">
-        <img class="metricaUmidade" src="umidade.png" alt="">
-    </section>
+
+
+    <div class="conteudoEscolha">
+        <h1 class="tituloEscolha">escolha um local para ver os dados: </h1>
+        <select name="" id="button">
+            <option value="">ARMAZÉM 1</option>
+            <option value="">ARMAZÉM 2</option>
+        </select>
+    </div>
+
+
 
 
     <section class="container2">
@@ -55,11 +106,11 @@
             <canvas id="myChartVinho1" style="position:relative; height:40vh; width:50vw"></canvas>
 
         </div>
-
+        
         <div class="card1">
             <div class="conteudo1">
-
-                Temperatura máxima no dia <br>
+                <div class="cor-alerta" id="card_1"></div>
+                TEMPERATURA MÁXIMA NO DIA 
                 <div class="porcentagem1">
                     30ºC
                 </div>
@@ -71,7 +122,7 @@
         <div class="card2">
             <div class="conteudo1">
 
-                Umidade máxima no dia <br>
+                UMIDADE MÁXIMA NO DIA 
                 <div class="porcentagem2">
                     57%
                 </div>
@@ -90,10 +141,9 @@
         </div>
         <div class="card3">
             <div class="conteudo1">
-                Média
-                da temperatura semanal <br>
+                TEMPERATURA MÍNIMA NO DIA
                 <div class="porcentagem3">
-                    24ºC
+                    11ºC
                 </div>
 
             </div>
@@ -102,10 +152,9 @@
 
         <div class="card4">
             <div class="conteudo1">
-                Média
-                da umidade semanal <br>
+                UMIDADE MÍNIMA NO DIA 
                 <div class="porcentagem4">
-                59%
+                    59%
                 </div>
 
             </div>
@@ -236,9 +285,9 @@
 
 <script>
 
-    
+
     let proximaAtualizacao;
-    
+
     window.onload = obterDadosGraficos();
 
     function obterDadosGraficos() {
@@ -260,7 +309,7 @@
                 response.json().then(function (resposta) {
                     console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
                     resposta.reverse();
-
+                    
                     plotarGrafico(resposta, idLocal);
                 });
             } else {
@@ -275,7 +324,7 @@
     function plotarGrafico(resposta, idLocal) {
 
         console.log('iniciando plotagem do gráfico...');
-        
+
         // Criando estrutura para plotar gráfico - labels
         let labels = [];
 
@@ -313,8 +362,8 @@
             dados.datasets[0].data.push(registro.umidade);
             dados.datasets[1].data.push(registro.temperatura);
         }
-        
-        
+
+
         // let dados2 = {
         //     labels: labels2,
         //     datasets: [{
@@ -334,7 +383,7 @@
 
         //     }]
         // }
-
+        alertar(resposta, idLocal);
         console.log('----------------------------------------------')
         console.log('O gráfico será plotado com os respectivos valores:')
         console.log('Labels:')
