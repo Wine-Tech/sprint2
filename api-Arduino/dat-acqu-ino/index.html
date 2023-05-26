@@ -1,0 +1,765 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Line Chart</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+    <script src="http://www.chartjs.org/dist/2.7.1/Chart.js"></script>
+    <script src="http://www.chartjs.org/samples/latest/utils.js"></script>
+    <link href="stylo.css" rel="stylesheet">
+    <style>
+        canvas {
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <div class="nav">
+            <img id="imgLogo" src="logoEmpresaFoolter.png">
+            <ul class="navbar">
+                <li><a href="C:\Users\jonas\OneDrive\Área de Trabalho\Vinicula\sprint2\PrototipoSite-main\index.html">Home</a></li>
+                <li><a href="#">Produtos</a></li>
+                <li><a href="#">Sobre nós</a></li>
+                <li><a href="#">Contato</a></li>
+            </ul>
+        </div>
+    </div>
+    <div>
+        
+        <font face="Arial" color="white" size="6" class="tituloUmidade"> Sensor DHT 11 - Umidade Real</font>
+        <section class="Umidade">
+            <canvas id="dht11Umidade"></canvas>
+        </section>
+
+        <font face="Arial" color="white" size="6" class="tituloTemperatura">Sensor DHT 11 - Temperatura Real</font>
+        <section class="Temperatura">
+            <canvas id="dht11Temperatura"></canvas>
+        </section>
+        
+        <font face="Arial" color="white" size="6" class="tituloUmidade"> Sensor DHT 11 - Umidade Ideal</font>
+        <section class="Umidade">
+            <canvas id="dht11UmidadeIdeal"></canvas>
+        </section>
+
+        <font face="Arial" color="white" size="6" class="tituloUmidade"> Sensor DHT 11 - Umidade Ideal</font>
+        <section class="Temperatura">
+            <canvas id="dht11TemperaturaIdeal"></canvas>
+        </section>
+
+        <font face="Arial" color="white" size="6" class="tituloUmidade"> Sensor DHT 11 - Umidade Ideal 1</font>
+        <section class="Umidade">
+            <canvas id="dht11UmidadeIdeal1"></canvas>
+        </section>
+
+        <font face="Arial" color="white" size="6" class="tituloUmidade"> Sensor DHT 11 - Temperatura Ideal 1 </font>
+        <section class="Temperatura">
+            <canvas id="dht11TemperaturaIdeal1"></canvas>
+        </section>
+
+        <font face="Arial" color="white" size="6" class="tituloUmidade"> Sensor DHT 11 - Umidade Ideal 2</font>
+        <section class="Umidade">
+            <canvas id="dht11UmidadeIdeal2"></canvas>
+        </section>
+
+        <font face="Arial" color="white" size="6" class="tituloUmidade"> Sensor DHT 11 - Temperatura Ideal 2</font>
+        <section class="Temperatura">
+            <canvas id="dht11TemperaturaIdeal2"></canvas>
+        </section>
+
+        <font face="Arial" color="white" size="6" class="tituloUmidade"> Sensor DHT 11 - Umidade Ideal 3</font>
+        <section class="Umidade">
+            <canvas id="dht11UmidadeIdeal3"></canvas>
+        </section>
+
+        <font face="Arial" color="white" size="6" class="tituloUmidade"> Sensor DHT 11 - Temperatura Ideal 3</font>
+        <section class="Temperatura">
+            <canvas id="dht11TemperaturaIdeal3"></canvas>
+        </section>
+
+        <font face="Arial" color="white" size="6" class="tituloUmidade"> Sensor DHT 11 - Umidade Ideal 4</font>
+        <section class="Umidade">
+            <canvas id="dht11UmidadeIdeal4"></canvas>
+        </section>
+
+        <font face="Arial" color="white" size="6" class="tituloUmidade"> Sensor DHT 11 - Tempratura Ideal 4</font>
+        <section class="Temperatura">
+            <canvas id="dht11TemperaturaIdeal4"></canvas>
+        </section>
+
+        <!-- <h1>Sensor Luminosidade</h1>
+        <section style="width: 100%;">
+            <canvas id="luminosidade"></canvas>
+        </section>
+        <h1>Sensor LM 35 - Temperatura</h1>
+        <section style="width: 100%;">
+            <canvas id="lm35Temperatura"></canvas>
+        </section>
+        <h1>Sensor Chave</h1>
+        <section style="width: 100%;">
+            <canvas id="chave"></canvas>
+        </section> -->
+    </div>
+
+    <script>
+        /* -- dht11Umidade -- */
+        var contextoDht11Umidade = document.getElementById('dht11Umidade').getContext('2d');
+        contextoDht11Umidade.canvas.width = 1000;
+        contextoDht11Umidade.canvas.height = 300;
+        var dht11Umidade = new Chart(
+            contextoDht11Umidade,
+            {
+                type: 'line',
+                data: {
+                    datasets: [{
+                        label: 'Umidade',
+                        type: 'line',
+                        borderColor: ['#45b3e7'],
+                        backgroundColor: ['#89cff0']
+                    }]
+                },
+                options: {
+                    scales: {
+                        xAxes: [{
+                            distribution: 'series',
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }],
+                        yAxes: [{
+                            scaleLabel: {
+                                display: true,
+                                labelString: 'Umidade'
+                            },
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    },
+                    animation: {
+                        duration: 0
+                    }
+                }
+            }
+        );
+        /* -- dht11Temperatura -- */
+        var contextoDht11Temperatura = document.getElementById('dht11Temperatura').getContext('2d');
+        contextoDht11Temperatura.canvas.width = 1000;
+        contextoDht11Temperatura.canvas.height = 300;
+        var dht11Temperatura = new Chart(
+            contextoDht11Temperatura,
+            {
+                type: 'line',
+                data: {
+                    datasets: [{
+                        label: "Temperatura",
+                        type: 'line',
+                        borderColor: ['#ff3232'],
+                        backgroundColor: ['#ff7f7f']
+                    }]
+                },
+                options: {
+                    scales: {
+                        xAxes: [{
+                            distribution: 'series',
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }],
+                        yAxes: [{
+                            scaleLabel: {
+                                display: true,
+                                labelString: 'Luminosidade'
+                            },
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    },
+                    animation: {
+                        duration: 0
+                    }
+                }
+            }
+        );
+        /* -- dht11UmidadeIdeal -- */
+        var contextoDht11UmidadeIdeal = document.getElementById('dht11UmidadeIdeal').getContext('2d');
+        contextoDht11UmidadeIdeal.canvas.width = 1000;
+        contextoDht11UmidadeIdeal.canvas.height = 300;
+        var dht11UmidadeIdeal = new Chart(
+            contextoDht11UmidadeIdeal,
+            {
+                type: 'line',
+                data: {
+                    datasets: [{
+                        label: 'Umidade',
+                        type: 'line',
+                        borderColor: ['#45b3e7'],
+                        backgroundColor: ['#89cff0']
+                    }]
+                },
+                options: {
+                    scales: {
+                        xAxes: [{
+                            distribution: 'series',
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }],
+                        yAxes: [{
+                            scaleLabel: {
+                                display: true,
+                                labelString: 'Umidade'
+                            },
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    },
+                    animation: {
+                        duration: 0
+                    }
+                }
+            }
+        );
+        /* -- dht11TemperaturaIdeal -- */
+        var contextoDht11TemperaturaIdeal = document.getElementById('dht11TemperaturaIdeal').getContext('2d');
+        contextoDht11TemperaturaIdeal.canvas.width = 1000;
+        contextoDht11TemperaturaIdeal.canvas.height = 300;
+        var dht11TemperaturaIdeal = new Chart(
+            contextoDht11TemperaturaIdeal,
+            {
+                type: 'line',
+                data: {
+                    datasets: [{
+                        label: "Temperatura",
+                        type: 'line',
+                        borderColor: ['#ff3232'],
+                        backgroundColor: ['#ff7f7f']
+                    }]
+                },
+                options: {
+                    scales: {
+                        xAxes: [{
+                            distribution: 'series',
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }],
+                        yAxes: [{
+                            scaleLabel: {
+                                display: true,
+                                labelString: 'Luminosidade'
+                            },
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    },
+                    animation: {
+                        duration: 0
+                    }
+                }
+            }
+        );
+
+        /* -- dht11UmidadeIdeal1 -- */
+        var contextoDht11UmidadeIdeal1 = document.getElementById('dht11UmidadeIdeal1').getContext('2d');
+        contextoDht11UmidadeIdeal1.canvas.width = 1000;
+        contextoDht11UmidadeIdeal1.canvas.height = 300;
+        var dht11UmidadeIdeal1 = new Chart(
+            contextoDht11UmidadeIdeal1,
+            {
+                type: 'line',
+                data: {
+                    datasets: [{
+                        label: 'Umidade',
+                        type: 'line',
+                        borderColor: ['#45b3e7'],
+                        backgroundColor: ['#89cff0']
+                    }]
+                },
+                options: {
+                    scales: {
+                        xAxes: [{
+                            distribution: 'series',
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }],
+                        yAxes: [{
+                            scaleLabel: {
+                                display: true,
+                                labelString: 'Umidade'
+                            },
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    },
+                    animation: {
+                        duration: 0
+                    }
+                }
+            }
+        );
+        /* -- dht11TemperaturaIdeal1 -- */
+        var contextoDht11TemperaturaIdeal1 = document.getElementById('dht11TemperaturaIdeal1').getContext('2d');
+        contextoDht11TemperaturaIdeal1.canvas.width = 1000;
+        contextoDht11TemperaturaIdeal1.canvas.height = 300;
+        var dht11TemperaturaIdeal1 = new Chart(
+            contextoDht11TemperaturaIdeal1,
+            {
+                type: 'line',
+                data: {
+                    datasets: [{
+                        label: "Temperatura",
+                        type: 'line',
+                        borderColor: ['#ff3232'],
+                        backgroundColor: ['#ff7f7f']
+                    }]
+                },
+                options: {
+                    scales: {
+                        xAxes: [{
+                            distribution: 'series',
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }],
+                        yAxes: [{
+                            scaleLabel: {
+                                display: true,
+                                labelString: 'Luminosidade'
+                            },
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    },
+                    animation: {
+                        duration: 0
+                    }
+                }
+            }
+        );
+
+        /* -- dht11UmidadeIdeal2 -- */
+        var contextoDht11UmidadeIdeal2 = document.getElementById('dht11UmidadeIdeal2').getContext('2d');
+        contextoDht11UmidadeIdeal2.canvas.width = 1000;
+        contextoDht11UmidadeIdeal2.canvas.height = 300;
+        var dht11UmidadeIdeal2 = new Chart(
+            contextoDht11UmidadeIdeal2,
+            {
+                type: 'line',
+                data: {
+                    datasets: [{
+                        label: 'Umidade',
+                        type: 'line',
+                        borderColor: ['#45b3e7'],
+                        backgroundColor: ['#89cff0']
+                    }]
+                },
+                options: {
+                    scales: {
+                        xAxes: [{
+                            distribution: 'series',
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }],
+                        yAxes: [{
+                            scaleLabel: {
+                                display: true,
+                                labelString: 'Umidade'
+                            },
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    },
+                    animation: {
+                        duration: 0
+                    }
+                }
+            }
+        );
+        /* -- dht11TemperaturaIdeal2 -- */
+        var contextoDht11TemperaturaIdeal2 = document.getElementById('dht11TemperaturaIdeal2').getContext('2d');
+        contextoDht11TemperaturaIdeal2.canvas.width = 1000;
+        contextoDht11TemperaturaIdeal2.canvas.height = 300;
+        var dht11TemperaturaIdeal2 = new Chart(
+            contextoDht11TemperaturaIdeal2,
+            {
+                type: 'line',
+                data: {
+                    datasets: [{
+                        label: "Temperatura",
+                        type: 'line',
+                        borderColor: ['#ff3232'],
+                        backgroundColor: ['#ff7f7f']
+                    }]
+                },
+                options: {
+                    scales: {
+                        xAxes: [{
+                            distribution: 'series',
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }],
+                        yAxes: [{
+                            scaleLabel: {
+                                display: true,
+                                labelString: 'Luminosidade'
+                            },
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    },
+                    animation: {
+                        duration: 0
+                    }
+                }
+            }
+        );
+
+        /* -- dht11UmidadeIdeal3 -- */
+        var contextoDht11UmidadeIdeal3 = document.getElementById('dht11UmidadeIdeal3').getContext('2d');
+        contextoDht11UmidadeIdeal3.canvas.width = 1000;
+        contextoDht11UmidadeIdeal3.canvas.height = 300;
+        var dht11UmidadeIdeal3 = new Chart(
+            contextoDht11UmidadeIdeal3,
+            {
+                type: 'line',
+                data: {
+                    datasets: [{
+                        label: 'Umidade',
+                        type: 'line',
+                        borderColor: ['#45b3e7'],
+                        backgroundColor: ['#89cff0']
+                    }]
+                },
+                options: {
+                    scales: {
+                        xAxes: [{
+                            distribution: 'series',
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }],
+                        yAxes: [{
+                            scaleLabel: {
+                                display: true,
+                                labelString: 'Umidade'
+                            },
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    },
+                    animation: {
+                        duration: 0
+                    }
+                }
+            }
+        );
+        /* -- dht11TemperaturaIdeal3 -- */
+        var contextoDht11TemperaturaIdeal3 = document.getElementById('dht11TemperaturaIdeal3').getContext('2d');
+        contextoDht11TemperaturaIdeal3.canvas.width = 1000;
+        contextoDht11TemperaturaIdeal3.canvas.height = 300;
+        var dht11TemperaturaIdeal3 = new Chart(
+            contextoDht11TemperaturaIdeal3,
+            {
+                type: 'line',
+                data: {
+                    datasets: [{
+                        label: "Temperatura",
+                        type: 'line',
+                        borderColor: ['#ff3232'],
+                        backgroundColor: ['#ff7f7f']
+                    }]
+                },
+                options: {
+                    scales: {
+                        xAxes: [{
+                            distribution: 'series',
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }],
+                        yAxes: [{
+                            scaleLabel: {
+                                display: true,
+                                labelString: 'Luminosidade'
+                            },
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    },
+                    animation: {
+                        duration: 0
+                    }
+                }
+            }
+        );
+
+        /* -- dht11UmidadeIdeal4 -- */
+        var contextoDht11UmidadeIdeal4 = document.getElementById('dht11UmidadeIdeal4').getContext('2d');
+        contextoDht11UmidadeIdeal4.canvas.width = 1000;
+        contextoDht11UmidadeIdeal4.canvas.height = 300;
+        var dht11UmidadeIdeal4 = new Chart(
+            contextoDht11UmidadeIdeal4,
+            {
+                type: 'line',
+                data: {
+                    datasets: [{
+                        label: 'Umidade',
+                        type: 'line',
+                        borderColor: ['#45b3e7'],
+                        backgroundColor: ['#89cff0']
+                    }]
+                },
+                options: {
+                    scales: {
+                        xAxes: [{
+                            distribution: 'series',
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }],
+                        yAxes: [{
+                            scaleLabel: {
+                                display: true,
+                                labelString: 'Umidade'
+                            },
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    },
+                    animation: {
+                        duration: 0
+                    }
+                }
+            }
+        );
+        /* -- dht11TemperaturaIdeal4 -- */
+        var contextoDht11TemperaturaIdeal4 = document.getElementById('dht11TemperaturaIdeal4').getContext('2d');
+        contextoDht11TemperaturaIdeal4.canvas.width = 1000;
+        contextoDht11TemperaturaIdeal4.canvas.height = 300;
+        var dht11TemperaturaIdeal4 = new Chart(
+            contextoDht11TemperaturaIdeal4,
+            {
+                type: 'line',
+                data: {
+                    datasets: [{
+                        label: "Temperatura",
+                        type: 'line',
+                        borderColor: ['#ff3232'],
+                        backgroundColor: ['#ff7f7f']
+                    }]
+                },
+                options: {
+                    scales: {
+                        xAxes: [{
+                            distribution: 'series',
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }],
+                        yAxes: [{
+                            scaleLabel: {
+                                display: true,
+                                labelString: 'Luminosidade'
+                            },
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    },
+                    animation: {
+                        duration: 0
+                    }
+                }
+            }
+        );
+        /* -- luminosidade -- */
+        // var contextoLuminosidade = document.getElementById('luminosidade').getContext('2d');
+        // contextoLuminosidade.canvas.width = 1000;
+        // contextoLuminosidade.canvas.height = 300;
+        // var luminosidade = new Chart(
+        //     contextoLuminosidade,
+        //     {
+        //         type: 'line',
+        //         data: {
+        //             datasets: [{
+        //                 label: 'Luminosidade',
+        //                 type: 'line',
+        //                 borderColor: ['#ffd902'],
+        //                 backgroundColor: ['#ffe135']
+        //             }]
+        //         },
+        //         options: {
+        //             scales: {
+        //                 xAxes: [{
+        //                     distribution: 'series',
+        //                     ticks: {
+        //                         beginAtZero: true
+        //                     }
+        //                 }],
+        //                 yAxes: [{
+        //                     scaleLabel: {
+        //                         display: true,
+        //                         labelString: 'Luminosidade'
+        //                     },
+        //                     ticks: {
+        //                         beginAtZero: true
+        //                     }
+        //                 }]
+        //             },
+        //             animation: {
+        //                 duration: 0
+        //             }
+        //         }
+        //     }
+        // );
+        /* -- lm35Temperatura */
+        // var contextoLm35Temperatura = document.getElementById('lm35Temperatura').getContext('2d');
+        // contextoLm35Temperatura.canvas.width = 1000;
+        // contextoLm35Temperatura.canvas.height = 300;
+        // var lm35Temperatura = new Chart(
+        //     contextoLm35Temperatura,
+        //     {
+        //         type: 'line',
+        //         data: {
+        //             datasets: [{
+        //                 label: 'Temperatura',
+        //                 type: 'line',
+        //                 borderColor: ['#ffd902'],
+        //                 backgroundColor: ['#ffe135']
+        //             }]
+        //         },
+        //         options: {
+        //             scales: {
+        //                 xAxes: [{
+        //                     distribution: 'series',
+        //                     ticks: {
+        //                         beginAtZero: true
+        //                     }
+        //                 }],
+        //                 yAxes: [{
+        //                     scaleLabel: {
+        //                         display: true,
+        //                         labelString: 'Temperatura'
+        //                     },
+        //                     ticks: {
+        //                         beginAtZero: true
+        //                     }
+        //                 }]
+        //             },
+        //             animation: {
+        //                 duration: 0
+        //             }
+        //         }
+        //     }
+        // );
+        /* -- chave */
+        // var contextoChave = document.getElementById('chave').getContext('2d');
+        // contextoChave.canvas.width = 1000;
+        // contextoChave.canvas.height = 300;
+        // var chave = new Chart(
+        //     contextoChave,
+        //     {
+        //         type: 'line',
+        //         data: {
+        //             datasets: [{
+        //                 label: 'Chave',
+        //                 type: 'line',
+        //                 borderColor: ['#ffd902'],
+        //                 backgroundColor: ['#ffe135']
+        //             }]
+        //         },
+        //         options: {
+        //             scales: {
+        //                 xAxes: [{
+        //                     distribution: 'series',
+        //                     ticks: {
+        //                         beginAtZero: true
+        //                     }
+        //                 }],
+        //                 yAxes: [{
+        //                     scaleLabel: {
+        //                         display: true,
+        //                         labelString: 'Chave'
+        //                     },
+        //                     ticks: {
+        //                         beginAtZero: true
+        //                     }
+        //                 }]
+        //             },
+        //             animation: {
+        //                 duration: 0
+        //             }
+        //         }
+        //     }
+        // );
+
+        var paginacao = {};
+        var tempo = {};
+        function obterDados(grafico, endpoint) {
+            var http = new XMLHttpRequest();
+            http.open('GET', 'http://localhost:3300/sensores/' + endpoint, false);
+            http.send(null);
+            var valores = JSON.parse(http.responseText);
+            if (paginacao[endpoint] == null) {
+                paginacao[endpoint] = 0;
+            }
+            if (tempo[endpoint] == null) {
+                tempo[endpoint] = 0;
+            }
+            // Exibir à partir do último elemento exibido anteriormente
+            var ultimaPaginacao = paginacao[endpoint];
+            paginacao[endpoint] = valores.length;
+            var valores = valores.slice(ultimaPaginacao);
+            valores.forEach((valor) => {
+                //Máximo de 60 itens exibidos no gráfico
+                if (grafico.data.labels.length == 10 && grafico.data.datasets[0].data.length == 10) {
+                    grafico.data.labels.shift();
+                    grafico.data.datasets[0].data.shift();
+                }
+
+                grafico.data.labels.push(tempo[endpoint]++);
+                grafico.data.datasets[0].data.push(parseFloat(valor));
+                grafico.update();
+            })
+        }
+
+        setInterval(() => {
+            obterDados(dht11Umidade, 'dht11/umidade');
+            obterDados(dht11Temperatura, 'dht11/temperatura');
+            obterDados(dht11UmidadeIdeal,'dht11/umidadeIdeal');
+            obterDados(dht11TemperaturaIdeal,'dht11/temperaturaIdeal');
+            obterDados(dht11UmidadeIdeal1,'dht11/umidadeIdeal1');
+            obterDados(dht11TemperaturaIdeal1,'dht11/temperaturaIdeal1');
+            obterDados(dht11UmidadeIdeal2,'dht11/umidadeIdeal2');
+            obterDados(dht11TemperaturaIdeal2,'dht11/temperaturaIdeal2');
+            obterDados(dht11UmidadeIdeal3,'dht11/umidadeIdeal3');
+            obterDados(dht11TemperaturaIdeal3,'dht11/temperaturaIdeal3');
+            obterDados(dht11UmidadeIdeal4,'dht11/umidadeIdeal4');
+            obterDados(dht11TemperaturaIdeal4,'dht11/temperaturaIdeal4');
+            // obterDados(luminosidade, 'luminosidade');
+            // obterDados(lm35Temperatura, 'lm35/temperatura');
+            //obterDados(chave, 'chave');
+        }, 1000);
+
+    </script>
+</body>
+
+</html>

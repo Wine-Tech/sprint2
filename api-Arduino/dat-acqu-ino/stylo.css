@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;1,200;1,300;1,400;1,500&display=swap');
+*{
+    font-family: 'Poppins';
+}
+body{
+    overflow: overlay;
+    background: linear-gradient(68.15deg, #2F2325 15%, #114264 85.61%);
+    /* background-size: cover; */
+    /* background-repeat: no-repeat; */
+    background-attachment: fixed;
+    /* box-sizing: border-box; */
+    margin: 0;
+    padding: 0;
+}
+#imgLogo{
+    margin-top: 15px;
+}
+.nav {
+    width: 95%;
+    margin: auto;
+    display: flex;
+}
+
+.header {
+    border-bottom: 3px solid #ebe1e9;
+    background-color: #0000004b;
+}
+
+.header .nav {
+    justify-content: space-between;
+}
+
+.header a {
+    text-decoration: none;
+    color: #ebe1e9;
+}
+
+.navbar {
+    width: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    list-style: none;
+    color: #ebe1e9;
+}
+a {
+    transition: all .3s ease-out;
+}
+a:hover{
+    border-bottom: 3px solid #1972b2;
+}
+.tituloUmidade{
+    display: flex;
+    justify-content: center;
+}
+.tituloTemperatura{
+    display: flex;
+    justify-content: center;
+}
+.Umidade{
+    width: 50%;
+    /* display: flex; */
+    justify-content: center;
+}
+.Temperatura{
+    width: 50%;
+
+}
+/* .tabelaUmidade{
+    display: flex;
+    justify-content: center;
+}
+.tabelaTemperatura{
+    display: flex;
+    justify-content: center;
+} */
