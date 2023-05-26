@@ -7,11 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Implementando o ChartJS</title>
     <link rel="stylesheet" href="dashboard.css">
+    <script src="alertas.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
-
+    <div id="alerta"></div>
 
     <div class="header">
         <div class="nav">
@@ -55,10 +56,10 @@
             <canvas id="myChartVinho1" style="position:relative; height:40vh; width:50vw"></canvas>
 
         </div>
-
+        
         <div class="card1">
             <div class="conteudo1">
-
+                <div class="cor-alerta" id="card_1"></div>
                 Temperatura máxima no dia <br>
                 <div class="porcentagem1">
                     30ºC
@@ -260,7 +261,7 @@
                 response.json().then(function (resposta) {
                     console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
                     resposta.reverse();
-
+                    
                     plotarGrafico(resposta, idLocal);
                 });
             } else {
@@ -334,7 +335,7 @@
 
         //     }]
         // }
-
+        alertar(resposta, idLocal);
         console.log('----------------------------------------------')
         console.log('O gráfico será plotado com os respectivos valores:')
         console.log('Labels:')
