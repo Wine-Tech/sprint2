@@ -127,12 +127,198 @@ box-shadow: 20px 20px 30px rgb(35, 35, 35);
 .container4 {
     display: flex; 
    width: 100%;
-   height: 15vh;
-   margin-top: 3vh;
-   justify-content: space-evenly;
+   height: 10vh;
+   margin-top: 5vh;
+   justify-content: center;
  
 
 }
+
+
+.tituloMetricaPrincipal{
+    display: flex;
+    justify-content: center;
+   
+      color: whitesmoke;
+      font-size: xx-large;
+  }
+
+
+  .tituloMetrica{
+    
+      color: whitesmoke;
+      font-size: xx-large;
+  }
+
+.cardMetricaCriticoTemp{
+    display: flex;
+    justify-content: center;
+    text-align: center ;
+   width: 20vh ;
+    height: 6vh ;
+ color: whitesmoke;
+    border-radius: 25px;
+    margin-left: 3vh;
+   margin-right: 26vh;
+    border: 5px solid rgb(255, 0, 0) ;
+    box-shadow: 20px 20px 30px rgb(35, 35, 35);
+    font-size: large;
+    font-style: oblique;
+    font-weight: 700;
+}
+
+
+.cardMetricaCriticoUmi{
+    display: flex;
+    justify-content: center;
+    text-align: center ;
+   width: 20vh ;
+    height: 6vh ;
+ color: whitesmoke;
+    border-radius: 25px; 
+    margin-left: 3vh;
+    margin-right: 20vh;
+    border: 5px solid rgb(255, 0, 0) ;
+    box-shadow: 20px 20px 30px rgb(35, 35, 35);
+    font-size: large;
+    font-style: oblique;
+    font-weight: 700;
+}
+
+
+.cardMetricaCriticoAbaixoTemp{
+    display: flex;
+    justify-content: center;
+    text-align: center ;
+   width: 20vh ;
+    height: 6vh ;
+ color: whitesmoke;
+    border-radius: 25px;
+    margin-left: 3vh;
+    border: 5px solid rgb(54, 44, 238);
+    box-shadow: 20px 20px 30px rgb(35, 35, 35);
+    font-size: large;
+    font-style: oblique;
+    font-weight: 700;
+}
+
+
+.cardMetricaIdealTemp{
+    display: flex;
+    justify-content: center;
+    text-align: center ;
+   width: 20vh ;
+    height: 6vh ;
+    color: whitesmoke;
+    border-radius: 25px;
+    margin-left: 3vh;
+    border: 5px solid  rgb(22, 165, 22); 
+    box-shadow: 20px 20px 30px rgb(35, 35, 35);
+    font-size: large;
+    font-style: oblique;
+    font-weight: 700;
+}
+
+.cardMetricaAlertaTemp{
+    display: flex;
+    justify-content: center;
+    text-align: center ;
+   width: 20vh ;
+    height: 6vh ;
+    color: whitesmoke;
+    border-radius: 25px;
+    margin-left: 3vh; 
+    border: 5px solid rgb(253, 245, 0);
+    box-shadow: 20px 20px 30px rgb(35, 35, 35);
+    font-size: large;
+    font-style: oblique;
+    font-weight: 700;
+}
+
+
+.cardMetricaAlertaAbaixoTemp{
+    display: flex;
+    justify-content: center;
+    text-align: center ;
+   width: 20vh ;
+    height: 6vh ;
+    color: whitesmoke;
+    border-radius: 25px;
+    margin-left: 3vh;
+    border: 5px solid rgb(63, 151, 210) ;
+    box-shadow: 20px 20px 30px rgb(35, 35, 35);
+    font-size: large;
+    font-style: oblique;
+    font-weight: 700;
+}
+
+
+.cardMetricaCriticoAbaixoUmi{
+    display: flex;
+    justify-content: center;
+    text-align: center ;
+   width: 20vh ;
+    height: 6vh ;
+ color: whitesmoke;
+    border-radius: 25px;
+    margin-left: 3vh;
+    border: 5px solid rgb(54, 44, 238);
+    box-shadow: 20px 20px 30px rgb(35, 35, 35);
+    font-size: large;
+    font-style: oblique;
+    font-weight: 700;
+}
+
+
+.cardMetricaIdealUmi{
+    display: flex;
+    justify-content: center;
+    text-align: center ;
+   width: 20vh ;
+    height: 6vh ;
+    color: whitesmoke;
+    border-radius: 25px;
+    margin-left: 3vh;
+    border: 5px solid  rgb(22, 165, 22); 
+    box-shadow: 20px 20px 30px rgb(35, 35, 35);
+    font-size: large;
+    font-style: oblique;
+    font-weight: 700;
+}
+
+.cardMetricaAlertaUmi{
+    display: flex;
+    justify-content: center;
+    text-align: center ;
+   width: 20vh ;
+    height: 6vh ;
+    color: whitesmoke;
+    border-radius: 25px;
+    margin-left: 3vh;
+    border: 5px solid rgb(253, 245, 0);
+    box-shadow: 20px 20px 30px rgb(35, 35, 35);
+    font-size: large;
+    font-style: oblique;
+    font-weight: 700;
+}
+
+
+.cardMetricaAlertaAbaixoUmi{
+    display: flex;
+    justify-content: center;
+    text-align: center ;
+   width: 20vh ;
+    height: 6vh ;
+    color: whitesmoke;
+    border-radius: 25px;
+    margin-left: 3vh;
+    border: 5px solid rgb(63, 151, 210);
+    box-shadow: 20px 20px 30px rgb(35, 35, 35);
+    font-size: large;
+    font-style: oblique;
+    font-weight: 700;
+}
+
 
 .container2 {
     display: flex;
@@ -154,6 +340,8 @@ box-shadow: 20px 20px 30px rgb(35, 35, 35);
 .card1 {
     border: 5px solid rgb(255, 0, 0);
     margin-top: 10vh;
+    padding: 1vh;
+    align-items: center;
     justify-content: center;
     text-align: center;
     width: 18rem;
@@ -167,6 +355,8 @@ box-shadow: 20px 20px 30px rgb(35, 35, 35);
 .card2 {
     border: 5px solid  rgb(146, 208, 80);
     margin-top: 10vh;
+    padding: 1vh;
+    align-items: center;
     justify-content: center;
     text-align: center;
     width: 18rem;
@@ -178,8 +368,10 @@ box-shadow: 20px 20px 30px rgb(35, 35, 35);
     font-weight: 700;
 }
 .card3 {
-    border: 5px solid  rgb(255, 0, 0);
+    border: 5px solid  rgb(54, 44, 238);
     margin-top: 10vh;
+    padding: 1vh;
+    align-items: center;
     justify-content: center;
     text-align: center;
     width: 18rem;
@@ -193,6 +385,8 @@ box-shadow: 20px 20px 30px rgb(35, 35, 35);
 .card4 {
     border: 5px solid rgb(255, 255, 0);
     margin-top: 10vh;
+    padding: 1vh;
+    align-items: center;
     justify-content: center;
     text-align: center;
     width: 18rem;
@@ -220,15 +414,9 @@ box-shadow: 20px 20px 30px rgb(35, 35, 35);
     font-style: oblique; 
    
 }
-.conteudoAlerta{
-   margin-top: 3vh;
-    
-}
-.tituloAlerta{
-    font-size: xx-large;
-}
 .conteudo1{
-    margin-top: 3vh;
+    margin-top: 5vh;
+    
     color: whitesmoke;
 }
 .porcentagem1{
@@ -241,7 +429,7 @@ box-shadow: 20px 20px 30px rgb(35, 35, 35);
 }
 .porcentagem3{
     font-size: 4vh;
-    color: rgb(255, 0, 0);
+    color: rgb(54, 44, 238);
 }
 .porcentagem4{
     font-size: 4vh;
