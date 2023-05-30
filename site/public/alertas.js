@@ -1,5 +1,27 @@
 var alertas = [];
 
+
+// function obterdados(idLocal) {
+//     fetch(`/medidas/tempo-real/${idLocal}`)
+//         .then(resposta => {
+
+//             if (resposta.ok) {
+//                 resposta.json().then(resposta => {
+
+//                     console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+
+//                     alertar(resposta, idLocal);
+//                 });
+//             } else {
+
+//                 console.error('Nenhum dado encontrado ou erro na API');
+//             }
+//         })
+//         .catch(function (error) {
+//             console.error(`Erro na obtenção dos dados do aquario p/ gráfico: ${error.message}`);
+//         });
+
+// }
 function alertar(resposta, idLocal) {
     var temp = resposta[0].temperatura;
     var umi = resposta[0].umidade;
@@ -12,8 +34,8 @@ function alertar(resposta, idLocal) {
     var limiteUmidade =
     {
         // passando os valores de alerta e ideal da umidade
-        alertaUmidadeCritica: 60,
-        alertaUmidade: 57,
+        alertaUmidadeCritica: 75,
+        alertaUmidade: 70,
         idealUmidade: 55,
         alertaUmidade2: 52,
         alertaCriticoUmidadeAlta: 50
@@ -22,8 +44,8 @@ function alertar(resposta, idLocal) {
 
     var limiteTemperatura = {
         // passando os valores de alerta e ideal da temperatura
-        alertaCriticoQuente: 24,
-        quente: 23,
+        alertaCriticoQuente: 28,
+        quente: 27,
         ideal: 18,
         alertaFrio1: 15.15,
         alertaCriticoFrio: 12
@@ -35,17 +57,17 @@ function alertar(resposta, idLocal) {
     // verificações das temperaturas passadas nos json acima
     if (temp >= limiteTemperatura.alertaCriticoQuente) {
         classeTemperatura = 'cor-alerta perigo-quente';
-        grauDeAviso = 'perigo quente'
+        grauDeAviso = 'temperatura critica alta'
         grauDeAvisoCor = 'cor-alerta perigo-quente'
-        // valorCritico = true
+
         // console.log(valorCritico + "VALOR CRITICO DENTRO D IF")
         exibirAlerta(temp, idLocal, grauDeAviso, grauDeAvisoCor)
     }
     else if (temp < limiteTemperatura.alertaCriticoQuente && temp >= limiteTemperatura.quente) {
         classeTemperatura = 'cor-alerta alerta-quente';
-        grauDeAviso = 'alerta quente'
+        grauDeAviso = 'alerta temperatura quente'
         grauDeAvisoCor = 'cor-alerta alerta-quente'
-        // valorCritico = true
+
         exibirAlerta(temp, idLocal, grauDeAviso, grauDeAvisoCor)
     }
     else if (temp < limiteTemperatura.quente && temp > limiteTemperatura.alertaFrio1) {
@@ -53,18 +75,18 @@ function alertar(resposta, idLocal) {
         // valorCritico = false
         removerAlerta(idLocal);
     }
-    else if (temp <= limiteTemperatura.alertaFrio1 && temp > limite.alertaCriticoFrio) {
+    else if (temp <= limiteTemperatura.alertaFrio1 && temp > limiteTemperatura.alertaCriticoFrio) {
         classeTemperatura = 'cor-alerta alerta-frio';
-        grauDeAviso = 'alerta frio'
+        grauDeAviso = 'alerta temperatura abaixo da media'
         grauDeAvisoCor = 'cor-alerta alerta-frio'
-        // valorCritico = true
+
         exibirAlerta(temp, idLocal, grauDeAviso, grauDeAvisoCor)
     }
     else if (temp <= limiteTemperatura.alertaCriticoFrio) {
         classeTemperatura = 'cor-alerta perigo-frio';
-        grauDeAviso = 'perigo frio'
+        grauDeAviso = 'perigo alerta temperatura critica abaixo do ideal'
         grauDeAvisoCor = 'cor-alerta perigo-frio'
-        // valorCritico = true
+
         exibirAlerta(temp, idLocal, grauDeAviso, grauDeAvisoCor)
     }
 
@@ -73,16 +95,16 @@ function alertar(resposta, idLocal) {
     // verificações da umidade
     if (umi >= limiteUmidade.alertaUmidadeCritica) {
         classeUmidade = 'cor-alerta perigo-muito umido';
-        grauDeAviso = 'perigo quente'
+        grauDeAviso = 'perigo umidade muito alta'
         grauDeAvisoCor = 'cor-alerta perigo-quente'
-        // valorCritico = true
+
         exibirAlerta1( umi, idLocal, grauDeAviso, grauDeAvisoCor)
     }
     else if (umi < limiteUmidade.alertaUmidadeCritica && umi >= limiteUmidade.alertaUmidade) {
         classeUmidade = 'cor-alerta alerta-quente';
-        grauDeAviso = 'alerta quente'
+        grauDeAviso = 'alerta umidade acima da media'
         grauDeAvisoCor = 'cor-alerta alerta-quente'
-        // valorCritico = true
+
         exibirAlerta1( umi, idLocal, grauDeAviso, grauDeAvisoCor)
     }
     else if (umi < limiteUmidade.alertaUmidade && umi > limiteUmidade.alertaUmidade2 ) {
@@ -94,14 +116,14 @@ function alertar(resposta, idLocal) {
         classeUmidade = 'cor-alerta alerta-frio';
         grauDeAviso = 'alerta frio'
         grauDeAvisoCor = 'cor-alerta alerta-frio'
-        // valorCritico = true
+
         exibirAlerta1( umi, idLocal, grauDeAviso, grauDeAvisoCor)
     }
     else if (umi <= limiteUmidade.alertaCriticoUmidadeAlta) {
         classeUmidade = 'cor-alerta perigo-frio';
         grauDeAviso = 'perigo frio'
         grauDeAvisoCor = 'cor-alerta perigo-frio'
-        // valorCritico = true
+
         exibirAlerta1( umi, idLocal, grauDeAviso, grauDeAvisoCor)
     }
 
