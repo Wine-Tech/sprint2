@@ -8,6 +8,96 @@ body{
   background: linear-gradient(50.15deg,#2F2325 15% , #114264 85.61%);
 }
 
+
+/* SCROLLBAR */
+::-webkit-scrollbar {
+    width: 12px;
+  }
+  
+::-webkit-scrollbar-track {
+    background: rgba(0,0,0, 0.2);
+  }
+  
+::-webkit-scrollbar-thumb {
+    background-color: #cf2b46;
+    border-radius: 20px;
+  }
+
+/* NAVBAR */
+#imgLogo {
+    margin-top: 15px;
+}
+
+.nav {
+    width: 95%;
+    margin: auto;
+    display: flex;
+}
+
+.header {
+    border-bottom: 3px solid #ebe1e9;
+    background-color: #0000004b;
+}
+
+.header .nav {
+    justify-content: space-between;
+}
+
+.header a {
+    text-decoration: none;
+    color: #ebe1e9;
+}
+
+.navbar {
+    width: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    list-style: none;
+    color: #ebe1e9;
+}
+
+a {
+    transition: all .3s ease-out ;
+}
+
+a:hover {
+    border-bottom: 3px solid #1972b2;
+}
+
+.login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #1972b2;
+    /* box-shadow: 10px 10px 15px rgb(35, 35, 35); */
+    border-radius: 15px;
+    width: 10vh;
+    height: 30px;
+    color: white;
+    transition: all .3s ease-out;
+}
+
+.cad {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #1972b2;
+    /* box-shadow: 10px 10px 15px rgb(35, 35, 35); */
+    border-radius: 15px;
+    width: 17vh;
+    height: 30px;
+    color: white;
+    transition: all .3s ease-out;
+}
+
+.login:hover, .cad:hover {
+    background-color: #cf2b46;
+    color: white;
+    
+}
+
+
 .titulo{
     text-align: center;
     font-size:50px;
