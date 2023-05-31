@@ -26,92 +26,101 @@
             </ul>
         </div>
     </div>
-    
-    
 
-   <h1 class="tituloMetricaPrincipal">Nivel de Alerta</h1>
+
+
+    <h1 class="tituloMetricaPrincipal">Nivel de Alerta</h1>
 
     <section class="container4">
 
-        <h1 class="tituloMetrica" > Temperatura </h1>
+        <h1 class="tituloMetrica"> Temperatura </h1>
 
         <div class="cardMetricaCriticoAbaixoTemp">
             CRITICO BAIXO <br>
-             12ºC
+            12ºC
         </div>
         <div class="cardMetricaAlertaAbaixoTemp">
-             ALERTA <br>
-              xºC ~ xºC
+            ALERTA <br>
+            xºC ~ xºC
         </div>
         <div class="cardMetricaIdealTemp">
             IDEAL <br>
             xºC ~ xºC
         </div>
         <div class="cardMetricaAlertaTemp">
-             ALERTA <br>
-              xºC ~ xºC
+            ALERTA <br>
+            xºC ~ xºC
         </div>
         <div class="cardMetricaCriticoTemp">
             CRITICO ALTO <br>
-             24ºC
+            24ºC
         </div>
     </section>
 
 
-   
+
 
     <section class="container4">
 
-        <h1 class="tituloMetrica" > Umidade</h1>
+        <h1 class="tituloMetrica"> Umidade</h1>
 
         <div class="cardMetricaCriticoAbaixoUmi">
             CRITICO BAIXO <br>
             50%
         </div>
         <div class="cardMetricaAlertaAbaixoUmi">
-             ALERTA <br>
-             x% ~ x%
+            ALERTA <br>
+            x% ~ x%
         </div>
         <div class="cardMetricaIdealUmi">
-             IDEAL <br>
-             x% ~ x%
+            IDEAL <br>
+            x% ~ x%
         </div>
         <div class="cardMetricaAlertaUmi">
             ALERTA <br>
-             x% ~ x%
+            x% ~ x%
         </div>
         <div class="cardMetricaCriticoUmi">
             CRITICO ALTO <br>
-             60%
+            60%
         </div>
 
     </section>
 
 
-    <div class="conteudoEscolha">
-        <h1 class="tituloEscolha">escolha um local para ver os dados: </h1>
-        <select name="" id="button">
-            <option value="">ARMAZÉM 1</option>
-            <option value="">ARMAZÉM 2</option>
-        </select>
+    <div id="divLocaisSensor" class="conteudoEscolha">
+        <!-- <div>testando</div> -->
+        <div id="divBotoesLocais" style="justify-content: center; align-items: center;">
+            <h1 class="tituloEscolha">Escolha um local para ver os dados: </h1>
+        </div>
+        <!-- <select name="" id="button"> -->
+        <!-- <option value="">ARMAZÉM 1</option> -->
+        <!-- <option value="">ARMAZÉM 2</option> -->
+        <!-- </select> -->
+        <!-- <div>
+            <div id="divBotoesLocais">
+                <div>AAAAAAAAAAA</div>
+                <div>BBBBBBBBBBB</div>
+                <div>CCCCCCCCCCC</div>
+            </div>
+        </div> -->
+
     </div>
-
-
 
 
     <section class="container2">
 
         <div class="tabela1">
 
-            <h1 class="tituloTabela">Temperatura e umidade diària</h1>
+            <h1 class="tituloTabela">Temperatura e umidade diária</h1>
             <canvas id="myChartVinho1" style="position:relative; height:40vh; width:50vw"></canvas>
 
         </div>
-        
+
         <div class="card1">
             <div class="conteudo1">
                 <div class="cor-alerta" id="card_1"></div>
-                TEMPERATURA MÁXIMA NO DIA 
+                TEMPERATURA MÁXIMA NO DIA
                 <div class="porcentagem1">
                     30ºC
                 </div>
@@ -123,7 +132,7 @@
         <div class="card2">
             <div class="conteudo1">
 
-                UMIDADE MÁXIMA NO DIA 
+                UMIDADE MÁXIMA NO DIA
                 <div class="porcentagem2">
                     57%
                 </div>
@@ -153,7 +162,7 @@
 
         <div class="card4">
             <div class="conteudo1">
-                UMIDADE MÍNIMA NO DIA 
+                UMIDADE MÍNIMA NO DIA
                 <div class="porcentagem4">
                     59%
                 </div>
@@ -163,12 +172,6 @@
 
 
     </section>
-
-
-
-
-
-
 
 </body>
 
@@ -285,7 +288,112 @@
 <!-- </script> -->
 
 <script>
+    var nomeUsuario = sessionStorage.NOME_USUARIO;
+    var idUsuario = sessionStorage.ID_USUARIO;
+    var fkEmpresa = sessionStorage.FK_EMPRESA;
 
+    //recuperando informações do local e de sensores
+    var localSensor = []
+    var nomeLocal = []
+    var sensores = []
+
+    //fetch locais da empresa ///////////////////////////////////////////////////////////////
+    fetch("/medidas/recuperarLocais", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            // crie um atributo que recebe o valor recuperado aqui
+            // Agora vá para o arquivo routes/usuario.js
+            fkEmpresaServer: fkEmpresa
+        })
+    }).then(function (resposta) {
+
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+
+            resposta.json().then(json => {
+                console.log(json);
+                console.log(JSON.stringify(json));
+
+                jsonResponse = json.length;
+
+                if (jsonResponse > 0) {
+
+                    for (var i = 0; i < jsonResponse; i++) {
+                        var localAtual = json[i];
+                        localSensor.push(localAtual.id);
+                        nomeLocal.push(localAtual.nome);
+
+                        for (var i = 0; i < jsonResponse; i++) {
+                            divBotoesLocais.innerHTML += `<div><button> ${nomeLocal[i]} ${i + 1} </button></div>`
+                        }
+                    }
+                }
+
+            });
+
+        } else {
+            throw ("Houve um erro ao tentar realizar o cadastro!");
+        }
+    }).catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+    });
+
+    //fetch sensores ////////////////////////////////////////////////////////////////////
+
+    for (var i = 0; i < localSensor.length; i++) {
+        var localAtual = localSensor[i];
+
+        fetch("/medidas/recuperarSensores", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                fkLocalSensorServer: localAtual
+            })
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+
+                    jsonResponse = json.length;
+
+                    if (jsonResponse > 0) {
+
+                        for (var i = 0; i < jsonResponse; i++) {
+                            var sensorAtual = json[i];
+                            sensores.push(localAtual.id);
+                            // nomeLocal.push(localAtual.nome);
+
+                            for (var i = 0; i < jsonResponse; i++) {
+                                divBotoesLocais.innerHTML += `<div><button> Sensor${[i]} ${i + 1} </button></div>`
+                            }
+                        }
+                    }
+
+                });
+
+            } else {
+                throw ("Houve um erro ao tentar realizar o cadastro!");
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+
+    }
+
+    //fetch dados do sensor
 
     let proximaAtualizacao;
 
@@ -310,7 +418,7 @@
                 response.json().then(function (resposta) {
                     console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
                     resposta.reverse();
-                    
+
                     plotarGrafico(resposta, idLocal);
                 });
             } else {
@@ -417,10 +525,6 @@
         setTimeout(() => atualizarGrafico(idLocal, dados, myChartVinho), 2000);
         // setTimeout(() => atualizarGrafico(idLocal, dados, myChart2), 2000);
     };
-
-
-
-
 
 
     function atualizarGrafico(idLocal, dados, myChart) {
