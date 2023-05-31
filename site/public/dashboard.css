@@ -212,7 +212,7 @@ box-shadow: 20px 20px 30px rgb(35, 35, 35);
     color: whitesmoke;
     border-radius: 25px;
     margin-left: 3vh;
-    border: 5px solid  rgb(22, 165, 22); 
+    border: 5px solid  rgb(253, 245, 0); 
     box-shadow: 20px 20px 30px rgb(35, 35, 35);
     font-size: large;
     font-style: oblique;
@@ -228,7 +228,7 @@ box-shadow: 20px 20px 30px rgb(35, 35, 35);
     color: whitesmoke;
     border-radius: 25px;
     margin-left: 3vh; 
-    border: 5px solid rgb(253, 245, 0);
+    border: 5px solid rgb(253, 148, 0);
     box-shadow: 20px 20px 30px rgb(35, 35, 35);
     font-size: large;
     font-style: oblique;
@@ -279,7 +279,7 @@ box-shadow: 20px 20px 30px rgb(35, 35, 35);
     color: whitesmoke;
     border-radius: 25px;
     margin-left: 3vh;
-    border: 5px solid  rgb(22, 165, 22); 
+    border: 5px solid  rgb(253, 245, 0); 
     box-shadow: 20px 20px 30px rgb(35, 35, 35);
     font-size: large;
     font-style: oblique;
@@ -295,7 +295,7 @@ box-shadow: 20px 20px 30px rgb(35, 35, 35);
     color: whitesmoke;
     border-radius: 25px;
     margin-left: 3vh;
-    border: 5px solid rgb(253, 245, 0);
+    border: 5px solid rgb(253, 148, 0);
     box-shadow: 20px 20px 30px rgb(35, 35, 35);
     font-size: large;
     font-style: oblique;
@@ -474,6 +474,7 @@ select{
 /* Alarme */
 #alerta {
     position: fixed;
+   margin-top: 100px;
     right: 0px;
 }
 
@@ -481,26 +482,33 @@ select{
     background-color: white;
     border-radius: 2px;
     width: 300px;
-    height: 100px;
-    margin: 10px;
+    height: 150px;
+    margin: 20px;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+    border-radius: 25px;
   }
  
   
   .mensagem-alarme h3 {
-    font-size: 14px;
+    font-size: 19px;
     margin: 0;
+    color: whitesmoke;
+    
   }
   
   .mensagem-alarme .informacao {
     margin: 10px;
+    font-size: 20px;
+    color: whitesmoke;
+    margin-bottom: 15px;
   }
   
   .alarme-sino {
-    width: 48px;
-    height: 48px;
+    width: 200px;
+    height: 130px;
+    /* left: 50px; */
     animation-name: bell;
     animation-duration: 4s;
     background-image: url('https://cdn-icons-png.flaticon.com/512/2553/2553705.png');
@@ -518,27 +526,33 @@ select{
 /* card de alerta2 */
 #alerta1{
     right: 0px;
-    margin-top: 10%;
-    position: fixed;
+    margin-top: 300px;
+    position: fixed; 
 }
   .mensagem-alarme1{
     /* margin-top: 50%; */
     background-color: white;
     border-radius: 2px;
     width: 300px;
-    height: 100px;
-    margin: 10px;
+    height: 150px;
+    margin: 20px;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+    text-align: flex-start;
+    border-radius: 25px;
   }
 
   .mensagem-alarme1 h3 {
-    font-size: 14px;
+    font-size: 19px;
     margin: 0;
+    color: whitesmoke;
+   
   }
   
   .mensagem-alarme1 .informacao {
     margin: 10px;
+    font-size: 20px;
+    color: whitesmoke;
+    margin-bottom: 15px;
   }
-  
