@@ -137,7 +137,7 @@ function alertar(resposta, idLocal) {
         // valorCritico = true
         exibirAlerta1( umi, idLocal, grauDeAviso, grauDeAvisoCor)
         divUmidAlerta.style.background = 'rgb(63, 151, 210)'
-       
+      
     }
     else if (umi <= limiteUmidade.criticoUmidadeBaixa) {
         classeUmidade = 'cor-alerta perigo muito seco';
