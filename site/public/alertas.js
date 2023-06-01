@@ -82,7 +82,7 @@ function alertar(resposta, idLocal) {
         // valorCritico = false
         removerAlerta(idLocal);
     }
-    else if (temp <= limiteTemperatura.alertaFrio && temp > limite.criticoFrio) {
+    else if (temp <= limiteTemperatura.alertaFrio && temp > limiteTemperatura.criticoFrio) {
         classeTemperatura = 'cor-alerta alerta muito frio';
         grauDeAviso = 'de ALERTA BAIXO frio'
         grauDeAvisoCor = 'cor-alerta alerta frio'

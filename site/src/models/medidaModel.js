@@ -61,12 +61,12 @@ function buscarMedidasEmTempoReal(idLocal) {
     return database.executar(instrucaoSql);
 }
 
-function buscarKPI(idLocal) {
+function buscarKPI(fkSensor) {
     console.log("ACESSEI O MEDIDA MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function buscarKPI(): ")
     var instrucaoSql = `
     select max(temperatura) as tempMax, min(temperatura) as tempMin, max(umidade) as umidMax, min(umidade) as umidMin
 	from dadosensor
-		where date(dtRegistro) = date(now()) and fkLocal = ${idLocal}
+		where date(dtRegistro) = date(now()) and fkSensor = ${fkSensor}
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);

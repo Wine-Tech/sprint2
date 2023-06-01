@@ -42,13 +42,13 @@ function buscarMedidasEmTempoReal(req, res) {
 }
 
 function buscarKPI(req, res) {
-    var codAcesso = req.body.codAcessoServer;
+    var fkSensor = req.body.fkSensorServer;
 
-    if (codAcesso == undefined) {
-        res.status(400).send("codAcesso está undefined!");
+    if (fkSensor == undefined) {
+        res.status(400).send("fkSensor está undefined!");
     }
 
-    usuarioModel.validarEmpresa(codAcesso)
+    medidaModel.buscarKPI(fkSensor)
         .then(
             function (resultado) {
                 res.json(resultado);
@@ -96,7 +96,7 @@ function recuperarSensores(req, res) {
         res.status(400).send("fkLocalSensor está undefined!");
     }
 
-    medidaModel.recuperar(fkLocalSensor)
+    medidaModel.recuperarSensores(fkLocalSensor)
         .then(
             function (resultado) {
                 res.json(resultado);
