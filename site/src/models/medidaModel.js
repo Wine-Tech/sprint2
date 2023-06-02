@@ -14,7 +14,7 @@ function buscarUltimasMedidas(idLocal, limite_linhas) {
                     where fk_aquario = ${idLocal}
                     order by id desc`;
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
-        instrucaoSql = `select 
+        instrucaoSql = `select id, fkSensor,
         temperatura as temperatura, 
         umidade as umidade,
                         dtRegistro,
@@ -72,10 +72,12 @@ function buscarKPI(fkSensor) {
     return database.executar(instrucaoSql);
 }
 
-function recuperarLocais(fkEmpresa) {
+function recuperarLocaisSensores(fkEmpresa) {
     console.log("ACESSEI O MEDIDA MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function recuperarLocais(): ")
     var instrucaoSql = `
-    select * from localSensor where fkEmpresa = ${fkEmpresa}
+    select sensor.id idSensor, localSensor.nome, localSensor.id idLocalSensor from sensor
+	join localSensor on fkLocalSensor = localSensor.id
+		where fkEmpresa = ${fkEmpresa};
     `
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
@@ -92,8 +94,8 @@ function recuperarSensores(fkLocalSensor) {
 
 
 module.exports = {
-    recuperarSensores,
-    recuperarLocais,
+    // recuperarSensores,
+    recuperarLocaisSensores,
     buscarKPI,
     buscarUltimasMedidas,
     buscarMedidasEmTempoReal

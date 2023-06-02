@@ -29,7 +29,7 @@ function alertar(resposta, idLocal) {
     console.log("VALOR DA UMIDADE:" + umi)
     console.log(idLocal === resposta[0].fkLocal);// temos que passar o id do galpaão e fk
 
-    var grauAviso = '';
+    var grauDeAviso = '';
 
     var limiteUmidade =
     {

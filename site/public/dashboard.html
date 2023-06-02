@@ -14,11 +14,12 @@
 <body>
 
 
-
+    <!-- MENSAGENS DE ALERTA -->
     <div id="alerta"></div>
     <div id="alerta1"></div>
 
 
+    <!-- NAVBAR -->
     <div class="header">
         <div class="nav">
             <img id="imgLogo" src="./assets/logoempresa.png">
@@ -32,46 +33,46 @@
         </div>
     </div>
 
+    <!-- MENSAGEM DE BOAS VINDAS AO USUÁRO -->
     <h1 id="olaUser" class="tituloMetricaPrincipal"></h1>
 
-    <h1 class="tituloMetricaPrincipal">Nivel de Alerta</h1>
+
+    <!-- NÍVEIS DE ALERTA -->
+    <h1 class="tituloMetricaPrincipal">Níveis de Alerta</h1>
 
     <section class="container4">
 
         <h1 class="tituloMetrica"> Temperatura </h1>
 
         <div class="cardMetricaCriticoAbaixoTemp">
-            CRITICO BAIXO <br>
-            12ºC
+            CRÍTICO BAIXO <br>
+            <= 12° C
         </div>
         <div class="cardMetricaAlertaAbaixoTemp">
             ALERTA BAIXO <br>
-            13ºC ~ 15ºC
+            13° C ~ 15° C
         </div>
         <div class="cardMetricaIdealTemp">
             IDEAL <br>
-            16ºC ~ 20ºC
+            16° C ~ 20° C
         </div>
         <div class="cardMetricaAlertaTemp">
             ALERTA ALTO <br>
-            21ºC ~ 23ºC
+            21° C ~ 23° C
         </div>
         <div class="cardMetricaCriticoTemp">
-            CRITICO ALTO <br>
-            24ºC
+            CRÍTICO ALTO <br>
+            >= 24° C
         </div>
     </section>
-
-
-
 
     <section class="container4">
 
         <h1 class="tituloMetrica"> Umidade</h1>
 
         <div class="cardMetricaCriticoAbaixoUmi">
-            CRITICO BAIXO <br>
-            50%
+            CRÍTICO BAIXO <br>
+            <= 50%
         </div>
         <div class="cardMetricaAlertaAbaixoUmi">
             ALERTA BAIXO <br>
@@ -86,88 +87,88 @@
             57% ~ 59%
         </div>
         <div class="cardMetricaCriticoUmi">
-            CRITICO ALTO <br>
-            60%
+            CRÍTICO ALTO <br>
+            >= 60%
         </div>
 
     </section>
 
 
+    <!-- LOCAIS DA EMPRESA PARA VISUALIZAR OS GRÁFICOS -->
+    
     <div id="divLocaisSensor" class="conteudoEscolha">
         <!-- <div>testando</div> -->
         <div style=" justify-content: center; align-items: center;">
             <h1 class="tituloEscolha">Escolha um local para ver os dados: </h1>
-            <div id="divBotoesLocais" style="display: flex;"></div>
-        </div>
-        <!-- <select name="" id="button"> -->
-        <!-- <option value="">ARMAZÉM 1</option> -->
-        <!-- <option value="">ARMAZÉM 2</option> -->
-        <!-- </select> -->
-        <!-- <div>
-            <div id="divBotoesLocais">
-                <div>AAAAAAAAAAA</div>
-                <div>BBBBBBBBBBB</div>
-                <div>CCCCCCCCCCC</div>
+            <div id="divBotoesLocais" style="display: flex;">
+                <button onclick="exibirLocal(1)">ARM1</button>
+                <button onclick="exibirLocal(2)">ARM2</button>
             </div>
-        </div> -->
-
+        </div>
     </div>
 
-
+    <!-- EXIBIR GRÁFICOS E KPIS -->
     <section class="container2">
 
-        <div class="tabela1">
+        <!-- GRÁFICOS -->
 
-            <h1 class="tituloTabela">Temperatura e umidade diária</h1>
-            <canvas id="myChartVinho1" style="position:relative; height:40vh; width:50vw"></canvas>
+        <div id="graficos" class="tabela1">
+
+            <div class="display-block">
+                <h1 class="tituloTabela">Temperatura e umidade diária S3</h1>
+                <canvas id="myChartVinho3" style="position:relative; height:40vh; width:50vw"></canvas>
+            </div>
+
+            <div class="display-none">
+                <h1 class="tituloTabela">Temperatura e umidade diária S4</h1>
+                <canvas id="myChartVinho4" style="position:relative; height:40vh; width:50vw"></canvas>
+            </div>
+
+            <div class="display-none">
+                <h1 class="tituloTabela">Temperatura e umidade diária S5</h1>
+                <canvas id="myChartVinho5" style="position:relative; height:40vh; width:50vw"></canvas>
+            </div>
+
+            <div class="display-none">
+                <h1 class="tituloTabela">Temperatura e umidade diária S6</h1>
+                <canvas id="myChartVinho6" style="position:relative; height:40vh; width:50vw"></canvas>
+            </div>
+
+            <div >
+                <select id="sltLocal1" name="Selecione um sensor">
+                    <option value="3">Sensor 1</option>
+                    <option value="4">Sensor 2</option>
+                </select>
+            </div>
 
         </div>
-        <!-- 
-        <div class="tabela1">
 
-            <h1 class="tituloTabela">Temperatura e umidade diária</h1>
-            <canvas id="myChartVinho1" style="position:relative; height:40vh; width:50vw"></canvas>
+        <!-- KPIS -->
+        
+        <div>
+        <div id="divTempMax" class="card1"></div>
 
-        </div>
-        <div class="tabela1">
-
-            <h1 class="tituloTabela">Temperatura e umidade diária</h1>
-            <canvas id="myChartVinho1" style="position:relative; height:40vh; width:50vw"></canvas>
-
-        </div>
-        <div class="tabela1">
-
-            <h1 class="tituloTabela">Temperatura e umidade diária</h1>
-            <canvas id="myChartVinho1" style="position:relative; height:40vh; width:50vw"></canvas>
-
-        </div> -->
-
-
-        <div id="divTempMax" class="card1">
             <div class="conteudo1">
                 <div class="cor-alerta" id="card_1"></div>
                 TEMPERATURA MÁXIMA NO DIA
                 <div id="tempMax" class="porcentagem1">
-                    30ºC
+                    30° C
                 </div>
-
             </div>
-
         </div>
 
         <div id="divUmidMax" class="card2">
             <div class="conteudo1">
-
                 UMIDADE MÁXIMA NO DIA
                 <div id="umidMax" class="porcentagem2">
                     57%
                 </div>
-
             </div>
-
         </div>
+    </div>
     </section>
-
+    
+    <!-- GRÁFICO DE MÉDIA DOS ÚLTIMOS SETE DIAS -->
     <section div="stnGraficos" class="container3">
 
         <!-- </div> -->
@@ -179,7 +180,7 @@
             <div class="conteudo1">
                 TEMPERATURA MÍNIMA NO DIA
                 <div id="tempMin" class="porcentagem3">
-                    11ºC
+                    11° C
                 </div>
 
             </div>
@@ -325,8 +326,9 @@
 
     olaUser.innerHTML = `Olá, ${nomeUsuario}!`
 
+    var listaBotoes = []
     //fetch locais da empresa ///////////////////////////////////////////////////////////////
-    fetch("/medidas/recuperarLocais", {
+    fetch("/medidas/recuperarLocaisSensores", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -342,22 +344,66 @@
 
             resposta.json().then(json => {
                 console.log(json);
-                console.log(JSON.stringify(json));
+                console.log('BATATA',JSON.stringify(json));
 
                 jsonResponse = json.length;
 
-                if (jsonResponse > 0) {
+                // if (jsonResponse > 0) {
 
-                    for (var i = 0; i < jsonResponse; i++) {
-                        var localAtual = json[i];
-                        localSensor.push(localAtual.id);
-                        nomeLocal.push(localAtual.nome);
-                    }
+                //     for (var i = 0 ; i < jsonResponse ; i++) {
+                //         listaBotoes.push(json.idLocalSensor);
+                //     }
 
-                    for (var i = 0; i < jsonResponse; i++) {
-                        divBotoesLocais.innerHTML += `<div><button style="margin-right: 5vh;"> ${nomeLocal[i]}</button></div>`
-                    }
-                }
+
+                //     /// retornar todas as ocorrencias de um termo na lista e apagar até restar somente uma
+
+                //     var aux = [];
+
+                //     for (var i = 0; i < listaBotoes.length ; i++) {
+
+                //         if (listaBotoes.indexOf(listaBotoes[i]) > -1) {
+
+                //         }
+                //     }
+
+
+                //     for (var i = 0 ; i < listaBotoes.length ; i++) {
+                //         var listaBotoesAtual = listaBotoes[i];
+
+                //         if (listaBotoes.indexOf(listaBotoesAtual) < -1) {
+
+                //         }
+                        
+
+                //     }
+                    
+
+
+                //     //criando botões
+                //     for (var i = 0 ; i < 2 ; i++) {
+                //         divBotoesLocais.innerHTML += `<div><button id="btnLocal${i}"> ${json[i].nome}</button></div>`
+                //         divBotoesLocais.innerHTML += `<div><select id="sltLocal${i}"></select></div>`
+                //     }
+
+                //     for (var i = 0; i < jsonResponse; i++) {
+                //         const idSensorAtual = json.idSensor;
+
+                //         if (json.idLocalSensor == 9) {
+                //             sltLocal0.innerHTML += `<option value="${idSensorAtual}">Sensor ${idSensorAtual}</option>`
+                //         } else if (json.idLocalSensor == 10) {
+                //             sltLocal11.innerHTML += `<option value="${idSensorAtual}">Sensor ${idSensorAtual}</option>`
+                //         }
+                //     }
+
+                //     for (var i = 0; i < jsonResponse; i++) {
+                //         divBotoesLocais.innerHTML += `<div><button id="btnLocal${i}" style="margin-right: 5vh;"> ${nomeLocal[i]}</button></div>`
+                //         divBotoesLocais.innerHTML += `<div><select id="sltLocal${i}"></select></div>`
+                //     }
+
+                //     const select1 = document.querySelector('sltLocal1');
+                //     const select2 = document.querySelector('sltLocal2');
+
+                // }
 
             });
 
@@ -370,60 +416,72 @@
 
     //fetch sensores ////////////////////////////////////////////////////////////////////
 
-    setTimeout(() => {
-        // console.log("Delayed for 1 second.");
+    // setTimeout(() => {
+    //     console.log("Delayed for 1 second.")
 
-        for (var i = 0; i < localSensor.length; i++) {
 
-            var localAtual = localSensor[i];
+    //     for (var i = 0; i < localSensor.length; i++) {
 
-            fetch("/medidas/recuperarSensores", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    fkLocalSensorServer: localAtual
-                })
-            }).then(function (resposta) {
+    //         var localAtual = localSensor[i];
 
-                console.log("resposta: ", resposta);
+    //         fetch("/medidas/recuperarSensores", {
+    //             method: "POST",
+    //             headers: {
+    //                 "Content-Type": "application/json"
+    //             },
+    //             body: JSON.stringify({
+    //                 fkLocalSensorServer: localAtual
+    //             })
+    //         }).then(function (resposta) {
 
-                if (resposta.ok) {
+    //             console.log("resposta: ", resposta);
 
-                    resposta.json().then(json => {
-                        console.log(json);
-                        console.log(JSON.stringify(json));
+    //             if (resposta.ok) {
 
-                        // jsonResponse = json.length;
-                        // sensores.push(primeirosensor)
+    //                 resposta.json().then(json => {
+    //                     console.log(json);
+    //                     console.log(JSON.stringify(json));
 
-                        if (jsonResponse > 0) {
+    //                     jsonResponse = json.length;
+    //                     sensores.push(primeirosensor)
 
-                            for (var i = 0; i < jsonResponse; i++) {
-                                var sensorAtual = json[i];
-                                sensores.push(sensorAtual.id);
-                                // nomeLocal.push(localAtual.nome);
-                            }
+    //                     if (jsonResponse > 0) {
 
-                            for (var i = 0; i < jsonResponse; i++) {
-                                divBotoesLocais.innerHTML += `<div><button> Sensor ${i + 1} </button></div>`
-                            }
-                        } else {
-                            stnGraficos.innerHTML += "<div>Ops, os sensores não foram cadastrados ainda!<br>Entre em contato conosco para a instalação em seus locais</div>"
-                        }
+    //                         for (var i = 0; i < jsonResponse; i++) {
+    //                             var sensorAtual = json[i];
+    //                             sensores.push(sensorAtual.id);
+    //                             nomeLocal.push(localAtual.nome);
+    //                         }
+    //                         for (var i = 0 ; i < localSensor.length ; i++) {
+    //                             var localAtual = localSensor[i];
 
-                    });
+    //                             if (localAtual == 9) {
 
-                } else {
-                    throw ("Houve um erro ao tentar realizar o cadastro!");
-                }
-            }).catch(function (resposta) {
-                console.log(`#ERRO: ${resposta}`);
-            });
+    //                             }
 
-        }
-    }, "1000");
+    //                         }
+
+    //                         for (var i = 0; i < jsonResponse; i++) {
+
+    //                             if ()
+    //                             divBotoesLocais.innerHTML += `<div><button id="btnSensor${i}"> Sensor ${i + 1} </button></div>`
+    //                         }
+
+    //                     } else {
+    //                         stnGraficos.innerHTML += "<div>Ops, os sensores não foram cadastrados ainda!<br>Entre em contato conosco para a instalação em seus locais</div>"
+    //                     }
+
+    //                 });
+
+    //             } else {
+    //                 throw ("Houve um erro ao tentar realizar o cadastro!");
+    //             }
+    //         }).catch(function (resposta) {
+    //             console.log(`#ERRO: ${resposta}`);
+    //         });
+
+    //     }
+    // }, "1000");
 
     //fetch KPI /////////////////////////////////////////////////////////////
     var fkSensor = 1
@@ -532,20 +590,6 @@
                         divUmidMin.style.borderColor = 'darkblue';
                         document.getElementById("umidMin").style.color = 'darkblue'
                     }
-
-                    // if (jsonResponse > 0) {
-
-                    //     for (var i = 0; i < jsonResponse; i++) {
-                    //         var localAtual = json[i];
-                    //         localSensor.push(localAtual.id);
-                    //         nomeLocal.push(localAtual.nome);
-                    //     }
-
-                    //     for (var i = 0; i < jsonResponse; i++) {
-                    //         divBotoesLocais.innerHTML += `<div><button style="margin-right: 5vh;"> ${nomeLocal[i]}</button></div>`
-                    //     }
-                    // }
-
                 });
 
             } else {
@@ -561,30 +605,48 @@
 
     let proximaAtualizacao;
 
-    window.onload = obterDadosGraficos();
+    // setTimeout(() => {
 
+    window.onload = obterDadosGraficos();
+    // }, "1000");
+
+
+    // for (let i = 0; i < sensores.length; i++) {
     function obterDadosGraficos() {
-        obterDadosGrafico(3)
+        obterDadosGrafico(3);
+        obterDadosGrafico(4);
+        obterDadosGrafico(5);
+        obterDadosGrafico(6);
     }
 
+    // obterDadosGraficos(3);
+    // obterDadosGraficos(4);
+    // setTimeout(() => {
+    //     obterDadosGraficos(5);
+    // }, "1000");
+
+    // obterDadosGraficos(6);
+
+
+
+    // }
     // obterDadosGraficos()
 
-    function obterDadosGrafico(idLocal) {
+    function obterDadosGrafico(fkSensor) {
 
-        // alterarTitulo(idLocal)
+        // alterarTitulo(fkSensor)
 
         if (proximaAtualizacao != undefined) {
             clearTimeout(proximaAtualizacao);
         }
 
-        fetch(`/medidas/ultimas/${idLocal}`, { cache: 'no-store' }).then(function (response) {
+        fetch(`/medidas/ultimas/${fkSensor}`, { cache: 'no-store' }).then(function (response) {
             if (response.ok) {
                 response.json().then(function (resposta) {
                     console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
                     resposta.reverse();
-                    console.log(resposta)
 
-                    plotarGrafico(resposta, idLocal);
+                    plotarGrafico(resposta, fkSensor);
                 });
             } else {
                 console.error('Nenhum dado encontrado ou erro na API');
@@ -595,14 +657,12 @@
             });
     }
 
-    function plotarGrafico(resposta, idLocal) {
+    function plotarGrafico(resposta, fkSensor) {
 
         console.log('iniciando plotagem do gráfico...');
 
         // Criando estrutura para plotar gráfico - labels
         let labels = [];
-
-        // let labels2 = [];
 
         // Criando estrutura para plotar gráfico - dados
         let dados = {
@@ -612,7 +672,7 @@
                 data: [],
                 fill: false,
                 // backgroundColor: "rgb(212, 145, 78)",
-                borderColor: 'rgb(212, 145, 78)',
+                borderColor: 'rgb(108, 91, 217)',
                 tension: 0.1
             },
             {
@@ -620,7 +680,7 @@
                 data: [],
                 fill: false,
                 // backgroundColor: "rgb(108, 91, 217)",
-                borderColor: 'rgb(108, 91, 217)',
+                borderColor: 'rgb(212, 145, 78)',
                 tension: 0.1
             }]
         };
@@ -657,7 +717,11 @@
 
         //     }]
         // }
-        alertar(resposta, idLocal);
+
+        //O ALERTAR TÁ DANDO PROBLEMA E NÃO PERMITINDO EXIBIÇÃO DE TODOS OS GRÁFICOS
+        // alertar(resposta, fkSensor);
+
+
         console.log('----------------------------------------------')
         console.log('O gráfico será plotado com os respectivos valores:')
         console.log('Labels:')
@@ -678,25 +742,23 @@
 
         // Adicionando gráfico criado em div na tela
         let myChartVinho = new Chart(
-            document.getElementById(`myChartVinho1`),
+            document.getElementById(`myChartVinho${fkSensor}`),
             config
         );
 
         // let myChart2 = new Chart(
-        //     document.getElementById(`myChart2${idLocal}`),
+        //     document.getElementById(`myChart2${fkSensor}`),
         //     config2
         // );
 
-        setTimeout(() => atualizarGrafico(idLocal, dados, myChartVinho), 2000);
-        // setTimeout(() => atualizarGrafico(idLocal, dados, myChart2), 2000);
+        setTimeout(() => atualizarGrafico(fkSensor, dados, myChartVinho), 2000);
+        // setTimeout(() => atualizarGrafico(fkSensor, dados, myChart2), 2000);
     };
 
 
-    function atualizarGrafico(idLocal, dados, myChart) {
+    function atualizarGrafico(fkSensor, dados, myChart) {
 
-
-
-        fetch(`/medidas/tempo-real/${idLocal}`, { cache: 'no-store' }).then(function (response) {
+        fetch(`/medidas/tempo-real/${fkSensor}`, { cache: 'no-store' }).then(function (response) {
             if (response.ok) {
                 response.json().then(function (novoRegistro) {
 
@@ -704,7 +766,7 @@
                     console.log(`Dados atuais do gráfico:`);
                     console.log(dados);
 
-                    let avisoCaptura = document.getElementById(`avisoCaptura${idLocal}`)
+                    let avisoCaptura = document.getElementById(`avisoCaptura${fkSensor}`)
                     // avisoCaptura.innerHTML = ""
 
 
@@ -732,12 +794,12 @@
                     }
 
                     // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-                    proximaAtualizacao = setTimeout(() => atualizarGrafico(idLocal, dados, myChart), 2000);
+                    proximaAtualizacao = setTimeout(() => atualizarGrafico(fkSensor, dados, myChart), 2000);
                 });
             } else {
                 console.error('Nenhum dado encontrado ou erro na API');
                 // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-                proximaAtualizacao = setTimeout(() => atualizarGrafico(idLocal, dados, myChart), 2000);
+                proximaAtualizacao = setTimeout(() => atualizarGrafico(fkSensor, dados, myChart), 2000);
             }
         })
             .catch(function (error) {

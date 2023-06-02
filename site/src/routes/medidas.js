@@ -15,12 +15,12 @@ router.post("/buscarKPI", function (req, res) {
     medidaController.buscarKPI(req, res);
 })
 
-router.post("/recuperarLocais", function (req, res) {
-    medidaController.recuperarLocais(req, res);
+router.post("/recuperarLocaisSensores", function (req, res) {
+    medidaController.recuperarLocaisSensores(req, res);
 })
 
-router.post("/recuperarSensores", function (req, res) {
-    medidaController.recuperarSensores(req, res);
-})
+// router.post("/recuperarSensores", function (req, res) {
+//     medidaController.recuperarSensores(req, res);
+// })
 
 module.exports = router;

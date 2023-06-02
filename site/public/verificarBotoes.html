@@ -1,0 +1,74 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+
+<script>
+
+    var botoes = []
+    
+    function recLocaisSensores (idEmpresa) {
+        fetch("/medidas/recuperarLocaisSensores", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                fkEmpresaServer: `${idEmpresa}`
+            })
+        }).then(function (resposta) {
+        
+            console.log("resposta: ", resposta);
+        
+            if (resposta.ok) {
+        
+                resposta.json().then(json => {
+                    // console.log(json);
+                    console.log('BATATA',JSON.stringify(json));
+        
+                    jsonResponse = json.length;
+        
+                    procurarBotoes(json)
+        
+        
+                });
+        
+            } else {
+                throw ("Houve um erro ao tentar realizar o cadastro!");
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+    
+    }
+    
+    function procurarBotoes(json) {
+        console.log(json);
+        for (var i = 0 ; i < json.length ; i++) {
+            var idSensor = json[i].idSensor;
+            var nome = json[i].nome;
+            var idLocalSensor = json[i].idLocalSensor;
+
+            var indice = botoes.findIndex(item => item.idLocalSensor = idLocalSensor);
+
+            // botoes.push(resposta);
+            if (indice >= 0) {
+                botoes = {idSensor, nome, idLocalSensor};
+            } else {
+                botoes.push({idSensor, nome, idLocalSensor});
+            }
+            
+        }
+    
+    }
+
+</script>
