@@ -82,7 +82,7 @@ function alertar(temperatura,umidade, idLocal) {
         // valorCritico = false
         removerAlerta(idLocal);
     }
-    else if (temperatura <= limiteTemperatura.alertaFrio && temperatura > limiteTemperatura.criticoFrio) {
+    else if (temp <= limiteTemperatura.alertaFrio && temp > limiteTemperatura.criticoFrio) {
         classeTemperatura = 'cor-alerta alerta muito frio';
         grauDeAviso = 'de ALERTA BAIXO frio'
         grauDeAvisoCor = 'cor-alerta alerta frio'
@@ -137,7 +137,7 @@ function alertar(temperatura,umidade, idLocal) {
         // valorCritico = true
         exibirAlerta1( umidade, idLocal, grauDeAviso, grauDeAvisoCor)
         divUmidAlerta.style.background = 'rgb(63, 151, 210)'
-       
+      
     }
     else if (umidade <= limiteUmidade.criticoUmidadeBaixa) {
         classeUmidade = 'cor-alerta perigo muito seco';

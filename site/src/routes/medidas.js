@@ -11,8 +11,16 @@ router.get("/tempo-real/:idLocal", function (req, res) {
     medidaController.buscarMedidasEmTempoReal(req, res);
 })
 
-router.get("/buscarTempMax", function (req, res) {
-    medidaController.buscarTempMax(req, res);
+router.post("/buscarKPI", function (req, res) {
+    medidaController.buscarKPI(req, res);
+})
+
+router.post("/recuperarLocais", function (req, res) {
+    medidaController.recuperarLocais(req, res);
+})
+
+router.post("/recuperarSensores", function (req, res) {
+    medidaController.recuperarSensores(req, res);
 })
 
 module.exports = router;

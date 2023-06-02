@@ -19,18 +19,18 @@ const HABILITAR_OPERACAO_INSERIR = true;
 const AMBIENTE = 'desenvolvimento';
 
 const serial = async (
-    valoresDht11Umidade,
-    valoresDht11UmidadeIdeal,
-    valoresDht11UmidadeIdeal1,
-    valoresDht11UmidadeIdeal2,
-    valoresDht11UmidadeIdeal3,
-    valoresDht11UmidadeIdeal4,
-    valoresDht11Temperatura,
-    valoresDht11TemperaturaIdeal,
-    valoresDht11TemperaturaIdeal1,
-    valoresDht11TemperaturaIdeal2,
-    valoresDht11TemperaturaIdeal3,
-    valoresDht11TemperaturaIdeal4
+    valoresDht11UmidadeArm1S3,
+    valoresDht11UmidadeArm1S4,
+    valoresDht11UmidadeArm2S5,
+    valoresDht11UmidadeArm2S6,
+    // valoresDht11UmidadeIdeal3,
+    // valoresDht11UmidadeIdeal4,
+    valoresDht11TemperaturaArm1S3,
+    valoresDht11TemperaturaArm1S4,
+    valoresDht11TemperaturaArm2S5,
+    valoresDht11TemperaturaArm2S6,
+    // valoresDht11TemperaturaIdeal3,
+    // valoresDht11TemperaturaIdeal4
 ) => {
     let poolBancoDados = ''
 
@@ -40,9 +40,9 @@ const serial = async (
                 // altere!
                 // CREDENCIAIS DO BANCO LOCAL - MYSQL WORKBENCH
                 host: 'localhost',
-                user: 'root',
-                password: '25169544b',
-                database: 'vinho'
+                user: 'admin',
+                password: 'admin',
+                database: 'winetech_b'
             }
         ).promise();
     } else if (AMBIENTE == 'producao') {
@@ -69,31 +69,31 @@ const serial = async (
     arduino.pipe(new serialport.ReadlineParser({ delimiter: '\r\n' })).on('data', async (data) => {
         //console.log(data);
         const valores = data.split(';');
-        const dht11UmidadeReal = parseFloat(valores[0]);
-        const dht11TemperaturaReal = parseFloat(valores[1]);
-        const dht11UmidadeIdeal = parseFloat(valores[2]);
-        const dht11TemperaturaIdeal = parseFloat(valores[3]);
-        const dht11UmidadeIdeal1 = parseInt(valores[4]);
-        const dht11TemperaturaIdeal1 = parseInt(valores[5]);
-        const dht11UmidadeIdeal2 = parseInt(valores[6]);
-        const dht11TemperaturaIdeal2 = parseInt(valores[7]);
-        const dht11UmidadeIdeal3 = parseInt(valores[8]);
-        const dht11TemperaturaIdeal3 = parseInt(valores[9]);
-        const dht11UmidadeIdeal4 = parseInt(valores[10]);
-        const dht11TemperaturaIdeal4 = parseInt(valores[11]);
+        const dht11UmidadeArm1S3 = parseFloat(valores[0]);
+        const dht11TemperaturaArm1S3 = parseFloat(valores[1]);
+        const dht11UmidadeArm1S4 = parseFloat(valores[2]);
+        const dht11TemperaturaArm1S4 = parseFloat(valores[3]);
+        const dht11UmidadeArm2S5 = parseInt(valores[4]);
+        const dht11TemperaturaArm2S5 = parseInt(valores[5]);
+        const dht11UmidadeArm2S6 = parseInt(valores[6]);
+        const dht11TemperaturaArm2S6 = parseInt(valores[7]);
+        // const dht11UmidadeIdeal3 = parseInt(valores[8]);
+        // const dht11TemperaturaIdeal3 = parseInt(valores[9]);
+        // const dht11UmidadeIdeal4 = parseInt(valores[10]);
+        // const dht11TemperaturaIdeal4 = parseInt(valores[11]);
         
-        valoresDht11Umidade.push(dht11UmidadeReal);
-        valoresDht11Temperatura.push(dht11TemperaturaReal);
-        valoresDht11UmidadeIdeal.push(dht11UmidadeIdeal);
-        valoresDht11TemperaturaIdeal.push(dht11TemperaturaIdeal);
-        valoresDht11UmidadeIdeal1.push(dht11UmidadeIdeal1);
-        valoresDht11TemperaturaIdeal1.push(dht11TemperaturaIdeal1);
-        valoresDht11UmidadeIdeal2.push(dht11UmidadeIdeal2);
-        valoresDht11TemperaturaIdeal2.push(dht11TemperaturaIdeal2);
-        valoresDht11UmidadeIdeal3.push(dht11UmidadeIdeal3);
-        valoresDht11TemperaturaIdeal3.push(dht11TemperaturaIdeal3);
-        valoresDht11UmidadeIdeal4.push(dht11UmidadeIdeal4);
-        valoresDht11TemperaturaIdeal4.push(dht11TemperaturaIdeal4);
+        valoresDht11UmidadeArm1S3.push(dht11UmidadeArm1S3);
+        valoresDht11TemperaturaArm1S3.push(dht11TemperaturaArm1S3);
+        valoresDht11UmidadeArm1S4.push(dht11UmidadeArm1S4);
+        valoresDht11TemperaturaArm1S4.push(dht11TemperaturaArm1S4);
+        valoresDht11UmidadeArm2S5.push(dht11UmidadeArm2S5);
+        valoresDht11TemperaturaArm2S5.push(dht11TemperaturaArm2S5);
+        valoresDht11UmidadeArm2S6.push(dht11UmidadeArm2S6);
+        valoresDht11TemperaturaArm2S6.push(dht11TemperaturaArm2S6);
+        // valoresDht11UmidadeIdeal3.push(dht11UmidadeIdeal3);
+        // valoresDht11TemperaturaIdeal3.push(dht11TemperaturaIdeal3);
+        // valoresDht11UmidadeIdeal4.push(dht11UmidadeIdeal4);
+        // valoresDht11TemperaturaIdeal4.push(dht11TemperaturaIdeal4);
         // valoresLuminosidade.push(luminosidade);
         // valoresLm35Temperatura.push(lm35Temperatura);
         // valoresChave.push(chave);
@@ -130,8 +130,23 @@ const serial = async (
                 // >> você deve ter o aquario de id 1 cadastrado.
                 // altere aqui tambem
                 await poolBancoDados.execute(
-                    'INSERT INTO dadosensor (umidade, temperatura,dtRegistro, fkSensor) VALUES (?, ?, now(), 1)',
-                    [dht11UmidadeReal, dht11TemperaturaReal]
+                    'INSERT INTO dadosensor (umidade, temperatura, dtRegistro, fkSensor) VALUES (?, ?, now(), 3)',
+                    [dht11UmidadeArm1S3, dht11TemperaturaArm1S3]
+                );
+
+                await poolBancoDados.execute(
+                    'INSERT INTO dadosensor (umidade, temperatura, dtRegistro, fkSensor) VALUES (?, ?, now(), 4)',
+                    [dht11UmidadeArm1S4, dht11TemperaturaArm1S4]
+                );
+
+                await poolBancoDados.execute(
+                    'INSERT INTO dadosensor (umidade, temperatura, dtRegistro, fkSensor) VALUES (?, ?, now(), 5)',
+                    [dht11UmidadeArm2S5, dht11TemperaturaArm2S5]
+                );
+
+                await poolBancoDados.execute(
+                    'INSERT INTO dadosensor (umidade, temperatura, dtRegistro, fkSensor) VALUES (?, ?, now(), 6)',
+                    [dht11UmidadeArm2S6, dht11TemperaturaArm2S6]
                 );
                 // console.log("valores inseridos no banco: ", dht11Umidade + ", " + dht11Temperatura + ", " + luminosidade + ", " + lm35Temperatura + ", " + chave)
 
@@ -148,18 +163,18 @@ const serial = async (
 
 // não altere!
 const servidor = (
-    valoresDht11Umidade,
-    valoresDht11UmidadeIdeal,
-    valoresDht11UmidadeIdeal1,
-    valoresDht11UmidadeIdeal2,
-    valoresDht11UmidadeIdeal3,
-    valoresDht11UmidadeIdeal4,
-    valoresDht11Temperatura,
-    valoresDht11TemperaturaIdeal,
-    valoresDht11TemperaturaIdeal1,
-    valoresDht11TemperaturaIdeal2,
-    valoresDht11TemperaturaIdeal3,
-    valoresDht11TemperaturaIdeal4,
+    valoresDht11UmidadeArm1S3,
+    valoresDht11UmidadeArm1S4,
+    valoresDht11UmidadeArm2S5,
+    valoresDht11UmidadeArm2S6,
+    // valoresDht11UmidadeIdeal3,
+    // valoresDht11UmidadeIdeal4,
+    valoresDht11TemperaturaArm1S3,
+    valoresDht11TemperaturaArm1S4,
+    valoresDht11TemperaturaArm2S5,
+    valoresDht11TemperaturaArm2S6,
+    // valoresDht11TemperaturaIdeal3,
+    // valoresDht11TemperaturaIdeal4,
     // valoresLuminosidade,
     // valoresLm35Temperatura,
     // valoresChave
@@ -173,44 +188,44 @@ const servidor = (
     app.listen(SERVIDOR_PORTA, () => {
         console.log(`API executada com sucesso na porta ${SERVIDOR_PORTA}`);
     });
-    app.get('/sensores/dht11/umidade', (_, response) => {
-        return response.json(valoresDht11Umidade);
+    app.get('/sensores/dht11/umidadeArm1S3', (_, response) => {
+        return response.json(valoresDht11UmidadeArm1S3);
     });
-    app.get('/sensores/dht11/temperatura', (_, response) => {
-        return response.json(valoresDht11Temperatura);
-    });
-
-    app.get('/sensores/dht11/umidadeIdeal', (_, response) => {
-        return response.json(valoresDht11UmidadeIdeal);
+    app.get('/sensores/dht11/temperaturaArm1S3', (_, response) => {
+        return response.json(valoresDht11TemperaturaArm1S3);
     });
 
-    app.get('/sensores/dht11/temperaturaIdeal', (_, response) => {
-        return response.json(valoresDht11TemperaturaIdeal);
+    app.get('/sensores/dht11/umidadeArm1S4', (_, response) => {
+        return response.json(valoresDht11UmidadeArm1S4);
     });
-    app.get('/sensores/dht11/umidadeIdeal1', (_, response) => {
-        return response.json(valoresDht11UmidadeIdeal1);
+
+    app.get('/sensores/dht11/temperaturaArm1S4', (_, response) => {
+        return response.json(valoresDht11TemperaturaArm1S4);
     });
-    app.get('/sensores/dht11/temperaturaIdeal1', (_, response) => {
-        return response.json(valoresDht11TemperaturaIdeal1);
+    app.get('/sensores/dht11/umidadeArm2S5', (_, response) => {
+        return response.json(valoresDht11UmidadeArm2S5);
     });
-    app.get('/sensores/dht11/umidadeIdeal2', (_, response) => {
-        return response.json(valoresDht11UmidadeIdeal2);
+    app.get('/sensores/dht11/temperaturaArm2S5', (_, response) => {
+        return response.json(valoresDht11TemperaturaArm2S5);
     });
-    app.get('/sensores/dht11/temperaturaIdeal2', (_, response) => {
-        return response.json(valoresDht11TemperaturaIdeal2);
+    app.get('/sensores/dht11/umidadeArm2S6', (_, response) => {
+        return response.json(valoresDht11UmidadeArm2S6);
     });
-    app.get('/sensores/dht11/umidadeIdeal3', (_, response) => {
-        return response.json(valoresDht11UmidadeIdeal3);
+    app.get('/sensores/dht11/temperaturaArm2S6', (_, response) => {
+        return response.json(valoresDht11TemperaturaArm2S6);
     });
-    app.get('/sensores/dht11/temperaturaIdeal3', (_, response) => {
-        return response.json(valoresDht11TemperaturaIdeal3);
-    });
-    app.get('/sensores/dht11/umidadeIdeal4', (_, response) => {
-        return response.json(valoresDht11UmidadeIdeal4);
-    });
-    app.get('/sensores/dht11/temperaturaIdeal4', (_, response) => {
-        return response.json(valoresDht11TemperaturaIdeal4);
-    });
+    // app.get('/sensores/dht11/umidadeIdeal3', (_, response) => {
+    //     return response.json(valoresDht11UmidadeIdeal3);
+    // });
+    // app.get('/sensores/dht11/temperaturaIdeal3', (_, response) => {
+    //     return response.json(valoresDht11TemperaturaIdeal3);
+    // });
+    // app.get('/sensores/dht11/umidadeIdeal4', (_, response) => {
+    //     return response.json(valoresDht11UmidadeIdeal4);
+    // });
+    // app.get('/sensores/dht11/temperaturaIdeal4', (_, response) => {
+    //     return response.json(valoresDht11TemperaturaIdeal4);
+    // });
     // app.get('/sensores/luminosidade', (_, response) => {
     //     return response.json(valoresLuminosidade);
     // });
@@ -223,51 +238,51 @@ const servidor = (
 }
 
 (async () => {
-    const valoresDht11Umidade = [];
-    const valoresDht11Temperatura = [];
-    const valoresDht11UmidadeIdeal = [];
-    const valoresDht11TemperaturaIdeal = [];
-    const valoresDht11UmidadeIdeal1 = [];
-    const valoresDht11TemperaturaIdeal1 = [];
-    const valoresDht11UmidadeIdeal2 = [];
-    const valoresDht11TemperaturaIdeal2 = [];
-    const valoresDht11UmidadeIdeal3 = [];
-    const valoresDht11TemperaturaIdeal3 = [];
-    const valoresDht11UmidadeIdeal4 = [];
-    const valoresDht11TemperaturaIdeal4 = [];
+    const valoresDht11UmidadeArm1S3 = [];
+    const valoresDht11TemperaturaArm1S3 = [];
+    const valoresDht11UmidadeArm1S4 = [];
+    const valoresDht11TemperaturaArm1S4 = [];
+    const valoresDht11UmidadeArm2S5 = [];
+    const valoresDht11TemperaturaArm2S5 = [];
+    const valoresDht11UmidadeArm2S6 = [];
+    const valoresDht11TemperaturaArm2S6 = [];
+    // const valoresDht11UmidadeIdeal3 = [];
+    // const valoresDht11TemperaturaIdeal3 = [];
+    // const valoresDht11UmidadeIdeal4 = [];
+    // const valoresDht11TemperaturaIdeal4 = [];
     // const valoresLuminosidade = [];
     // const valoresLm35Temperatura = [];
     // const valoresChave = [];
     await serial(
-        valoresDht11Umidade,
-        valoresDht11Temperatura,
-        valoresDht11UmidadeIdeal,
-        valoresDht11TemperaturaIdeal,
-        valoresDht11UmidadeIdeal1,
-        valoresDht11TemperaturaIdeal1,
-        valoresDht11UmidadeIdeal2,
-        valoresDht11TemperaturaIdeal2,
-        valoresDht11UmidadeIdeal3,
-        valoresDht11TemperaturaIdeal3,
-        valoresDht11UmidadeIdeal4,
-        valoresDht11TemperaturaIdeal4,
+        valoresDht11UmidadeArm1S3,
+        valoresDht11TemperaturaArm1S3,
+        valoresDht11UmidadeArm1S4,
+        valoresDht11TemperaturaArm1S4,
+        valoresDht11UmidadeArm2S5,
+        valoresDht11TemperaturaArm2S5,
+        valoresDht11UmidadeArm2S6,
+        valoresDht11TemperaturaArm2S6,
+        // valoresDht11UmidadeIdeal3,
+        // valoresDht11TemperaturaIdeal3,
+        // valoresDht11UmidadeIdeal4,
+        // valoresDht11TemperaturaIdeal4,
         // valoresLuminosidade,
         // valoresLm35Temperatura,
         // valoresChave
     );
     servidor(
-        valoresDht11Umidade,
-        valoresDht11Temperatura,
-        valoresDht11UmidadeIdeal,
-        valoresDht11TemperaturaIdeal,
-        valoresDht11UmidadeIdeal1,
-        valoresDht11TemperaturaIdeal1,
-        valoresDht11UmidadeIdeal2,
-        valoresDht11TemperaturaIdeal2,
-        valoresDht11UmidadeIdeal3,
-        valoresDht11TemperaturaIdeal3,
-        valoresDht11UmidadeIdeal4,
-        valoresDht11TemperaturaIdeal4,
+        valoresDht11UmidadeArm1S3,
+        valoresDht11TemperaturaArm1S3,
+        valoresDht11UmidadeArm1S4,
+        valoresDht11TemperaturaArm1S4,
+        valoresDht11UmidadeArm2S5,
+        valoresDht11TemperaturaArm2S5,
+        valoresDht11UmidadeArm2S6,
+        valoresDht11TemperaturaArm2S6,
+        // valoresDht11UmidadeIdeal3,
+        // valoresDht11TemperaturaIdeal3,
+        // valoresDht11UmidadeIdeal4,
+        // valoresDht11TemperaturaIdeal4,
         // valoresLuminosidade,
         // valoresLm35Temperatura,
         // valoresChave

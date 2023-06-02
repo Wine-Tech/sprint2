@@ -61,17 +61,40 @@ function buscarMedidasEmTempoReal(idLocal) {
     return database.executar(instrucaoSql);
 }
 
-function buscarTempMax() {
-    console.log("ACESSEI O MEDIDA MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function buscarTempMax(): ")
-    var instrucao = `
-        SELECT max(temperatura) from dadoSensor where current_date() where ;
+function buscarKPI(fkSensor) {
+    console.log("ACESSEI O MEDIDA MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function buscarKPI(): ")
+    var instrucaoSql = `
+    select max(temperatura) as tempMax, min(temperatura) as tempMin, max(umidade) as umidMax, min(umidade) as umidMin
+	from dadosensor
+		where date(dtRegistro) = date(now()) and fkSensor = ${fkSensor}
     `;
-    console.log("Executando a instrução SQL: \n" + instrucao);
-    return database.executar(instrucao);
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
 }
 
+function recuperarLocais(fkEmpresa) {
+    console.log("ACESSEI O MEDIDA MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function recuperarLocais(): ")
+    var instrucaoSql = `
+    select * from localSensor where fkEmpresa = ${fkEmpresa}
+    `
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+function recuperarSensores(fkLocalSensor) {
+    console.log("ACESSEI O MEDIDA MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function recuperarSensores(): ")
+    var instrucaoSql = `
+    select * from sensor where fkLocalSensor = ${fkLocalSensor}
+    `
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+
 module.exports = {
-    buscarTempMax,
+    recuperarSensores,
+    recuperarLocais,
+    buscarKPI,
     buscarUltimasMedidas,
     buscarMedidasEmTempoReal
 }

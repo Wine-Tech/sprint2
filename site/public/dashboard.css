@@ -465,6 +465,11 @@ select{
     font-weight: 500;
 }
 
+.conteudoEscolha {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 /* Alarme */
 #alerta {
@@ -473,6 +478,9 @@ select{
     right: 0px;
 }
 
+.baaba {
+    color:darkcyan
+}
   .mensagem-alarme {
     background-color: white;
     border-radius: 2px;

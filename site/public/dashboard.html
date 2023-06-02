@@ -21,103 +21,133 @@
 
     <div class="header">
         <div class="nav">
-            <img id="imgLogo" src="../PrototipoSite-main/logoEmpresaFoolter.png">
+            <img id="imgLogo" src="./assets/logoempresa.png">
             <ul class="navbar">
-                <li><a href="../PrototipoSite-main/index.html">Home</a></li>
-                <li><a href="#">Produtos</a></li>
-                <li><a href="#">Sobre nós</a></li>
-                <li><a href="#">Contato</a></li>
+                <li><a href="./index.html">Home</a></li>
+                <li><a href="./index.html#divProduto">Produtos</a></li>
+                <li><a href="./index.html#divSobre">Sobre nós</a></li>
+                <li><a href="./index.html#divContato">Contato</a></li>
 
             </ul>
         </div>
     </div>
-    
-    
 
-   <h1 class="tituloMetricaPrincipal">Nivel de Alerta</h1>
+    <h1 id="olaUser" class="tituloMetricaPrincipal"></h1>
+
+    <h1 class="tituloMetricaPrincipal">Nivel de Alerta</h1>
 
     <section class="container4">
 
-        <h1 class="tituloMetrica" > Temperatura </h1>
+        <h1 class="tituloMetrica"> Temperatura </h1>
 
         <div class="cardMetricaCriticoAbaixoTemp">
             CRITICO BAIXO <br>
-             12ºC
+            12ºC
         </div>
         <div class="cardMetricaAlertaAbaixoTemp">
-             ALERTA BAIXO <br>
-              13ºC ~ 15ºC
+            ALERTA BAIXO <br>
+            13ºC ~ 15ºC
         </div>
         <div class="cardMetricaIdealTemp">
             IDEAL <br>
             16ºC ~ 20ºC
         </div>
         <div class="cardMetricaAlertaTemp">
-             ALERTA ALTO <br>
-             21ºC ~ 23ºC 
+            ALERTA ALTO <br>
+            21ºC ~ 23ºC
         </div>
         <div class="cardMetricaCriticoTemp">
             CRITICO ALTO <br>
-             24ºC
+            24ºC
         </div>
     </section>
 
 
-   
+
 
     <section class="container4">
 
-        <h1 class="tituloMetrica" > Umidade</h1>
+        <h1 class="tituloMetrica"> Umidade</h1>
 
         <div class="cardMetricaCriticoAbaixoUmi">
             CRITICO BAIXO <br>
             50%
         </div>
         <div class="cardMetricaAlertaAbaixoUmi">
-             ALERTA BAIXO <br>
-             51% ~ 53%
+            ALERTA BAIXO <br>
+            51% ~ 53%
         </div>
         <div class="cardMetricaIdealUmi">
-             IDEAL <br>
-             54% ~ 56%
+            IDEAL <br>
+            54% ~ 56%
         </div>
         <div class="cardMetricaAlertaUmi">
             ALERTA ALTO <br>
-             57% ~ 59%
+            57% ~ 59%
         </div>
         <div class="cardMetricaCriticoUmi">
             CRITICO ALTO <br>
-             60%
+            60%
         </div>
 
     </section>
 
 
-    <div class="conteudoEscolha">
-        <h1 class="tituloEscolha">escolha um local para ver os dados: </h1>
-        <select name="" id="button">
-            <option value="">ARMAZÉM 1</option>
-            <option value="">ARMAZÉM 2</option>
-        </select>
+    <div id="divLocaisSensor" class="conteudoEscolha">
+        <!-- <div>testando</div> -->
+        <div style=" justify-content: center; align-items: center;">
+            <h1 class="tituloEscolha">Escolha um local para ver os dados: </h1>
+            <div id="divBotoesLocais" style="display: flex;"></div>
+        </div>
+        <!-- <select name="" id="button"> -->
+        <!-- <option value="">ARMAZÉM 1</option> -->
+        <!-- <option value="">ARMAZÉM 2</option> -->
+        <!-- </select> -->
+        <!-- <div>
+            <div id="divBotoesLocais">
+                <div>AAAAAAAAAAA</div>
+                <div>BBBBBBBBBBB</div>
+                <div>CCCCCCCCCCC</div>
+            </div>
+        </div> -->
+
     </div>
-
-
 
 
     <section class="container2">
 
         <div class="tabela1">
 
-            <h1 class="tituloTabela">Temperatura e umidade diària</h1>
+            <h1 class="tituloTabela">Temperatura e umidade diária</h1>
             <canvas id="myChartVinho1" style="position:relative; height:40vh; width:50vw"></canvas>
 
         </div>
-        
-        <div class="card1">
+        <!-- 
+        <div class="tabela1">
+
+            <h1 class="tituloTabela">Temperatura e umidade diária</h1>
+            <canvas id="myChartVinho1" style="position:relative; height:40vh; width:50vw"></canvas>
+
+        </div>
+        <div class="tabela1">
+
+            <h1 class="tituloTabela">Temperatura e umidade diária</h1>
+            <canvas id="myChartVinho1" style="position:relative; height:40vh; width:50vw"></canvas>
+
+        </div>
+        <div class="tabela1">
+
+            <h1 class="tituloTabela">Temperatura e umidade diária</h1>
+            <canvas id="myChartVinho1" style="position:relative; height:40vh; width:50vw"></canvas>
+
+        </div> -->
+
+
+        <div id="divTempMax" class="card1">
             <div class="conteudo1">
                 <div class="cor-alerta" id="card_1"></div>
-                TEMPERATURA MÁXIMA NO DIA 
-                <div class="porcentagem1">
+                TEMPERATURA MÁXIMA NO DIA
+                <div id="tempMax" class="porcentagem1">
                     30ºC
                 </div>
 
@@ -125,11 +155,11 @@
 
         </div>
 
-        <div class="card2">
+        <div id="divUmidMax" class="card2">
             <div class="conteudo1">
 
-                UMIDADE MÁXIMA NO DIA 
-                <div class="porcentagem2">
+                UMIDADE MÁXIMA NO DIA
+                <div id="umidMax" class="porcentagem2">
                     57%
                 </div>
 
@@ -138,17 +168,17 @@
         </div>
     </section>
 
-    <section class="container3">
+    <section div="stnGraficos" class="container3">
 
         <!-- </div> -->
-        <div class="tabela2">
+        <div id="divGraficos" class="tabela2">
             <h1 class="tituloTabela">Média temperatura e umidade dos ultimos 7 dias</h1>
             <canvas id="myChart2" style="position:relative; height:40vh; width:50vw"></canvas>
         </div>
-        <div class="card3">
+        <div id="divTempMin" class="card3">
             <div class="conteudo1">
                 TEMPERATURA MÍNIMA NO DIA
-                <div class="porcentagem3">
+                <div id="tempMin" class="porcentagem3">
                     11ºC
                 </div>
 
@@ -156,10 +186,10 @@
 
         </div>
 
-        <div class="card4">
+        <div id="divUmidMin" class="card4">
             <div class="conteudo1">
-                UMIDADE MÍNIMA NO DIA 
-                <div class="porcentagem4">
+                UMIDADE MÍNIMA NO DIA
+                <div id="umidMin" class="porcentagem4">
                     59%
                 </div>
 
@@ -168,12 +198,6 @@
 
 
     </section>
-
-
-
-
-
-
 
 </body>
 
@@ -290,14 +314,257 @@
 <!-- </script> -->
 
 <script>
+    var nomeUsuario = sessionStorage.NOME_USUARIO;
+    var idUsuario = sessionStorage.ID_USUARIO;
+    var fkEmpresa = sessionStorage.FK_EMPRESA;
 
+    //recuperando informações do local e de sensores
+    var localSensor = []
+    var nomeLocal = []
+    var sensores = []
+
+    olaUser.innerHTML = `Olá, ${nomeUsuario}!`
+
+    //fetch locais da empresa ///////////////////////////////////////////////////////////////
+    fetch("/medidas/recuperarLocais", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            fkEmpresaServer: fkEmpresa
+        })
+    }).then(function (resposta) {
+
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+
+            resposta.json().then(json => {
+                console.log(json);
+                console.log(JSON.stringify(json));
+
+                jsonResponse = json.length;
+
+                if (jsonResponse > 0) {
+
+                    for (var i = 0; i < jsonResponse; i++) {
+                        var localAtual = json[i];
+                        localSensor.push(localAtual.id);
+                        nomeLocal.push(localAtual.nome);
+                    }
+
+                    for (var i = 0; i < jsonResponse; i++) {
+                        divBotoesLocais.innerHTML += `<div><button style="margin-right: 5vh;"> ${nomeLocal[i]}</button></div>`
+                    }
+                }
+
+            });
+
+        } else {
+            throw ("Houve um erro ao tentar realizar o cadastro!");
+        }
+    }).catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+    });
+
+    //fetch sensores ////////////////////////////////////////////////////////////////////
+
+    setTimeout(() => {
+        // console.log("Delayed for 1 second.");
+
+        for (var i = 0; i < localSensor.length; i++) {
+
+            var localAtual = localSensor[i];
+
+            fetch("/medidas/recuperarSensores", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    fkLocalSensorServer: localAtual
+                })
+            }).then(function (resposta) {
+
+                console.log("resposta: ", resposta);
+
+                if (resposta.ok) {
+
+                    resposta.json().then(json => {
+                        console.log(json);
+                        console.log(JSON.stringify(json));
+
+                        // jsonResponse = json.length;
+                        // sensores.push(primeirosensor)
+
+                        if (jsonResponse > 0) {
+
+                            for (var i = 0; i < jsonResponse; i++) {
+                                var sensorAtual = json[i];
+                                sensores.push(sensorAtual.id);
+                                // nomeLocal.push(localAtual.nome);
+                            }
+
+                            for (var i = 0; i < jsonResponse; i++) {
+                                divBotoesLocais.innerHTML += `<div><button> Sensor ${i + 1} </button></div>`
+                            }
+                        } else {
+                            stnGraficos.innerHTML += "<div>Ops, os sensores não foram cadastrados ainda!<br>Entre em contato conosco para a instalação em seus locais</div>"
+                        }
+
+                    });
+
+                } else {
+                    throw ("Houve um erro ao tentar realizar o cadastro!");
+                }
+            }).catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+            });
+
+        }
+    }, "1000");
+
+    //fetch KPI /////////////////////////////////////////////////////////////
+    var fkSensor = 1
+    var testandinho = []
+
+    setTimeout(() => {
+
+        fetch("/medidas/buscarKPI", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                fkSensorServer: fkSensor
+            })
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+
+                    jsonResponse = json.length;
+                    testandinho.push(json)
+
+                    if (json[0].tempMax == null && json[0].tempMin == null && json[0].umidMax == null && json[0].umidMin == null) {
+                        tempMax.innerHTML = `Não foram encontrados dados para o dia atual`
+                        umidMax.innerHTML = `Não foram encontrados dados para o dia atual`
+                        tempMin.innerHTML = `Não foram encontrados dados para o dia atual`
+                        umidMin.innerHTML = `Não foram encontrados dados para o dia atual`
+                    } else {
+                        tempMax.innerHTML = `${json[0].tempMax}° C`
+                        umidMax.innerHTML = `${json[0].umidMax} %`
+                        tempMin.innerHTML = `${json[0].tempMin}° C`
+                        umidMin.innerHTML = `${json[0].umidMin} %`
+                    }
+
+                    if (json[0].tempMax >= 24) {
+                        divTempMax.style.borderColor = 'red';
+                        document.getElementById("tempMax").style.color = 'red'
+                    } else if (json[0].tempMax <= 23 && json[0].tempMax >= 21) {
+                        divTempMax.style.borderColor = 'orange';
+                        document.getElementById("tempMax").style.color = 'orange'
+                    } else if (json[0].tempMax <= 20 && json[0].tempMax >= 16) {
+                        divTempMax.style.borderColor = 'yellow';
+                        document.getElementById("tempMax").style.color = 'yellow'
+                    } else if (json[0].tempMax <= 15 && json[0].tempMax >= 13) {
+                        divTempMax.style.borderColor = 'darkcyan';
+                        document.getElementById("tempMax").style.color = 'darkcyan'
+                    } else if (json[0].tempMax <= 12) {
+                        divTempMax.style.borderColor = 'darkblue';
+                        document.getElementById("tempMax").style.color = 'darkblue'
+                    }
+
+
+                    if (json[0].tempMin >= 24) {
+                        divTempMin.style.borderColor = 'red';
+                        document.getElementById("tempMin").style.color = 'red'
+                    } else if (json[0].tempMin <= 23 && json[0].tempMin >= 21) {
+                        divTempMin.style.borderColor = 'orange';
+                        document.getElementById("tempMin").style.color = 'orange'
+                    } else if (json[0].tempMin <= 20 && json[0].tempMin >= 16) {
+                        divTempMin.style.borderColor = 'yellow';
+                        document.getElementById("tempMin").style.color = 'yellow'
+                    } else if (json[0].tempMin <= 15 && json[0].tempMin >= 13) {
+                        divTempMin.style.borderColor = 'darkcyan'
+                        document.getElementById("tempMin").style.color = 'darkcyan'
+                    } else if (json[0].tempMin <= 12) {
+                        divTempMin.style.borderColor = 'darkblue';
+                        document.getElementById("tempMin").style.color = 'darkblue'
+                    }
+
+                    if (json[0].umidMax >= 60) {
+                        divUmidMax.style.borderColor = 'red';
+                        document.getElementById("umidMax").style.color = 'red'
+                    } else if (json[0].umidMax <= 59 && json[0].umidMax >= 57) {
+                        divUmidMax.style.borderColor = 'orange';
+                        document.getElementById("umidMax").style.color = 'orange'
+                    } else if (json[0].umidMax <= 56 && json[0].umidMax >= 54) {
+                        divUmidMax.style.borderColor = 'yellow';
+                        document.getElementById("umidMax").style.color = 'yellow'
+                    } else if (json[0].umidMax <= 53 && json[0].umidMax >= 51) {
+                        divUmidMax.style.borderColor = 'darkcyan';
+                        document.getElementById("umidMax").style.color = 'darkcyan'
+                    } else if (json[0].umidMax <= 50) {
+                        divUmidMax.style.borderColor = 'darkblue';
+                        document.getElementById("umidMax").style.color = 'darkblue'
+                    }
+
+                    if (json[0].umidMin >= 60) {
+                        divUmidMin.style.borderColor = 'red';
+                        document.getElementById("umidMin").style.color = 'red'
+                    } else if (json[0].umidMin <= 59 && json[0].umidMin >= 57) {
+                        divUmidMin.style.borderColor = 'orange';
+                        document.getElementById("umidMin").style.color = 'orange'
+                    } else if (json[0].umidMin <= 56 && json[0].umidMin >= 54) {
+                        divUmidMin.style.borderColor = 'yellow';
+                        document.getElementById("umidMin").style.color = 'yellow'
+                    } else if (json[0].umidMin <= 53 && json[0].umidMin >= 51) {
+                        divUmidMin.style.borderColor = 'darkcyan';
+                        document.getElementById("umidMin").style.color = 'darkcyan'
+                    } else if (json[0].umidMin <= 50) {
+                        divUmidMin.style.borderColor = 'darkblue';
+                        document.getElementById("umidMin").style.color = 'darkblue'
+                    }
+
+                    // if (jsonResponse > 0) {
+
+                    //     for (var i = 0; i < jsonResponse; i++) {
+                    //         var localAtual = json[i];
+                    //         localSensor.push(localAtual.id);
+                    //         nomeLocal.push(localAtual.nome);
+                    //     }
+
+                    //     for (var i = 0; i < jsonResponse; i++) {
+                    //         divBotoesLocais.innerHTML += `<div><button style="margin-right: 5vh;"> ${nomeLocal[i]}</button></div>`
+                    //     }
+                    // }
+
+                });
+
+            } else {
+                throw ("Houve um erro ao tentar realizar o cadastro!");
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+    }, "1000");
+
+
+    //fetch dados do sensor
 
     let proximaAtualizacao;
 
     window.onload = obterDadosGraficos();
 
     function obterDadosGraficos() {
-        obterDadosGrafico(1)
+        obterDadosGrafico(3)
     }
 
     // obterDadosGraficos()
@@ -315,7 +582,8 @@
                 response.json().then(function (resposta) {
                     console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
                     resposta.reverse();
-                    
+                    console.log(resposta)
+
                     plotarGrafico(resposta, idLocal);
                 });
             } else {
@@ -410,7 +678,7 @@
 
         // Adicionando gráfico criado em div na tela
         let myChartVinho = new Chart(
-            document.getElementById(`myChartVinho${idLocal}`),
+            document.getElementById(`myChartVinho1`),
             config
         );
 
@@ -422,10 +690,6 @@
         setTimeout(() => atualizarGrafico(idLocal, dados, myChartVinho), 2000);
         // setTimeout(() => atualizarGrafico(idLocal, dados, myChart2), 2000);
     };
-
-
-
-
 
 
     function atualizarGrafico(idLocal, dados, myChart) {
