@@ -39,10 +39,10 @@ const serial = async (
             {
                 // altere!
                 // CREDENCIAIS DO BANCO LOCAL - MYSQL WORKBENCH
-                host: '10.18.32.75',
-                user: 'admin',
-                password: 'admin',
-                database: 'winetech_b'
+                host: 'localhost',
+                user: 'root',
+                password: '25169544b',
+                database: 'vinho'
             }
         ).promise();
     } else if (AMBIENTE == 'producao') {

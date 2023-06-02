@@ -389,7 +389,7 @@
 
         //     }]
         // }
-        alertar(resposta, idLocal);
+        // alertar(resposta, idLocal);
         console.log('----------------------------------------------')
         console.log('O gráfico será plotado com os respectivos valores:')
         console.log('Labels:')
@@ -480,6 +480,44 @@
                 console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
             });
     };
+    atualizacaoPeriodica();
+
+function atualizacaoPeriodica() {
+    obterdados(1);
+    // obterdados(2);
+    // obterdados(3);
+    // obterdados(4);
+
+    setTimeout(atualizacaoPeriodica, 2000);
+}
+
+function obterdados(fkSensor) {
+    fetch(`/medidas/tempo-real/${fkSensor}`)
+        .then(resposta => {
+
+            if (resposta.ok) {
+                resposta.json().then(resposta => {
+                    alertar(resposta[0].temperatura,resposta[0].umidade, fkSensor);
+                    console.log('TESTE',resposta[0].temperatura,resposta[0].umidade, fkSensor);
+                    
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+
+                    var dados = {
+                        temperatura: resposta[0].temperatura,
+                        umidade: resposta[0].umidade
+                    }
+                    // alertar(resposta[0].umidade, idLocal);
+
+                });
+            } else {
+
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+        .catch(function (error) {
+            console.error(`Erro na obtenção dos dados do aquario p/ gráfico: ${error.message}`);
+        });
+}
 </script>
 
 </html>
