@@ -1,32 +1,10 @@
 var alertas = [];
 
-
-// function obterdados(idLocal) {
-//     fetch(`/medidas/tempo-real/${idLocal}`)
-//         .then(resposta => {
-
-//             if (resposta.ok) {
-//                 resposta.json().then(resposta => {
-
-//                     console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-
-//                     alertar(resposta, idLocal);
-//                 });
-//             } else {
-
-//                 console.error('Nenhum dado encontrado ou erro na API');
-//             }
-//         })
-//         .catch(function (error) {
-//             console.error(`Erro na obtenção dos dados do aquario p/ gráfico: ${error.message}`);
-//         });
-
-// }
 function alertar(temperatura,umidade, idLocal) {
     
     // var umidade = resposta[0].umidade;
 
-    console.log("VALOR DA UMIDADE:" + umidade)
+    console.log("VALOR DA UMIDADE:" + umidade,temperatura,idLocal)
     // console.log(idLocal === resposta[0].fkLocal);// temos que passar o id do galpaão e fk
 
     var grauDeAviso = '';
@@ -82,7 +60,7 @@ function alertar(temperatura,umidade, idLocal) {
         // valorCritico = false
         removerAlerta(idLocal);
     }
-    else if (temp <= limiteTemperatura.alertaFrio && temp > limiteTemperatura.criticoFrio) {
+    else if (temperatura <= limiteTemperatura.alertaFrio && temperatura > limiteTemperatura.criticoFrio) {
         classeTemperatura = 'cor-alerta alerta muito frio';
         grauDeAviso = 'de ALERTA BAIXO frio'
         grauDeAvisoCor = 'cor-alerta alerta frio'
@@ -152,8 +130,6 @@ function alertar(temperatura,umidade, idLocal) {
 
 }
 
-
-
 function exibirAlerta(temperatura, idLocal, grauDeAviso, grauDeAvisoCor) {
     var indice = alertas.findIndex(item => item.idLocal == idLocal);
     console.log('cheguei',indice);
@@ -168,6 +144,7 @@ function exibirAlerta(temperatura, idLocal, grauDeAviso, grauDeAvisoCor) {
     // Dentro da div com classe grauDeAvisoCor há um caractere "invisível", 
     // que pode ser inserido clicando com o seu teclado em alt+255 ou pelo código adicionado acima.
 }
+
 function exibirAlerta1(umidade, idLocal, grauDeAviso, grauDeAvisoCor) {
     var indice2 = alertas.findIndex(item => item.idLocal == idLocal);
     console.log('cheguei',indice2);
@@ -183,6 +160,7 @@ function removerAlerta(idLocal) {
     alertas = alertas.filter(item => item.idLocal != idLocal);
     exibirCards();
 }
+
 function removerAlerta1(idLocal) {
     alertas = alertas.filter(item => item.idLocal != idLocal);
     exibirCards1();
@@ -193,14 +171,21 @@ function exibirCards() {
 
     for (var i = 0; i < alertas.length; i++) {
         var mensagem = alertas[i];
+        divNotificacao.innerHTML = `
+        <div class="notific">Alerta!<br> Existem armazéns que precisam de atenção.<br>Clique nesta notificação para visualizar
+        <div class="alarme-sino"></div><div>`
         alerta.innerHTML += transformarEmDiv(mensagem);
     }
 }
+
 function exibirCards1() {
     alerta1.innerHTML = '';
 
     for (var i = 0; i < alertas.length; i++) {
         var mensagem1 = alertas[i];
+        divNotificacao.innerHTML = `
+        <div class="notific">Alerta!<br> Existem armazéns que precisam de atenção.<br>Clique nesta notificação para visualizar
+        <div class="alarme-sino"></div><div>`
         alerta1.innerHTML += transformarEmDiv2(mensagem1);
     }
 }
@@ -209,20 +194,19 @@ function transformarEmDiv({ idLocal, temperatura, grauDeAviso, grauDeAvisoCor })
     return `<div id="divTempAlerta" class="mensagem-alarme">
     <div id="infTempAlerta" class="informacao">
    
-     <h3>Local ${idLocal} está em estado  ${grauDeAviso}!</h3>
+     <h3>Sensor ${idLocal} do ARM1 está em estado ${grauDeAviso}!</h3>
     <small>Temperatura ${temperatura}.</small>  
     
     </div>
-    <div class="alarme-sino"></div>
     </div>`;
 }
+
 function transformarEmDiv2({idLocal, umidade,grauDeAviso,grauDeAvisoCor}) {
     return `<div id="divUmidAlerta" class="mensagem-alarme1">
     <div id="infUmidAlerta" class="informacao"> 
    
-     <h3>Local ${idLocal} está em estado  ${grauDeAviso}!</h3>
+     <h3>Sensor ${idLocal} do ARM1 está em estado ${grauDeAviso}!</h3>
     <small>Umidade ${umidade}.</small>  
     </div>
-    <div class="alarme-sino"></div>
     </div>`;
 }

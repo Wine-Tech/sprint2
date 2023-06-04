@@ -7,16 +7,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Implementando o ChartJS</title>
     <link rel="stylesheet" href="dashboard.css">
-    <script src="alertas.js"></script>
+    <script src="alertas_s3.js"></script>
+    <script src="alertas_s4.js"></script>
+    <script src="alertas_s5.js"></script>
+    <script src="alertas_s6.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
 
+    <div id="divNotificacao" class="posicaoFixed"></div>
+
+
 
     <!-- MENSAGENS DE ALERTA -->
-    <div id="alerta"></div>
-    <div id="alerta1"></div>
+
+
+    <!-- <div id="alertaTemp2"></div>
+    <div id="alertaUmid2"></div>
+    <div id="alertaTemp3"></div>
+    <div id="alertaUmid3"></div>
+    <div id="alertaTemp4"></div>
+    <div id="alertaUmid4"></div> -->
 
 
     <!-- NAVBAR -->
@@ -33,6 +45,7 @@
         </div>
     </div>
 
+    <!-- <div id="teste">AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</div> -->
     <!-- MENSAGEM DE BOAS VINDAS AO USUÁRO -->
     <h1 id="olaUser" class="tituloMetricaPrincipal"></h1>
 
@@ -46,24 +59,23 @@
 
         <div class="cardMetricaCriticoAbaixoTemp">
             CRÍTICO BAIXO <br>
-            <= 12° C
-        </div>
-        <div class="cardMetricaAlertaAbaixoTemp">
-            ALERTA BAIXO <br>
-            13° C ~ 15° C
-        </div>
-        <div class="cardMetricaIdealTemp">
-            IDEAL <br>
-            16° C ~ 20° C
-        </div>
-        <div class="cardMetricaAlertaTemp">
-            ALERTA ALTO <br>
-            21° C ~ 23° C
-        </div>
-        <div class="cardMetricaCriticoTemp">
-            CRÍTICO ALTO <br>
-            >= 24° C
-        </div>
+            <= 12° C </div>
+                <div class="cardMetricaAlertaAbaixoTemp">
+                    ALERTA BAIXO <br>
+                    13° C ~ 15° C
+                </div>
+                <div class="cardMetricaIdealTemp">
+                    IDEAL <br>
+                    16° C ~ 20° C
+                </div>
+                <div class="cardMetricaAlertaTemp">
+                    ALERTA ALTO <br>
+                    21° C ~ 23° C
+                </div>
+                <div class="cardMetricaCriticoTemp">
+                    CRÍTICO ALTO <br>
+                    >= 24° C
+                </div>
     </section>
 
     <section class="container4">
@@ -72,36 +84,48 @@
 
         <div class="cardMetricaCriticoAbaixoUmi">
             CRÍTICO BAIXO <br>
-            <= 50%
-        </div>
-        <div class="cardMetricaAlertaAbaixoUmi">
-            ALERTA BAIXO <br>
-            51% ~ 53%
-        </div>
-        <div class="cardMetricaIdealUmi">
-            IDEAL <br>
-            54% ~ 56%
-        </div>
-        <div class="cardMetricaAlertaUmi">
-            ALERTA ALTO <br>
-            57% ~ 59%
-        </div>
-        <div class="cardMetricaCriticoUmi">
-            CRÍTICO ALTO <br>
-            >= 60%
-        </div>
+            <= 50% </div>
+                <div class="cardMetricaAlertaAbaixoUmi">
+                    ALERTA BAIXO <br>
+                    51% ~ 53%
+                </div>
+                <div class="cardMetricaIdealUmi">
+                    IDEAL <br>
+                    54% ~ 56%
+                </div>
+                <div class="cardMetricaAlertaUmi">
+                    ALERTA ALTO <br>
+                    57% ~ 59%
+                </div>
+                <div class="cardMetricaCriticoUmi">
+                    CRÍTICO ALTO <br>
+                    >= 60%
+                </div>
 
     </section>
 
+    <div id="divNotificacoes">
+        <div id="alerta"></div>
+        <div id="alerta1"></div>
+
+        <div id="alerta2"></div>
+        <div id="alerta3"></div>
+
+        <div id="alerta4"></div>
+        <div id="alerta5"></div>
+
+        <div id="alerta6"></div>
+        <div id="alerta7"></div>
+    </div>
     <!-- LOCAIS DA EMPRESA PARA VISUALIZAR OS GRÁFICOS -->
-    
+
     <div id="divLocaisSensor" class="conteudoEscolha">
         <!-- <div>testando</div> -->
         <div style=" justify-content: center; align-items: center;">
             <h1 class="tituloEscolha">Escolha um local para ver os dados: </h1>
             <div id="divBotoesLocais" style="display: flex;">
-                <button onclick="exibirLocal(1)">ARM1</button>
-                <button onclick="exibirLocal(2)">ARM2</button>
+                <button onclick="exibirSensores(1)">ARM1</button>
+                <button onclick="exibirSensores(2)">ARM2</button>
             </div>
         </div>
     </div>
@@ -113,60 +137,101 @@
 
         <div id="graficos" class="tabela1">
 
-            <div class="display-block">
+            <div id="grafico1" class="display-block">
                 <h1 class="tituloTabela">Temperatura e umidade diária S3</h1>
                 <canvas id="myChartVinho3" style="position:relative; height:40vh; width:50vw"></canvas>
             </div>
 
-            <div class="display-none">
+            <div id="grafico2" class="display-none">
                 <h1 class="tituloTabela">Temperatura e umidade diária S4</h1>
                 <canvas id="myChartVinho4" style="position:relative; height:40vh; width:50vw"></canvas>
             </div>
 
-            <div class="display-none">
+            <div id="grafico3" class="display-none">
                 <h1 class="tituloTabela">Temperatura e umidade diária S5</h1>
                 <canvas id="myChartVinho5" style="position:relative; height:40vh; width:50vw"></canvas>
             </div>
 
-            <div class="display-none">
+            <div id="grafico4" class="display-none">
                 <h1 class="tituloTabela">Temperatura e umidade diária S6</h1>
                 <canvas id="myChartVinho6" style="position:relative; height:40vh; width:50vw"></canvas>
             </div>
 
-            <div >
-                <select id="sltLocal1" name="Selecione um sensor">
-                    <option value="3">Sensor 1</option>
-                    <option value="4">Sensor 2</option>
-                </select>
+            <div style="display: flex;">
+
+                <div>
+                    <select id="sltLocal1" name="Selecione um sensor">
+                        <option value="3">Sensor 3</option>
+                        <option value="4">Sensor 4</option>
+                    </select>
+                </div>
+
+                <div>
+                    <select id="sltLocal2" name="Selecione um sensor" class="display-none">
+                        <option value="5">Sensor 5</option>
+                        <option value="6">Sensor 6</option>
+                    </select>
+                </div>
             </div>
 
         </div>
 
         <!-- KPIS -->
-        
+
+        <!-- <div> -->
         <div>
-        <div id="divTempMax" class="card1"></div>
 
-            <div class="conteudo1">
-                <div class="cor-alerta" id="card_1"></div>
-                TEMPERATURA MÁXIMA NO DIA
-                <div id="tempMax" class="porcentagem1">
-                    30° C
+            <div style="display: flex;">
+                <div id="divTempMax" class="card1">
+                    <div class="conteudo1">
+                        <div class="cor-alerta" id="card_1"></div>
+                        TEMPERATURA MÁXIMA NO DIA
+                        <div id="tempMax" class="porcentagem1">
+                            30° C
+                        </div>
+                    </div>
+                </div>
+
+                <!-- </div> -->
+
+                <div id="divUmidMax" class="card2">
+                    <div class="conteudo1">
+                        UMIDADE MÁXIMA NO DIA
+                        <div id="umidMax" class="porcentagem2">
+                            57%
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="display: flex;">
+
+            <div id="divTempMin" class="card3">
+                <div class="conteudo1">
+                    TEMPERATURA MÍNIMA NO DIA
+                    <div id="tempMin" class="porcentagem3">
+                        11° C
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div id="divUmidMin" class="card4">
+                <div class="conteudo1">
+                    UMIDADE MÍNIMA NO DIA
+                    <div id="umidMin" class="porcentagem4">
+                        59%
+                    </div>
+
                 </div>
             </div>
         </div>
 
-        <div id="divUmidMax" class="card2">
-            <div class="conteudo1">
-                UMIDADE MÁXIMA NO DIA
-                <div id="umidMax" class="porcentagem2">
-                    57%
-                </div>
-            </div>
+            <!-- </div> -->
         </div>
-    </div>
     </section>
-    
+
     <!-- GRÁFICO DE MÉDIA DOS ÚLTIMOS SETE DIAS -->
     <section div="stnGraficos" class="container3">
 
@@ -175,26 +240,7 @@
             <h1 class="tituloTabela">Média temperatura e umidade dos ultimos 7 dias</h1>
             <canvas id="myChart2" style="position:relative; height:40vh; width:50vw"></canvas>
         </div>
-        <div id="divTempMin" class="card3">
-            <div class="conteudo1">
-                TEMPERATURA MÍNIMA NO DIA
-                <div id="tempMin" class="porcentagem3">
-                    11° C
-                </div>
 
-            </div>
-
-        </div>
-
-        <div id="divUmidMin" class="card4">
-            <div class="conteudo1">
-                UMIDADE MÍNIMA NO DIA
-                <div id="umidMin" class="porcentagem4">
-                    59%
-                </div>
-
-            </div>
-        </div>
 
 
     </section>
@@ -325,6 +371,50 @@
 
     olaUser.innerHTML = `Olá, ${nomeUsuario}!`
 
+    function exibir() {
+        document.getElementById("divNotificacoes").style.display = "flex"
+
+    }
+
+    document.getElementById("divNotificacao").onclick = function () {
+        location.href = "#divNotificacoes";
+        document.getElementById("divNotificacoes").style.display = "flex"
+        document.getElementById("divNotificacao").style.display = "none"
+
+
+        // exibir();
+    }
+
+    function exibirSensores(fkSensor) {
+        let todosOsGraficos = document.getElementById("graficos")
+
+        for (i = 1; i <= todosOsGraficos.childElementCount; i++) {
+            // exibindo - ou não - o gráfico
+            let elementoAtual = document.getElementById(`grafico${i}`)
+            if (elementoAtual.classList.contains("display-block")) {
+                elementoAtual.classList.remove("display-block")
+            }
+            elementoAtual.classList.add("display-none")
+
+            // alterando estilo do botão
+            // let btnAtual = document.getElementById(`btnAquario${i}`)
+            // if (btnAtual.classList.contains("btn-pink")) {
+            //     btnAtual.classList.remove("btn-pink")
+            // }
+            // btnAtual.classList.add("btn-white")
+        }
+
+        // exibindo - ou não - o gráfico
+        let graficoExibir = document.getElementById(`grafico${fkSensor}`)
+        graficoExibir.classList.remove("display-none")
+        graficoExibir.classList.add("display-block")
+
+        // alterando estilo do botão
+        // let btnExibir = document.getElementById(`btnAquario${fkSensor}`)
+        // btnExibir.classList.remove("btn-white")
+        // btnExibir.classList.add("btn-pink")
+    }
+
     var listaBotoes = []
     //fetch locais da empresa ///////////////////////////////////////////////////////////////
     fetch("/medidas/recuperarLocaisSensores", {
@@ -343,7 +433,7 @@
 
             resposta.json().then(json => {
                 console.log(json);
-                console.log('BATATA',JSON.stringify(json));
+                console.log('BATATA', JSON.stringify(json));
 
                 jsonResponse = json.length;
 
@@ -372,10 +462,10 @@
                 //         if (listaBotoes.indexOf(listaBotoesAtual) < -1) {
 
                 //         }
-                        
+
 
                 //     }
-                    
+
 
 
                 //     //criando botões
@@ -510,10 +600,10 @@
                     testandinho.push(json)
 
                     if (json[0].tempMax == null && json[0].tempMin == null && json[0].umidMax == null && json[0].umidMin == null) {
-                        tempMax.innerHTML = `Não foram encontrados dados para o dia atual`
-                        umidMax.innerHTML = `Não foram encontrados dados para o dia atual`
-                        tempMin.innerHTML = `Não foram encontrados dados para o dia atual`
-                        umidMin.innerHTML = `Não foram encontrados dados para o dia atual`
+                        tempMax.innerHTML = `<span style="font-size: 26px">Não foram encontrados dados para o dia atual</span>`
+                        umidMax.innerHTML = `<span style="font-size: 26px">Não foram encontrados dados para o dia atual</span>`
+                        tempMin.innerHTML = `<span style="font-size: 26px">Não foram encontrados dados para o dia atual</span>`
+                        umidMin.innerHTML = `<span style="font-size: 26px">Não foram encontrados dados para o dia atual</span>`
                     } else {
                         tempMax.innerHTML = `${json[0].tempMax}° C`
                         umidMax.innerHTML = `${json[0].umidMax} %`
@@ -525,17 +615,17 @@
                         divTempMax.style.borderColor = 'red';
                         document.getElementById("tempMax").style.color = 'red'
                     } else if (json[0].tempMax <= 23 && json[0].tempMax >= 21) {
-                        divTempMax.style.borderColor = 'orange';
-                        document.getElementById("tempMax").style.color = 'orange'
+                        divTempMax.style.borderColor = 'rgb(253, 148, 0)';
+                        document.getElementById("tempMax").style.color = 'rgb(253, 148, 0)'
                     } else if (json[0].tempMax <= 20 && json[0].tempMax >= 16) {
                         divTempMax.style.borderColor = 'yellow';
                         document.getElementById("tempMax").style.color = 'yellow'
                     } else if (json[0].tempMax <= 15 && json[0].tempMax >= 13) {
-                        divTempMax.style.borderColor = 'darkcyan';
-                        document.getElementById("tempMax").style.color = 'darkcyan'
+                        divTempMax.style.borderColor = 'rgb(63, 151, 210)';
+                        document.getElementById("tempMax").style.color = 'rgb(63, 151, 210)'
                     } else if (json[0].tempMax <= 12) {
-                        divTempMax.style.borderColor = 'darkblue';
-                        document.getElementById("tempMax").style.color = 'darkblue'
+                        divTempMax.style.borderColor = 'rgb(54, 44, 238)';
+                        document.getElementById("tempMax").style.color = 'rgb(54, 44, 238)'
                     }
 
 
@@ -543,51 +633,51 @@
                         divTempMin.style.borderColor = 'red';
                         document.getElementById("tempMin").style.color = 'red'
                     } else if (json[0].tempMin <= 23 && json[0].tempMin >= 21) {
-                        divTempMin.style.borderColor = 'orange';
-                        document.getElementById("tempMin").style.color = 'orange'
+                        divTempMin.style.borderColor = 'rgb(253, 148, 0)';
+                        document.getElementById("tempMin").style.color = 'rgb(253, 148, 0)'
                     } else if (json[0].tempMin <= 20 && json[0].tempMin >= 16) {
                         divTempMin.style.borderColor = 'yellow';
                         document.getElementById("tempMin").style.color = 'yellow'
                     } else if (json[0].tempMin <= 15 && json[0].tempMin >= 13) {
-                        divTempMin.style.borderColor = 'darkcyan'
-                        document.getElementById("tempMin").style.color = 'darkcyan'
+                        divTempMin.style.borderColor = 'rgb(63, 151, 210)'
+                        document.getElementById("tempMin").style.color = 'rgb(63, 151, 210)'
                     } else if (json[0].tempMin <= 12) {
-                        divTempMin.style.borderColor = 'darkblue';
-                        document.getElementById("tempMin").style.color = 'darkblue'
+                        divTempMin.style.borderColor = 'rgb(54, 44, 238)';
+                        document.getElementById("tempMin").style.color = 'rgb(54, 44, 238)'
                     }
 
                     if (json[0].umidMax >= 60) {
                         divUmidMax.style.borderColor = 'red';
                         document.getElementById("umidMax").style.color = 'red'
                     } else if (json[0].umidMax <= 59 && json[0].umidMax >= 57) {
-                        divUmidMax.style.borderColor = 'orange';
-                        document.getElementById("umidMax").style.color = 'orange'
+                        divUmidMax.style.borderColor = 'rgb(253, 148, 0)';
+                        document.getElementById("umidMax").style.color = 'rgb(253, 148, 0)'
                     } else if (json[0].umidMax <= 56 && json[0].umidMax >= 54) {
                         divUmidMax.style.borderColor = 'yellow';
                         document.getElementById("umidMax").style.color = 'yellow'
                     } else if (json[0].umidMax <= 53 && json[0].umidMax >= 51) {
-                        divUmidMax.style.borderColor = 'darkcyan';
-                        document.getElementById("umidMax").style.color = 'darkcyan'
+                        divUmidMax.style.borderColor = 'rgb(63, 151, 210)';
+                        document.getElementById("umidMax").style.color = 'rgb(63, 151, 210)'
                     } else if (json[0].umidMax <= 50) {
-                        divUmidMax.style.borderColor = 'darkblue';
-                        document.getElementById("umidMax").style.color = 'darkblue'
+                        divUmidMax.style.borderColor = 'rgb(54, 44, 238)';
+                        document.getElementById("umidMax").style.color = 'rgb(54, 44, 238)'
                     }
 
                     if (json[0].umidMin >= 60) {
                         divUmidMin.style.borderColor = 'red';
                         document.getElementById("umidMin").style.color = 'red'
                     } else if (json[0].umidMin <= 59 && json[0].umidMin >= 57) {
-                        divUmidMin.style.borderColor = 'orange';
-                        document.getElementById("umidMin").style.color = 'orange'
+                        divUmidMin.style.borderColor = 'rgb(253, 148, 0)';
+                        document.getElementById("umidMin").style.color = 'rgb(253, 148, 0)'
                     } else if (json[0].umidMin <= 56 && json[0].umidMin >= 54) {
                         divUmidMin.style.borderColor = 'yellow';
                         document.getElementById("umidMin").style.color = 'yellow'
                     } else if (json[0].umidMin <= 53 && json[0].umidMin >= 51) {
-                        divUmidMin.style.borderColor = 'darkcyan';
-                        document.getElementById("umidMin").style.color = 'darkcyan'
+                        divUmidMin.style.borderColor = 'rgb(63, 151, 210)';
+                        document.getElementById("umidMin").style.color = 'rgb(63, 151, 210)'
                     } else if (json[0].umidMin <= 50) {
-                        divUmidMin.style.borderColor = 'darkblue';
-                        document.getElementById("umidMin").style.color = 'darkblue'
+                        divUmidMin.style.borderColor = 'rgb(54, 44, 238)';
+                        document.getElementById("umidMin").style.color = 'rgb(54, 44, 238)'
                     }
                 });
 
@@ -776,6 +866,8 @@
                         console.log("---------------------------------------------------------------")
                     } else {
                         // tirando e colocando valores no gráfico
+                        // console.log());
+                        // obterdados(fkSensor)
                         dados.labels.shift(); // apagar o primeiro
                         dados.labels.push(novoRegistro[0].momento_grafico); // incluir um novo momento
 
@@ -784,7 +876,6 @@
 
                         dados.datasets[1].data.shift();  // apagar o primeiro de temperatura
                         dados.datasets[1].data.push(novoRegistro[0].temperatura); // incluir uma nova medida de temperatura
-
                         myChart.update();
                     }
 
@@ -801,44 +892,129 @@
                 console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
             });
     };
+
     atualizacaoPeriodica();
 
-function atualizacaoPeriodica() {
-    obterdados(1);
-    // obterdados(2);
-    // obterdados(3);
-    // obterdados(4);
+    function atualizacaoPeriodica() {
+        obterdados_s3(3);
+        obterdados_s4(4);
+        obterdados_s5(5);
+        obterdados_s6(6);
 
-    setTimeout(atualizacaoPeriodica, 2000);
-}
+        setTimeout(atualizacaoPeriodica, 2000);
+    }
 
-function obterdados(fkSensor) {
-    fetch(`/medidas/tempo-real/${fkSensor}`)
-        .then(resposta => {
+    function obterdados_s3(fkSensor) {
+        fetch(`/medidas/tempo-real/${fkSensor}`)
+            .then(resposta => {
 
-            if (resposta.ok) {
-                resposta.json().then(resposta => {
-                    alertar(resposta[0].temperatura,resposta[0].umidade, fkSensor);
-                    console.log('TESTE',resposta[0].temperatura,resposta[0].umidade, fkSensor);
-                    
-                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                if (resposta.ok) {
+                    resposta.json().then(resposta => {
+                        alertar(resposta[0].temperatura, resposta[0].umidade, fkSensor);
+                        console.log('TESTE', resposta[0].temperatura, resposta[0].umidade, fkSensor);
 
-                    var dados = {
-                        temperatura: resposta[0].temperatura,
-                        umidade: resposta[0].umidade
-                    }
-                    // alertar(resposta[0].umidade, idLocal);
+                        console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
 
-                });
-            } else {
+                        var dados = {
+                            temperatura: resposta[0].temperatura,
+                            umidade: resposta[0].umidade
+                        }
+                        // alertar(resposta[0].umidade, idLocal);
 
-                console.error('Nenhum dado encontrado ou erro na API');
-            }
-        })
-        .catch(function (error) {
-            console.error(`Erro na obtenção dos dados do aquario p/ gráfico: ${error.message}`);
-        });
-}
+                    });
+                } else {
+
+                    console.error('Nenhum dado encontrado ou erro na API');
+                }
+            })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados do aquario p/ gráfico: ${error.message}`);
+            });
+    }
+
+    function obterdados_s4(fkSensor) {
+        fetch(`/medidas/tempo-real/${fkSensor}`)
+            .then(resposta => {
+
+                if (resposta.ok) {
+                    resposta.json().then(resposta => {
+                        alertar_s4(resposta[0].temperatura, resposta[0].umidade, fkSensor);
+                        console.log('TESTE', resposta[0].temperatura, resposta[0].umidade, fkSensor);
+
+                        console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+
+                        var dados = {
+                            temperatura: resposta[0].temperatura,
+                            umidade: resposta[0].umidade
+                        }
+                        // alertar(resposta[0].umidade, idLocal);
+
+                    });
+                } else {
+
+                    console.error('Nenhum dado encontrado ou erro na API');
+                }
+            })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados do aquario p/ gráfico: ${error.message}`);
+            });
+    }
+
+    function obterdados_s5(fkSensor) {
+        fetch(`/medidas/tempo-real/${fkSensor}`)
+            .then(resposta => {
+
+                if (resposta.ok) {
+                    resposta.json().then(resposta => {
+                        alertar_s5(resposta[0].temperatura, resposta[0].umidade, fkSensor);
+                        console.log('TESTE', resposta[0].temperatura, resposta[0].umidade, fkSensor);
+
+                        console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+
+                        var dados = {
+                            temperatura: resposta[0].temperatura,
+                            umidade: resposta[0].umidade
+                        }
+                        // alertar(resposta[0].umidade, idLocal);
+
+                    });
+                } else {
+
+                    console.error('Nenhum dado encontrado ou erro na API');
+                }
+            })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados do aquario p/ gráfico: ${error.message}`);
+            });
+    }
+
+    function obterdados_s6(fkSensor) {
+        fetch(`/medidas/tempo-real/${fkSensor}`)
+            .then(resposta => {
+
+                if (resposta.ok) {
+                    resposta.json().then(resposta => {
+                        alertar_s6(resposta[0].temperatura, resposta[0].umidade, fkSensor);
+                        console.log('TESTE', resposta[0].temperatura, resposta[0].umidade, fkSensor);
+
+                        console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+
+                        var dados = {
+                            temperatura: resposta[0].temperatura,
+                            umidade: resposta[0].umidade
+                        }
+                        // alertar(resposta[0].umidade, idLocal);
+
+                    });
+                } else {
+
+                    console.error('Nenhum dado encontrado ou erro na API');
+                }
+            })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados do aquario p/ gráfico: ${error.message}`);
+            });
+    }
 </script>
 
 </html>
