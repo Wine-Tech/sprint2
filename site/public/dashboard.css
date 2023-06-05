@@ -131,10 +131,9 @@ a:hover {
     display: flex;
     width: 100%;
     height: 10vh;
-    margin-top: 5vh;
+    /* margin-top: 5vh; */
     justify-content: center;
-
-
+    align-items: center;
 }
 
 
@@ -148,7 +147,6 @@ a:hover {
 
 
 .tituloMetrica {
-
     color: whitesmoke;
     font-size: xx-large;
 }
@@ -467,7 +465,7 @@ a:hover {
 }
 
 select {
-    width: 20vh;
+    width: 23vh;
     height: 5vh;
     display: flex;
     justify-content: center;
@@ -610,6 +608,7 @@ select {
 
 #divNotificacoes {
     /* padding: 0vh 5vh 0vh 5vh; */
+    margin-top: 10vh;
     display: none;
     flex-wrap: wrap;
     width: 100%;
@@ -622,4 +621,10 @@ select {
 
 .display-none {
     display: none;
+}
+
+.dimensoesGraf {
+    margin-left: 10vh;
+    height:40vh;
+    width:120vh;
 }

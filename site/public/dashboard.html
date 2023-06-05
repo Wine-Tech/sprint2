@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Implementando o ChartJS</title>
+    <title>Dashboard | STTU</title>
     <link rel="stylesheet" href="dashboard.css">
     <script src="alertas_s3.js"></script>
     <script src="alertas_s4.js"></script>
@@ -104,18 +104,21 @@
 
     </section>
 
-    <div id="divNotificacoes">
-        <div id="alerta"></div>
-        <div id="alerta1"></div>
+    <div class="aparecer">
+        <div id="divNotificacoes">
+            <div id="alerta"></div>
+            <div id="alerta1"></div>
 
-        <div id="alerta2"></div>
-        <div id="alerta3"></div>
+            <div id="alerta2"></div>
+            <div id="alerta3"></div>
 
-        <div id="alerta4"></div>
-        <div id="alerta5"></div>
+            <div id="alerta4"></div>
+            <div id="alerta5"></div>
 
-        <div id="alerta6"></div>
-        <div id="alerta7"></div>
+            <div id="alerta6"></div>
+            <div id="alerta7"></div>
+        </div>
+        <button id="btnEsconder" class="display-none" onclick="esconder()">Esconder notificações</button>
     </div>
     <!-- LOCAIS DA EMPRESA PARA VISUALIZAR OS GRÁFICOS -->
 
@@ -135,50 +138,65 @@
 
         <!-- GRÁFICOS -->
 
-        <div id="graficos" class="tabela1">
+        <div>
+            <div id="graficos">
 
-            <div id="grafico1" class="display-block">
-                <h1 class="tituloTabela">Temperatura e umidade diária S3</h1>
-                <canvas id="myChartVinho3" style="position:relative; height:40vh; width:50vw"></canvas>
+                <div id="grafico1" class="display-block">
+                    <h1 class="tituloTabela">Temperatura e umidade diária S3</h1>
+                    <div class="dimensoesGraf">
+                        <canvas id="myChartVinho3"></canvas>
+                    </div>
+                </div>
+
+                <div id="grafico2" class="display-none">
+                    <h1 class="tituloTabela">Temperatura e umidade diária S4</h1>
+                    <div class="dimensoesGraf">
+                        <canvas id="myChartVinho4"></canvas>
+                    </div>
+                </div>
+
+                <div id="grafico3" class="display-none">
+                    <h1 class="tituloTabela">Temperatura e umidade diária S5</h1>
+                    <div class="dimensoesGraf">
+                        <canvas id="myChartVinho5"></canvas>
+                    </div>
+                </div>
+
+                <div id="grafico4" class="display-none">
+                    <h1 class="tituloTabela">Temperatura e umidade diária S6</h1>
+                    <div class="dimensoesGraf">
+                        <canvas id="myChartVinho6"></canvas>
+                    </div>
+                </div>
+
             </div>
 
-            <div id="grafico2" class="display-none">
-                <h1 class="tituloTabela">Temperatura e umidade diária S4</h1>
-                <canvas id="myChartVinho4" style="position:relative; height:40vh; width:50vw"></canvas>
-            </div>
-
-            <div id="grafico3" class="display-none">
-                <h1 class="tituloTabela">Temperatura e umidade diária S5</h1>
-                <canvas id="myChartVinho5" style="position:relative; height:40vh; width:50vw"></canvas>
-            </div>
-
-            <div id="grafico4" class="display-none">
-                <h1 class="tituloTabela">Temperatura e umidade diária S6</h1>
-                <canvas id="myChartVinho6" style="position:relative; height:40vh; width:50vw"></canvas>
-            </div>
-
-            <div style="display: flex;">
+            <div id="divSelects" style="display: flex;">
 
                 <div>
-                    <select id="sltLocal1" name="Selecione um sensor">
-                        <option value="3">Sensor 3</option>
-                        <option value="4">Sensor 4</option>
+                    <select id="sltLocal1" class="display-block" name="Selecione um sensor" onChange="update1()">
+                        <option hidden>ARM1 - Escolha</option>
+                        <option disabled="disabled" default="true">ARM1 - Escolha</option>
+                        <option value="1">Sensor 3</option>
+                        <option value="2">Sensor 4</option>
                     </select>
                 </div>
 
                 <div>
-                    <select id="sltLocal2" name="Selecione um sensor" class="display-none">
-                        <option value="5">Sensor 5</option>
-                        <option value="6">Sensor 6</option>
+                    <select id="sltLocal2" class="display-none" name="Selecione um sensor" onChange="update2()">
+                        <option hidden>ARM2 - Escolha</option>
+                        <option disabled="disabled" default="true">ARM2 - Escolha</option>
+                        <option value="3">Sensor 5</option>
+                        <option value="4">Sensor 6</option>
                     </select>
                 </div>
+
             </div>
 
         </div>
 
         <!-- KPIS -->
 
-        <!-- <div> -->
         <div>
 
             <div style="display: flex;">
@@ -206,27 +224,27 @@
 
             <div style="display: flex;">
 
-            <div id="divTempMin" class="card3">
-                <div class="conteudo1">
-                    TEMPERATURA MÍNIMA NO DIA
-                    <div id="tempMin" class="porcentagem3">
-                        11° C
+                <div id="divTempMin" class="card3">
+                    <div class="conteudo1">
+                        TEMPERATURA MÍNIMA NO DIA
+                        <div id="tempMin" class="porcentagem3">
+                            11° C
+                        </div>
+
                     </div>
 
                 </div>
 
-            </div>
+                <div id="divUmidMin" class="card4">
+                    <div class="conteudo1">
+                        UMIDADE MÍNIMA NO DIA
+                        <div id="umidMin" class="porcentagem4">
+                            59%
+                        </div>
 
-            <div id="divUmidMin" class="card4">
-                <div class="conteudo1">
-                    UMIDADE MÍNIMA NO DIA
-                    <div id="umidMin" class="porcentagem4">
-                        59%
                     </div>
-
                 </div>
             </div>
-        </div>
 
             <!-- </div> -->
         </div>
@@ -360,6 +378,8 @@
 <!-- </script> -->
 
 <script>
+    Chart.defaults.color = '#FFFFFF';
+    // armazenando informações trazidas na tela de login //////////////////////////////////////////
     var nomeUsuario = sessionStorage.NOME_USUARIO;
     var idUsuario = sessionStorage.ID_USUARIO;
     var fkEmpresa = sessionStorage.FK_EMPRESA;
@@ -371,21 +391,49 @@
 
     olaUser.innerHTML = `Olá, ${nomeUsuario}!`
 
-    function exibir() {
-        document.getElementById("divNotificacoes").style.display = "flex"
-
-    }
-
+    // exibindo notificações/alertas ///////////////////////////////////////////////////////////////
     document.getElementById("divNotificacao").onclick = function () {
         location.href = "#divNotificacoes";
         document.getElementById("divNotificacoes").style.display = "flex"
         document.getElementById("divNotificacao").style.display = "none"
-
-
-        // exibir();
+        document.getElementById("btnEsconder").style.display = "block"
     }
 
+    function esconder() {
+        if (divNotificacoes.style.display == 'flex') {
+            document.getElementById("divNotificacoes").style.display = "none"
+            btnEsconder.innerHTML = `Exibir notificações`
+        } else if (divNotificacoes.style.display == 'none') {
+            document.getElementById("divNotificacoes").style.display = "flex"
+            btnEsconder.innerHTML = `Esconder notificações`
+        }
+    }
+
+    // exibindo sensores baseado nos locais disponíveis //////////////////////////////////////////////
     function exibirSensores(fkSensor) {
+        var todosOsSelects = document.getElementById("divSelects")
+
+        for (var i = 1; i <= todosOsSelects.childElementCount; i++) {
+            var selectAtual = document.getElementById(`sltLocal${i}`)
+
+            if (selectAtual.classList.contains("display-block")) {
+                selectAtual.classList.remove("display-block")
+            }
+
+            selectAtual.classList.add("display-none")
+
+            var exibirSelect = document.getElementById(`sltLocal${fkSensor}`)
+            exibirSelect.classList.remove("display-none")
+            exibirSelect.classList.add("display-block")
+        }
+
+    }
+
+    //exibindo gráficos com base nos sensores existentes ////////////////////////////////////////////
+    function update1() {
+        var select = document.getElementById("sltLocal1");
+        var option = select.options[select.selectedIndex];
+
         let todosOsGraficos = document.getElementById("graficos")
 
         for (i = 1; i <= todosOsGraficos.childElementCount; i++) {
@@ -395,24 +443,37 @@
                 elementoAtual.classList.remove("display-block")
             }
             elementoAtual.classList.add("display-none")
-
-            // alterando estilo do botão
-            // let btnAtual = document.getElementById(`btnAquario${i}`)
-            // if (btnAtual.classList.contains("btn-pink")) {
-            //     btnAtual.classList.remove("btn-pink")
-            // }
-            // btnAtual.classList.add("btn-white")
         }
 
-        // exibindo - ou não - o gráfico
-        let graficoExibir = document.getElementById(`grafico${fkSensor}`)
+        let graficoExibir = document.getElementById(`grafico${option.value}`)
         graficoExibir.classList.remove("display-none")
         graficoExibir.classList.add("display-block")
 
-        // alterando estilo do botão
-        // let btnExibir = document.getElementById(`btnAquario${fkSensor}`)
-        // btnExibir.classList.remove("btn-white")
-        // btnExibir.classList.add("btn-pink")
+        // document.getElementById('value').value = option.value;
+        // document.getElementById('text').value = option.text;
+    }
+
+    function update2() {
+        var select = document.getElementById("sltLocal2");
+        var option = select.options[select.selectedIndex];
+
+        let todosOsGraficos = document.getElementById("graficos")
+
+        for (i = 1; i <= todosOsGraficos.childElementCount; i++) {
+            // exibindo - ou não - o gráfico
+            let elementoAtual = document.getElementById(`grafico${i}`)
+            if (elementoAtual.classList.contains("display-block")) {
+                elementoAtual.classList.remove("display-block")
+            }
+            elementoAtual.classList.add("display-none")
+        }
+
+        let graficoExibir = document.getElementById(`grafico${option.value}`)
+        graficoExibir.classList.remove("display-none")
+        graficoExibir.classList.add("display-block")
+
+        // document.getElementById('value').value = option.value;
+        // document.getElementById('text').value = option.text;
     }
 
     var listaBotoes = []
@@ -818,6 +879,16 @@
         const config = {
             type: 'line',
             data: dados,
+            options: {
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: {
+                        stepSize: 3
+                    }
+                }
+            }
+        }
         };
 
         // const config2 = {
