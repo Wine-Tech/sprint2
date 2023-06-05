@@ -111,7 +111,7 @@
                         document.getElementById('divLiberarUser').style.display = 'block'
                     } else {
                         document.getElementById('divLiberarUser').style.display = 'none'
-                        divMsgErro.innerHTML = "banana";
+                        divMsgErro.innerHTML = "Código não encontrado";
                     }
 
 
@@ -123,7 +123,6 @@
             }
         }).catch(function (resposta) {
             console.log(`#ERRO: ${resposta}`);
-            // finalizarAguardar();
         });
 
         return false;
@@ -134,7 +133,6 @@
         var nomeCompleto = iptNomeCompleto.value;
         var email = iptEmail.value;
         var senha = iptSenha.value;
-        // var codAcesso = iptCodAcesso.value;
         var repetirSenha = iptRepetirSenha.value;
 
 

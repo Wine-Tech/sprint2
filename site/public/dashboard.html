@@ -18,19 +18,6 @@
 
     <div id="divNotificacao" class="posicaoFixed"></div>
 
-
-
-    <!-- MENSAGENS DE ALERTA -->
-
-
-    <!-- <div id="alertaTemp2"></div>
-    <div id="alertaUmid2"></div>
-    <div id="alertaTemp3"></div>
-    <div id="alertaUmid3"></div>
-    <div id="alertaTemp4"></div>
-    <div id="alertaUmid4"></div> -->
-
-
     <!-- NAVBAR -->
     <div class="header">
         <div class="nav">
@@ -45,7 +32,6 @@
         </div>
     </div>
 
-    <!-- <div id="teste">AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</div> -->
     <!-- MENSAGEM DE BOAS VINDAS AO USUÁRO -->
     <h1 id="olaUser" class="tituloMetricaPrincipal"></h1>
 
@@ -118,7 +104,10 @@
             <div id="alerta6"></div>
             <div id="alerta7"></div>
         </div>
-        <button id="btnEsconder" class="display-none" onclick="esconder()">Esconder notificações</button>
+        <div class="butNotificaçao">
+            <button id="btnEsconder" class="display-none" onclick="esconder()">Esconder notificações</button>
+        </div>
+       
     </div>
     <!-- LOCAIS DA EMPRESA PARA VISUALIZAR OS GRÁFICOS -->
 
@@ -126,9 +115,9 @@
         <!-- <div>testando</div> -->
         <div style=" justify-content: center; align-items: center;">
             <h1 class="tituloEscolha">Escolha um local para ver os dados: </h1>
-            <div id="divBotoesLocais" style="display: flex;">
-                <button onclick="exibirSensores(1)">ARM1</button>
-                <button onclick="exibirSensores(2)">ARM2</button>
+            <div id="divBotoesLocais" class="ContainerbutArmazem" >
+                <button class="butArmazem" onclick="exibirSensores(1)">ARM1</button>
+                <button class="butArmazem" onclick="exibirSensores(2)">ARM2</button>
             </div>
         </div>
     </div>
@@ -388,6 +377,9 @@
     var localSensor = []
     var nomeLocal = []
     var sensores = []
+    var ultimosDias = []
+    var ultimosDiasLabel = []
+
 
     olaUser.innerHTML = `Olá, ${nomeUsuario}!`
 
@@ -448,9 +440,6 @@
         let graficoExibir = document.getElementById(`grafico${option.value}`)
         graficoExibir.classList.remove("display-none")
         graficoExibir.classList.add("display-block")
-
-        // document.getElementById('value').value = option.value;
-        // document.getElementById('text').value = option.text;
     }
 
     function update2() {
@@ -564,6 +553,41 @@
         console.log(`#ERRO: ${resposta}`);
     });
 
+    for (var i = 1 ; i <= 7 ; i++) {
+        var diaAtual = i;
+        
+        fetch("/medidas/recuperarLocaisSensores", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                intervaloServer: diaAtual,
+                fkEmpresaServer: fkEmpresa
+            })
+        }).then(function (resposta) {
+    
+            console.log("resposta: ", resposta);
+    
+            if (resposta.ok) {
+    
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log('teste', JSON.stringify(json));
+    
+                    jsonResponse = json.length;
+    
+                });
+    
+            } else {
+                throw ("Houve um erro ao tentar realizar o cadastro!");
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+    }
+
+
     //fetch sensores ////////////////////////////////////////////////////////////////////
 
     // setTimeout(() => {
@@ -645,7 +669,7 @@
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                fkSensorServer: fkSensor
+                fkEmpresaServer: fkEmpresa,
             })
         }).then(function (resposta) {
 

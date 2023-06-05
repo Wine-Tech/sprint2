@@ -19,6 +19,10 @@ router.post("/recuperarLocaisSensores", function (req, res) {
     medidaController.recuperarLocaisSensores(req, res);
 })
 
+router.post("/recuperarUltimosDias", function (req, res) {
+    medidaController.recuperarUltimosDias(req, res);
+})
+
 // router.post("/recuperarSensores", function (req, res) {
 //     medidaController.recuperarSensores(req, res);
 // })

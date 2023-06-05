@@ -612,19 +612,51 @@ select {
     display: none;
     flex-wrap: wrap;
     width: 100%;
-    background-color: #2F2325;
+    /* background-color: #2F2325; */
 }
 
 .display-block {
     display: block;
+
 }
 
 .display-none {
     display: none;
+    background-color: #1972b2;
+    color: whitesmoke;
+    width: 36vh;
+    height: 7vh;
+    margin-top: 5vh;
+    font-size: x-large;
+    border-radius: 25px;
+}
+
+.butNotificaçao{
+    
+    width: 100%;
+    height: 15vh;
+    justify-content: center;
+    display: flex;
 }
 
 .dimensoesGraf {
     margin-left: 10vh;
     height:40vh;
     width:120vh;
+}
+
+.ContainerbutArmazem{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.butArmazem{
+    width: 14vh;
+    height: 5vh;
+    border-radius: 25px;
+    text-align: center;
+    align-items: center;
+    font-size: x-large;
+    color: whitesmoke;
+    background-color: #1972b2;
 }

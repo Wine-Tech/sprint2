@@ -56,7 +56,8 @@
             <div class="label-float">
                 <input id="iptCodigo" placeholder=" " required maxlength="8">
                 <label for="iptCodigo" id="labCodigo">Código de acesso <span class="obrigatorio">*</span></label>
-                <span style="font-size: 14px;">Código para efetuar o cadastro e acesso dos usuários de sua empresa</span>
+                <span style="font-size: 14px;">Código para efetuar o cadastro e acesso dos usuários de sua
+                    empresa</span>
             </div>
 
             <div class="label-float">
@@ -76,7 +77,8 @@
 
             <div class="label-float">
                 <input id="iptComplemento" placeholder=" " required>
-                <label for="iptComplemento" id="labComplemento">Complemento <i style="font-size: 14px;">(opcional)</i></label>
+                <label for="iptComplemento" id="labComplemento">Complemento <i
+                        style="font-size: 14px;">(opcional)</i></label>
             </div>
 
             <div class="label-float">
@@ -135,81 +137,81 @@
             divMsgErro.innerHTML = 'Preencha todos os campos obrigatórios'
         } else {
             divMsgErro.innerHTML = ''
+            // Enviando o valor da nova input
+            fetch("/usuarios/cadastrar", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    // crie um atributo que recebe o valor recuperado aqui
+                    // Agora vá para o arquivo routes/usuario.js
+                    empresaServer: empresa,
+                    cnpjServer: cnpj,
+                    telefoneServer: telefone,
+                    dominioServer: dominio,
+                    codigoServer: codigo,
+                    cepServer: cep,
+                    ruaServer: rua,
+                    numRuaServer: numRua,
+                    complementoServer: complemento,
+                    bairroServer: bairro,
+                    cidadeServer: cidade,
+                    estadoServer: estado
+                })
+            }).then(function (resposta) {
+
+                console.log("resposta: ", resposta);
+
+                if (resposta.ok) {
+
+                    divMsgErro.innerHTML = "Aguarde";
+
+                    resposta.json().then(json => {
+                        console.log(json);
+                        console.log(JSON.stringify(json));
+
+                        setTimeout(() => {
+                            window.location = "telaCadastroLocal.html";
+                        }, "2000")
+
+                    });
+
+                } else {
+                    throw ("Houve um erro ao tentar realizar o cadastro!");
+                }
+            }).catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+                // finalizarAguardar();
+            });
+
+            return false;
         }
-
-        // Enviando o valor da nova input
-        fetch("/usuarios/cadastrar", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                // crie um atributo que recebe o valor recuperado aqui
-                // Agora vá para o arquivo routes/usuario.js
-                empresaServer: empresa,
-                cnpjServer: cnpj,
-                telefoneServer: telefone,
-                dominioServer: dominio,
-                codigoServer: codigo,
-                cepServer: cep,
-                ruaServer: rua,
-                numRuaServer: numRua,
-                complementoServer: complemento,
-                bairroServer: bairro,
-                cidadeServer: cidade,
-                estadoServer: estado
-            })
-        }).then(function (resposta) {
-
-            console.log("resposta: ", resposta);
-
-            if (resposta.ok) {
-
-                divMsgErro.innerHTML = "Aguarde";
-
-                resposta.json().then(json => {
-                    console.log(json);
-                    console.log(JSON.stringify(json));
-
-                    setTimeout(() => {
-                    window.location = "telaCadastroLocal.html";
-                }, "2000")
-
-                });
-
-            } else {
-                throw ("Houve um erro ao tentar realizar o cadastro!");
-            }
-        }).catch(function (resposta) {
-            console.log(`#ERRO: ${resposta}`);
-            // finalizarAguardar();
-        });
-
-        return false;
     }
-    
+
+
 </script>
 
 
 <!-- API VIACEP -->
 <script>
-    
+
     function limpa_formulário_cep() {
-            //Limpa valores do formulário de cep.
-            document.getElementById('iptRua').value=("");
-            document.getElementById('iptBairro').value=("");
-            document.getElementById('iptCidade').value=("");
-            document.getElementById('iptEstado').value=("");
-            // document.getElementById('ibge').value=("");
+        //Limpa valores do formulário de cep.
+        document.getElementById('iptRua').value = ("");
+        document.getElementById('iptBairro').value = ("");
+        document.getElementById('iptCidade').value = ("");
+        document.getElementById('iptEstado').value = ("");
+        // document.getElementById('ibge').value=("");
     }
 
     function meu_callback(conteudo) {
         if (!("erro" in conteudo)) {
             //Atualiza os campos com os valores.
-            document.getElementById('iptRua').value=(conteudo.logradouro);
-            document.getElementById('iptBairro').value=(conteudo.bairro);
-            document.getElementById('iptCidade').value=(conteudo.localidade);
-            document.getElementById('iptEstado').value=(conteudo.uf);
+            document.getElementById('iptRua').value = (conteudo.logradouro);
+            document.getElementById('iptBairro').value = (conteudo.bairro);
+            document.getElementById('iptCidade').value = (conteudo.localidade);
+            document.getElementById('iptEstado').value = (conteudo.uf);
             // document.getElementById('iptEstado').readOnly = true;
             // document.getElementById('ibge').value=(conteudo.ibge);
         } //end if.
@@ -219,7 +221,7 @@
             alert("CEP não encontrado.");
         }
     }
-        
+
     function pesquisacep(valor) {
 
         //Nova variável "cep" somente com dígitos.
@@ -232,20 +234,20 @@
             var validacep = /^[0-9]{8}$/;
 
             //Valida o formato do CEP.
-            if(validacep.test(cep)) {
+            if (validacep.test(cep)) {
 
                 //Preenche os campos com "..." enquanto consulta webservice.
-                document.getElementById('iptRua').value="...";
-                document.getElementById('iptBairro').value="...";
-                document.getElementById('iptCidade').value="...";
-                document.getElementById('iptEstado').value="...";
+                document.getElementById('iptRua').value = "...";
+                document.getElementById('iptBairro').value = "...";
+                document.getElementById('iptCidade').value = "...";
+                document.getElementById('iptEstado').value = "...";
                 // document.getElementById('ibge').value="...";
 
                 //Cria um elemento javascript.
                 var script = document.createElement('script');
 
                 //Sincroniza com o callback.
-                script.src = 'https://viacep.com.br/ws/'+ cep + '/json/?callback=meu_callback';
+                script.src = 'https://viacep.com.br/ws/' + cep + '/json/?callback=meu_callback';
 
                 //Insere script no documento e carrega o conteúdo.
                 document.body.appendChild(script);
@@ -263,4 +265,4 @@
         }
     };
 
-    </script>
+</script>
