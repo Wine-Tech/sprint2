@@ -110,7 +110,7 @@ a:hover {
     display: flex;
     justify-content:center;
     padding: 2vh;
-    width: 100%;
+    /* width: 100%; */
     margin-top: 100px;
 }
 
@@ -272,4 +272,9 @@ button:hover {
     height: 200px;
     margin: 50px;
     background-color: #af4e4e4c;
+}
+
+.obrigatorio {
+    font-size:14px;
+    color: red;
 }

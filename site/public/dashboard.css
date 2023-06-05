@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;1,200;1,300;1,400;1,500&display=swap');
 
-*{
-    font-family:'Poppins', sans-serif;
-    
+* {
+    font-family: 'Poppins', sans-serif;
+
 }
 
 body {
@@ -12,7 +12,7 @@ body {
     text-decoration: none;
     font-size: 100%;
     font-family: 'Poppins', sans-serif;
-     background : linear-gradient(50.15deg, #2F2325 15%  , #114264 85.61%); 
+    background: linear-gradient(50.15deg, #2F2325 15%, #0c1f2d 85.61%);
     /* background-image: url(https://i.pinimg.com/originals/4b/41/3e/4b413e0e9d0ae709acf4b273a3f79e57.jpg);
     background: no-repeat;
     background-size: cover;
@@ -104,216 +104,217 @@ a:hover {
 }
 
 .container1 {
-     display: flex; 
+    display: flex;
     width: 100%;
     height: 30vh;
     justify-content: center;
-  margin-top: 3vh;
+    margin-top: 3vh;
 
 }
-.metricaTemperatura{
-width: 80vh;
-height: 5vw;
-box-shadow: 20px 20px 30px rgb(35, 35, 35);
+
+.metricaTemperatura {
+    width: 80vh;
+    height: 5vw;
+    box-shadow: 20px 20px 30px rgb(35, 35, 35);
 
 
 }
-.metricaUmidade{
-width: 80vh;
-height: 5vw;
-box-shadow: 20px 20px 30px rgb(35, 35, 35);
+
+.metricaUmidade {
+    width: 80vh;
+    height: 5vw;
+    box-shadow: 20px 20px 30px rgb(35, 35, 35);
 
 }
+
 .container4 {
-    display: flex; 
-   width: 100%;
-   height: 10vh;
-   margin-top: 5vh;
-   justify-content: center;
- 
-
+    display: flex;
+    width: 100%;
+    height: 10vh;
+    /* margin-top: 5vh; */
+    justify-content: center;
+    align-items: center;
 }
 
 
-.tituloMetricaPrincipal{
+.tituloMetricaPrincipal {
     display: flex;
     justify-content: center;
-   
-      color: whitesmoke;
-      font-size: xx-large;
-  }
+
+    color: whitesmoke;
+    font-size: xx-large;
+}
 
 
-  .tituloMetrica{
-    
-      color: whitesmoke;
-      font-size: xx-large;
-  }
+.tituloMetrica {
+    color: whitesmoke;
+    font-size: xx-large;
+}
 
-.cardMetricaCriticoTemp{
+.cardMetricaCriticoTemp {
     display: flex;
     justify-content: center;
-    text-align: center ;
-   width: 20vh ;
-    height: 6vh ;
- color: whitesmoke;
+    text-align: center;
+    width: 20vh;
+    height: 6vh;
+    color: whitesmoke;
     border-radius: 25px;
     margin-left: 3vh;
-   margin-right: 26vh;
-    border: 5px solid rgb(255, 0, 0) ;
-    box-shadow: 20px 20px 30px rgb(35, 35, 35);
+    margin-right: 26vh;
+    border: 5px solid rgb(255, 0, 0);
+    box-shadow: 20px 20px 30px rgb(67, 31, 43);
     font-size: large;
     font-style: oblique;
     font-weight: 700;
 }
 
 
-.cardMetricaCriticoUmi{
+.cardMetricaCriticoUmi {
     display: flex;
     justify-content: center;
-    text-align: center ;
-   width: 20vh ;
-    height: 6vh ;
- color: whitesmoke;
-    border-radius: 25px; 
+    text-align: center;
+    width: 20vh;
+    height: 6vh;
+    color: whitesmoke;
+    border-radius: 25px;
     margin-left: 3vh;
     margin-right: 20vh;
-    border: 5px solid rgb(255, 0, 0) ;
-    box-shadow: 20px 20px 30px rgb(35, 35, 35);
+    border: 5px solid rgb(255, 0, 0);
+    box-shadow: 20px 20px 30px rgb(67, 31, 43);
     font-size: large;
     font-style: oblique;
     font-weight: 700;
 }
 
 
-.cardMetricaCriticoAbaixoTemp{
+.cardMetricaCriticoAbaixoTemp {
     display: flex;
     justify-content: center;
-    text-align: center ;
-   width: 20vh ;
-    height: 6vh ;
- color: whitesmoke;
+    text-align: center;
+    width: 20vh;
+    height: 6vh;
+    color: whitesmoke;
     border-radius: 25px;
     margin-left: 3vh;
     border: 5px solid rgb(54, 44, 238);
-    box-shadow: 20px 20px 30px rgb(35, 35, 35);
+    box-shadow: 20px 20px 30px rgb(33, 26, 61);
     font-size: large;
     font-style: oblique;
     font-weight: 700;
 }
 
 
-.cardMetricaIdealTemp{
+.cardMetricaIdealTemp {
     display: flex;
     justify-content: center;
-    text-align: center ;
-   width: 20vh ;
-    height: 6vh ;
+    text-align: center;
+    width: 20vh;
+    height: 6vh;
     color: whitesmoke;
     border-radius: 25px;
     margin-left: 3vh;
-    border: 5px solid  rgb(253, 245, 0); 
-    box-shadow: 20px 20px 30px rgb(35, 35, 35);
+    border: 5px solid rgb(253, 245, 0);
+    box-shadow: 20px 20px 30px rgb(74, 70, 25);
     font-size: large;
     font-style: oblique;
     font-weight: 700;
 }
 
-.cardMetricaAlertaTemp{
+.cardMetricaAlertaTemp {
     display: flex;
     justify-content: center;
-    text-align: center ;
-   width: 20vh ;
-    height: 6vh ;
-    color: whitesmoke;
-    border-radius: 25px;
-    margin-left: 3vh; 
-    border: 5px solid rgb(253, 148, 0);
-    box-shadow: 20px 20px 30px rgb(35, 35, 35);
-    font-size: large;
-    font-style: oblique;
-    font-weight: 700;
-}
-
-
-.cardMetricaAlertaAbaixoTemp{
-    display: flex;
-    justify-content: center;
-    text-align: center ;
-   width: 20vh ;
-    height: 6vh ;
-    color: whitesmoke;
-    border-radius: 25px;
-    margin-left: 3vh;
-    border: 5px solid rgb(63, 151, 210) ;
-    box-shadow: 20px 20px 30px rgb(35, 35, 35);
-    font-size: large;
-    font-style: oblique;
-    font-weight: 700;
-}
-
-
-.cardMetricaCriticoAbaixoUmi{
-    display: flex;
-    justify-content: center;
-    text-align: center ;
-   width: 20vh ;
-    height: 6vh ;
- color: whitesmoke;
-    border-radius: 25px;
-    margin-left: 3vh;
-    border: 5px solid rgb(54, 44, 238);
-    box-shadow: 20px 20px 30px rgb(35, 35, 35);
-    font-size: large;
-    font-style: oblique;
-    font-weight: 700;
-}
-
-
-.cardMetricaIdealUmi{
-    display: flex;
-    justify-content: center;
-    text-align: center ;
-   width: 20vh ;
-    height: 6vh ;
-    color: whitesmoke;
-    border-radius: 25px;
-    margin-left: 3vh;
-    border: 5px solid  rgb(253, 245, 0); 
-    box-shadow: 20px 20px 30px rgb(35, 35, 35);
-    font-size: large;
-    font-style: oblique;
-    font-weight: 700;
-}
-
-.cardMetricaAlertaUmi{
-    display: flex;
-    justify-content: center;
-    text-align: center ;
-   width: 20vh ;
-    height: 6vh ;
+    text-align: center;
+    width: 20vh;
+    height: 6vh;
     color: whitesmoke;
     border-radius: 25px;
     margin-left: 3vh;
     border: 5px solid rgb(253, 148, 0);
-    box-shadow: 20px 20px 30px rgb(35, 35, 35);
+    box-shadow: 20px 20px 30px rgb(71, 52, 25);
     font-size: large;
     font-style: oblique;
     font-weight: 700;
 }
 
 
-.cardMetricaAlertaAbaixoUmi{
+.cardMetricaAlertaAbaixoTemp {
     display: flex;
     justify-content: center;
-    text-align: center ;
-   width: 20vh ;
-    height: 6vh ;
+    text-align: center;
+    width: 20vh;
+    height: 6vh;
     color: whitesmoke;
     border-radius: 25px;
     margin-left: 3vh;
     border: 5px solid rgb(63, 151, 210);
-    box-shadow: 20px 20px 30px rgb(35, 35, 35);
+    box-shadow: 20px 20px 30px rgb(24, 59, 68);
+    font-size: large;
+    font-style: oblique;
+    font-weight: 700;
+}
+
+
+.cardMetricaCriticoAbaixoUmi {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    width: 20vh;
+    height: 6vh;
+    color: whitesmoke;
+    border-radius: 25px;
+    margin-left: 3vh;
+    border: 5px solid rgb(54, 44, 238);
+    box-shadow: 20px 20px 30px rgb(33, 26, 61);
+    font-size: large;
+    font-style: oblique;
+    font-weight: 700;
+}
+
+
+.cardMetricaIdealUmi {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    width: 20vh;
+    height: 6vh;
+    color: whitesmoke;
+    border-radius: 25px;
+    margin-left: 3vh;
+    border: 5px solid rgb(253, 245, 0);
+    box-shadow: 20px 20px 30px rgb(74, 70, 25);
+    font-size: large;
+    font-style: oblique;
+    font-weight: 700;
+}
+
+.cardMetricaAlertaUmi {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    width: 20vh;
+    height: 6vh;
+    color: whitesmoke;
+    border-radius: 25px;
+    margin-left: 3vh;
+    border: 5px solid rgb(253, 148, 0);
+    box-shadow: 20px 20px 30px rgb(71, 52, 25);
+    font-size: large;
+    font-style: oblique;
+    font-weight: 700;
+}
+
+
+.cardMetricaAlertaAbaixoUmi {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    width: 20vh;
+    height: 6vh;
+    color: whitesmoke;
+    border-radius: 25px;
+    margin-left: 3vh;
+    border: 5px solid rgb(63, 151, 210);
+    box-shadow: 20px 20px 30px rgb(24, 59, 68);
     font-size: large;
     font-style: oblique;
     font-weight: 700;
@@ -339,59 +340,66 @@ box-shadow: 20px 20px 30px rgb(35, 35, 35);
 
 .card1 {
     border: 5px solid rgb(255, 0, 0);
-    margin-top: 10vh;
+    /* margin-top: 10vh; */
+    margin: 2vh;
     padding: 1vh;
     align-items: center;
     justify-content: center;
     text-align: center;
     width: 18rem;
-    height: 10rem;
-    box-shadow: 20px 20px 30px rgb(35, 35, 35);
+    height: auto;
+    box-shadow: 20px 20px 30px rgb(18, 18, 18);
     border-radius: 25px;
     font-size: large;
     font-style: oblique;
     font-weight: 700;
 }
+
 .card2 {
-    border: 5px solid  rgb(146, 208, 80);
-    margin-top: 10vh;
+    border: 5px solid rgb(146, 208, 80);
+    /* margin-top: 10vh; */
+    margin: 2vh;
     padding: 1vh;
     align-items: center;
     justify-content: center;
     text-align: center;
     width: 18rem;
-    height: 10rem;
-    box-shadow: 20px 20px 30px rgb(35, 35, 35);
+    height: auto;
+    box-shadow: 20px 20px 30px rgb(18, 18, 18);
     border-radius: 25px;
     font-size: large;
     font-style: oblique;
     font-weight: 700;
 }
+
 .card3 {
-    border: 5px solid  rgb(54, 44, 238);
-    margin-top: 10vh;
+    border: 5px solid rgb(54, 44, 238);
+    /* margin-top: 10vh; */
+    margin: 2vh;
     padding: 1vh;
     align-items: center;
     justify-content: center;
     text-align: center;
     width: 18rem;
-    height: 10rem;
-    box-shadow: 20px 20px 30px rgb(35, 35, 35);
+    height: auto;
+    box-shadow: 20px 20px 30px rgb(18, 18, 18);
     border-radius: 25px;
     font-size: large;
     font-style: oblique;
     font-weight: 700;
 }
+
 .card4 {
     border: 5px solid rgb(255, 255, 0);
-    margin-top: 10vh;
+    /* margin-top: 10vh; */
+    margin: 2vh;
     padding: 1vh;
     align-items: center;
     justify-content: center;
     text-align: center;
     width: 18rem;
-    height: 10rem;
-    box-shadow: 20px 20px 30px rgb(35, 35, 35);
+    height: auto;
+    box-shadow: 20px 20px 30px rgb(18, 18, 18);
     border-radius: 25px;
     font-size: large;
     font-style: oblique;
@@ -400,42 +408,48 @@ box-shadow: 20px 20px 30px rgb(35, 35, 35);
 
 .cardAlerta {
     background-color: rgb(255, 0, 0);
-     justify-content: center;
-   text-align: center;
+    justify-content: center;
+    text-align: center;
     margin-top: 5vh;
-   
+
     width: 32rem;
     height: 12rem;
     box-shadow: 20px 20px 30px rgb(35, 35, 35);
     border-radius: 25px;
     font-size: large;
     font-weight: 700;
-  color: whitesmoke;
-    font-style: oblique; 
-   
+    color: whitesmoke;
+    font-style: oblique;
+
 }
-.conteudo1{
+
+.conteudo1 {
     margin-top: 5vh;
-    
+
     color: whitesmoke;
 }
-.porcentagem1{
+
+.porcentagem1 {
     font-size: 4vh;
     color: rgb(255, 0, 0);
 }
-.porcentagem2{
+
+.porcentagem2 {
     font-size: 4vh;
     color: rgb(146, 208, 80);
 }
-.porcentagem3{
+
+.porcentagem3 {
     font-size: 4vh;
     color: rgb(54, 44, 238);
 }
-.porcentagem4{
+
+.porcentagem4 {
     font-size: 4vh;
     color: rgb(255, 255, 0);
 }
-.tituloTabela{
+
+.tituloTabela {
     display: flex;
     justify-content: center;
     color: whitesmoke;
@@ -443,15 +457,15 @@ box-shadow: 20px 20px 30px rgb(35, 35, 35);
 }
 
 
-.tituloEscolha{
+.tituloEscolha {
     display: flex;
     justify-content: center;
     color: whitesmoke;
     font-size: xx-large;
 }
 
-select{
-    width: 20vh;
+select {
+    width: 23vh;
     height: 5vh;
     display: flex;
     justify-content: center;
@@ -472,71 +486,103 @@ select{
 }
 
 /* Alarme */
-#alerta {
+.posicaoFixed {
     position: fixed;
-   margin-top: 100px;
+    margin-top: 100px;
     right: 0px;
 }
 
-.baaba {
-    color:darkcyan
-}
-  .mensagem-alarme {
+.mensagem-alarme {
     background-color: white;
     border-radius: 2px;
-    width: 300px;
+    width: 37vh;
     height: 150px;
     margin: 20px;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
     border-radius: 25px;
-  }
- 
-  
-  .mensagem-alarme h3 {
+}
+
+.notific {
+    background-color:#2f232598;
+    border: #cf2b46 solid 1vh;
+    border-radius: 2px;
+    width: 40vh;
+    height: 150px;
+    margin: 3vh;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    border-radius: 25px;
+    padding: 1vh;;
+    font-size: large;
+    color: #ebe1e9;
+}
+
+.notific:hover{
+    cursor: pointer;
+}
+
+.mensagem-alarme h3 {
     font-size: 19px;
     margin: 0;
     color: whitesmoke;
-    
-  }
-  
-  .mensagem-alarme .informacao {
+
+}
+
+.mensagem-alarme .informacao {
     margin: 10px;
     font-size: 20px;
     color: whitesmoke;
     margin-bottom: 15px;
-  }
-  
-  .alarme-sino {
+}
+
+.alarme-sino {
     width: 200px;
     height: 130px;
-    /* left: 50px; */
+    /* right: 500px; */
     animation-name: bell;
     animation-duration: 4s;
     background-image: url('https://cdn-icons-png.flaticon.com/512/2553/2553705.png');
     background-size: cover;
     animation-iteration-count: infinite;
-  }
-  
-  @keyframes bell {
-    0%   {transform: rotate(25deg)}
-    25%  {transform: rotate(-25deg)}
-    50%  {transform: rotate(25deg)}
-    75%  {transform: rotate(-25deg)}
-    100% {transform: rotate(25deg)}
-  }
+}
+
+@keyframes bell {
+    0% {
+        transform: rotate(25deg)
+    }
+
+    25% {
+        transform: rotate(-25deg)
+    }
+
+    50% {
+        transform: rotate(25deg)
+    }
+
+    75% {
+        transform: rotate(-25deg)
+    }
+
+    100% {
+        transform: rotate(25deg)
+    }
+}
+
 /* card de alerta2 */
-#alerta1{
+/* #alerta1 {
     right: 0px;
     margin-top: 300px;
-    position: fixed; 
-}
-  .mensagem-alarme1{
+    position: fixed;
+} */
+
+.mensagem-alarme1 {
     /* margin-top: 50%; */
     background-color: white;
     border-radius: 2px;
-    width: 300px;
+    width: 37vh;
     height: 150px;
     margin: 20px;
     display: flex;
@@ -544,18 +590,41 @@ select{
     align-items: center;
     text-align: flex-start;
     border-radius: 25px;
-  }
+}
 
-  .mensagem-alarme1 h3 {
+.mensagem-alarme1 h3 {
     font-size: 19px;
     margin: 0;
     color: whitesmoke;
-   
-  }
-  
-  .mensagem-alarme1 .informacao {
+
+}
+
+.mensagem-alarme1 .informacao {
     margin: 10px;
     font-size: 20px;
     color: whitesmoke;
     margin-bottom: 15px;
-  }
+}
+
+#divNotificacoes {
+    /* padding: 0vh 5vh 0vh 5vh; */
+    margin-top: 10vh;
+    display: none;
+    flex-wrap: wrap;
+    width: 100%;
+    background-color: #2F2325;
+}
+
+.display-block {
+    display: block;
+}
+
+.display-none {
+    display: none;
+}
+
+.dimensoesGraf {
+    margin-left: 10vh;
+    height:40vh;
+    width:120vh;
+}

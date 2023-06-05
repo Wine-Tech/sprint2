@@ -35,71 +35,72 @@
 
             <div class="label-float">
                 <input id="iptEmpresa" placeholder=" " required>
-                <label for="iptEmpresa" id="labEmpresa">Razão social</label>
+                <label for="iptEmpresa" id="labEmpresa">Razão social <span class="obrigatorio">*</span></label>
             </div>
 
             <div class="label-float">
                 <input id="iptCNPJ" placeholder=" " required>
-                <label for="iptCNPJ" id="labCNPJ">CNPJ</label>
+                <label for="iptCNPJ" id="labCNPJ">CNPJ <span class="obrigatorio">*</span></label>
             </div>
 
             <div class="label-float">
                 <input id="iptTelefone" placeholder=" " required>
-                <label for="iptTelefone" id="labTelefone">Telefone</label>
+                <label for="iptTelefone" id="labTelefone">Telefone <span class="obrigatorio">*</span></label>
             </div>
 
             <div class="label-float">
                 <input id="iptDominio" placeholder=" " required>
-                <label for="iptDominio" id="labDominio">Domínio de E-mail</label>
+                <label for="iptDominio" id="labDominio">Domínio de E-mail <span class="obrigatorio">*</span></label>
             </div>
 
             <div class="label-float">
                 <input id="iptCodigo" placeholder=" " required maxlength="8">
-                <label for="iptCodigo" id="labCodigo">Código de acesso</label>
-                <span>Código para efetuar o cadastro e acesso dos usuários de sua empresa</span>
+                <label for="iptCodigo" id="labCodigo">Código de acesso <span class="obrigatorio">*</span></label>
+                <span style="font-size: 14px;">Código para efetuar o cadastro e acesso dos usuários de sua empresa</span>
             </div>
 
             <div class="label-float">
                 <input id="iptCEP" placeholder=" " required maxlength="8" onblur="pesquisacep(this.value)">
-                <label for="iptCEP" id="labCEP">CEP</label>
+                <label for="iptCEP" id="labCEP">CEP <span class="obrigatorio">*</span></label>
             </div>
 
             <div class="label-float">
                 <input id="iptRua" placeholder=" " required>
-                <label for="iptRua" id="labRua">Rua</label>
+                <label for="iptRua" id="labRua">Rua <span class="obrigatorio">*</span></label>
             </div>
 
             <div class="label-float">
                 <input id="iptNumero" placeholder=" " required>
-                <label for="iptNumero" id="labNumero">Nº</label>
+                <label for="iptNumero" id="labNumero">Nº <span class="obrigatorio">*</span></label>
             </div>
 
             <div class="label-float">
                 <input id="iptComplemento" placeholder=" " required>
-                <label for="iptComplemento" id="labComplemento">Complemento <i>(opcional)</i></label>
+                <label for="iptComplemento" id="labComplemento">Complemento <i style="font-size: 14px;">(opcional)</i></label>
             </div>
 
             <div class="label-float">
                 <input id="iptBairro" placeholder=" " required>
-                <label for="iptBairro" id="labBairro">Bairro</label>
+                <label for="iptBairro" id="labBairro">Bairro <span class="obrigatorio">*</span></label>
             </div>
 
             <div class="label-float">
                 <input id="iptCidade" placeholder=" " required>
-                <label for="iptCidade" id="labCidade">Cidade</label>
+                <label for="iptCidade" id="labCidade">Cidade <span class="obrigatorio">*</span></label>
             </div>
-
 
             <div class="label-float">
                 <input id="iptEstado" placeholder=" " required>
-                <label for="iptEstado" id="labEstado">Estado</label>
+                <label for="iptEstado" id="labEstado">Estado <span class="obrigatorio">*</span></label>
             </div>
 
             <!-- <div class="label-float">
                 <input id="iptUF" placeholder=" " required>
                 <label for="iptUF" id="labUF">UF</label>
             </div> -->
-
+            <div>
+                <span class="obrigatorio">(*) Campos obrigatórios</span>
+            </div>
             <div id="divMsgErro" class="msgErro">
             </div>
 
