@@ -245,126 +245,12 @@
         <!-- </div> -->
         <div id="divGraficos" class="tabela2">
             <h1 class="tituloTabela">Média temperatura e umidade dos ultimos 7 dias</h1>
-            <canvas id="myChart2" style="position:relative; height:40vh; width:50vw"></canvas>
+            <canvas id="myChartVinhoMedia" style="position:relative; height:40vh; width:50vw"></canvas>
         </div>
-
-
 
     </section>
 
 </body>
-
-<!-- <script>
-    Chart.defaults.color = '#FFFFFF';
-
-    const optionsCritUmidade = {
-        plugins: {
-            annotation: {
-                annotations: {
-                    line1: {
-                        type: 'line',
-                        yMin: 50,
-                        yMax: 60,
-                        borderColor: '#F89E26',
-                        borderWidth: 2,
-                    }
-                }
-            }
-        }
-    };
-
-    const labels = [
-        '25/06/2001 00:00:00',
-
-        '25/06/2001 02:00:00',
-
-        '25/06/2001 04:00:00',
-
-        '25/06/2001 06:00:00',
-
-        '25/06/2001 08:00:00',
-
-        '25/06/2001 10:00:00',
-
-        '25/06/2001 12:00:00',
-
-        '25/06/2001 14:00:00',
-
-        '25/06/2001 16:00:00',
-
-        '25/06/2001 18:00:00',
-
-        '25/06/2001 20:00:00',
-
-        '26/06/2001 22:00:00',
-
-    ];
-
-    const labels2 = [
-        'Segunda',
-        'Terça',
-        'Quarta',
-        'Quinta',
-        'Sexta',
-        'Sábado',
-        'Domingo'
-
-    ];
-
-    const data = {
-        labels: labels,
-        datasets: [{
-            label: "Temperatura",
-            backgroundColor: "rgb(212, 145, 78)",
-            borderColor: "rgb(212, 145, 78)",
-            data: [12, 10, 12, 15, 20, 22, 22, 30, 15, 13, 12, 22],
-        },
-        {
-            label: "Umidade",
-            backgroundColor: "rgb(108, 91, 217)",
-            borderColor: "rgb(108, 91, 217)",
-            data: [53, 58, 54, 57, 57, 55, 55, 53, 54, 53, 57, 57],
-        }
-        ],
-        optionsCritUmidade
-    };
-
-    const data2 = {
-        labels: labels2,
-        datasets: [{
-            label: "Média da Temperatura",
-            backgroundColor: "rgb(212, 145, 78)",
-            borderColor: "rgb(212, 145, 78)",
-            // backgroundColor: "rgb(52, 235, 98)",
-            // borderColor: "rgb(52, 235, 98)",
-            data: [15, 20, 25, 19, 23, 30, 10, 12, 24, 20],
-        },
-        {
-            label: "Média da Umidade",
-            backgroundColor: "rgb(108, 91, 217)",
-            borderColor: "rgb(108, 91, 217)",
-            // backgroundColor: "rgb(52, 161, 235)",
-            //  borderColor: "rgb(52, 161, 235)",
-            data: [50, 55, 52, 55, 60, 54, 50, 50, 56, 58, 55, 60],
-
-        }
-        ]
-    };
-
-    const config = {
-        type: `line`,
-        data: data,
-        options: {}
-    };
-
-    const config2 = {
-        type: `bar`,
-        data: data2,
-        options: {}
-    }; -->
-
-
-<!-- </script> -->
 
 <script>
     Chart.defaults.color = '#FFFFFF';
@@ -377,8 +263,8 @@
     var localSensor = []
     var nomeLocal = []
     var sensores = []
-    var ultimosDias = []
-    var ultimosDiasLabel = []
+    var ultimosDiasTemp = []
+    var ultimosDiasUmid = []
 
 
     olaUser.innerHTML = `Olá, ${nomeUsuario}!`
@@ -460,103 +346,43 @@
         let graficoExibir = document.getElementById(`grafico${option.value}`)
         graficoExibir.classList.remove("display-none")
         graficoExibir.classList.add("display-block")
-
-        // document.getElementById('value').value = option.value;
-        // document.getElementById('text').value = option.text;
     }
 
-    var listaBotoes = []
+    // var listaBotoes = []
     //fetch locais da empresa ///////////////////////////////////////////////////////////////
-    fetch("/medidas/recuperarLocaisSensores", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            fkEmpresaServer: fkEmpresa
-        })
-    }).then(function (resposta) {
+    // fetch("/medidas/recuperarLocaisSensores", {
+    //     method: "POST",
+    //     headers: {
+    //         "Content-Type": "application/json"
+    //     },
+    //     body: JSON.stringify({
+    //         fkEmpresaServer: fkEmpresa
+    //     })
+    // }).then(function (resposta) {
 
-        console.log("resposta: ", resposta);
+    //     console.log("resposta: ", resposta);
 
-        if (resposta.ok) {
+    //     if (resposta.ok) {
 
-            resposta.json().then(json => {
-                console.log(json);
-                console.log('BATATA', JSON.stringify(json));
+    //         resposta.json().then(json => {
+    //             console.log(json);
+    //             console.log('teste', JSON.stringify(json));
 
-                jsonResponse = json.length;
+    //             jsonResponse = json.length;
 
-                // if (jsonResponse > 0) {
+    //         });
 
-                //     for (var i = 0 ; i < jsonResponse ; i++) {
-                //         listaBotoes.push(json.idLocalSensor);
-                //     }
-
-
-                //     /// retornar todas as ocorrencias de um termo na lista e apagar até restar somente uma
-
-                //     var aux = [];
-
-                //     for (var i = 0; i < listaBotoes.length ; i++) {
-
-                //         if (listaBotoes.indexOf(listaBotoes[i]) > -1) {
-
-                //         }
-                //     }
-
-
-                //     for (var i = 0 ; i < listaBotoes.length ; i++) {
-                //         var listaBotoesAtual = listaBotoes[i];
-
-                //         if (listaBotoes.indexOf(listaBotoesAtual) < -1) {
-
-                //         }
-
-
-                //     }
-
-
-
-                //     //criando botões
-                //     for (var i = 0 ; i < 2 ; i++) {
-                //         divBotoesLocais.innerHTML += `<div><button id="btnLocal${i}"> ${json[i].nome}</button></div>`
-                //         divBotoesLocais.innerHTML += `<div><select id="sltLocal${i}"></select></div>`
-                //     }
-
-                //     for (var i = 0; i < jsonResponse; i++) {
-                //         const idSensorAtual = json.idSensor;
-
-                //         if (json.idLocalSensor == 9) {
-                //             sltLocal0.innerHTML += `<option value="${idSensorAtual}">Sensor ${idSensorAtual}</option>`
-                //         } else if (json.idLocalSensor == 10) {
-                //             sltLocal11.innerHTML += `<option value="${idSensorAtual}">Sensor ${idSensorAtual}</option>`
-                //         }
-                //     }
-
-                //     for (var i = 0; i < jsonResponse; i++) {
-                //         divBotoesLocais.innerHTML += `<div><button id="btnLocal${i}" style="margin-right: 5vh;"> ${nomeLocal[i]}</button></div>`
-                //         divBotoesLocais.innerHTML += `<div><select id="sltLocal${i}"></select></div>`
-                //     }
-
-                //     const select1 = document.querySelector('sltLocal1');
-                //     const select2 = document.querySelector('sltLocal2');
-
-                // }
-
-            });
-
-        } else {
-            throw ("Houve um erro ao tentar realizar o cadastro!");
-        }
-    }).catch(function (resposta) {
-        console.log(`#ERRO: ${resposta}`);
-    });
+    //     } else {
+    //         throw ("Houve um erro ao tentar realizar o cadastro!");
+    //     }
+    // }).catch(function (resposta) {
+    //     console.log(`#ERRO: ${resposta}`);
+    // });
 
     for (var i = 1 ; i <= 7 ; i++) {
         var diaAtual = i;
         
-        fetch("/medidas/recuperarLocaisSensores", {
+        fetch("/medidas/recuperarUltimosDias", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -575,7 +401,12 @@
                     console.log(json);
                     console.log('teste', JSON.stringify(json));
     
-                    jsonResponse = json.length;
+                    // jsonResponse = json.length;
+                    for (var i = 0 ; i < json.length ; i++) {
+                        ultimosDiasTemp.push(json[i].mediaTemp)
+                        ultimosDiasUmid.push(json[i].mediaUmid)
+                    }
+
     
                 });
     
@@ -587,6 +418,48 @@
         });
     }
 
+    function plotarMediaSemana() {
+        // Criando estrutura para plotar gráfico - labels
+        let labelsMedia = ['2023-06-05','2023-06-04','2023-06-03','2023-06-02','2023-06-01','2023-05-31','2023-05-30'];
+
+        // Criando estrutura para plotar gráfico - dados
+        let dadosMedia = {
+            labels: labelsMedia,
+            datasets: [{
+                label: 'Umidade',
+                data: ultimosDiasUmid,
+                // fill: false,
+                backgroundColor: 'rgb(108, 91, 217)',
+                borderColor: 'rgb(108, 91, 217)',
+                tension: 0.1
+            },
+            {
+                label: 'Temperatura',
+                data: ultimosDiasTemp,
+                // fill: false,
+                backgroundColor: 'rgb(212, 145, 78)',
+                borderColor: 'rgb(212, 145, 78)',
+                tension: 0.1
+            }]
+        };
+
+        const configMedia = {
+            type: 'bar',
+            data: dadosMedia
+        };
+
+        // Adicionando gráfico criado em div na tela
+        let myChartVinhoMedia = new Chart(
+            document.getElementById(`myChartVinhoMedia`),
+            configMedia
+        );
+    }
+
+    setTimeout(() => {
+    
+        plotarMediaSemana()
+
+    }, "1000");
 
     //fetch sensores ////////////////////////////////////////////////////////////////////
 
@@ -661,6 +534,8 @@
     var fkSensor = 1
     var testandinho = []
 
+
+    //buscar KPI //////////////////////////////
     setTimeout(() => {
 
         fetch("/medidas/buscarKPI", {
@@ -774,37 +649,16 @@
         });
     }, "1000");
 
-
-    //fetch dados do sensor
-
     let proximaAtualizacao;
 
-    // setTimeout(() => {
-
     window.onload = obterDadosGraficos();
-    // }, "1000");
 
-
-    // for (let i = 0; i < sensores.length; i++) {
     function obterDadosGraficos() {
         obterDadosGrafico(3);
         obterDadosGrafico(4);
         obterDadosGrafico(5);
         obterDadosGrafico(6);
     }
-
-    // obterDadosGraficos(3);
-    // obterDadosGraficos(4);
-    // setTimeout(() => {
-    //     obterDadosGraficos(5);
-    // }, "1000");
-
-    // obterDadosGraficos(6);
-
-
-
-    // }
-    // obterDadosGraficos()
 
     function obterDadosGrafico(fkSensor) {
 
@@ -845,7 +699,6 @@
                 label: 'Umidade',
                 data: [],
                 fill: false,
-                // backgroundColor: "rgb(212, 145, 78)",
                 borderColor: 'rgb(108, 91, 217)',
                 tension: 0.1
             },
@@ -853,7 +706,6 @@
                 label: 'Temperatura',
                 data: [],
                 fill: false,
-                // backgroundColor: "rgb(108, 91, 217)",
                 borderColor: 'rgb(212, 145, 78)',
                 tension: 0.1
             }]
@@ -871,27 +723,6 @@
             dados.datasets[1].data.push(registro.temperatura);
         }
 
-
-        // let dados2 = {
-        //     labels: labels2,
-        //     datasets: [{
-        //         label: "Média da Temperatura",
-        //         backgroundColor: "rgb(212, 145, 78)",
-        //         borderColor: "rgb(212, 145, 78)",
-        //         data: [],
-        //         tension: 0.1
-        //     },
-        //     {
-        //         label: "Média da Umidade",
-        //         backgroundColor: "rgb(108, 91, 217)",
-        //         borderColor: "rgb(108, 91, 217)",
-        //         data: [],
-        //         fill: false,
-        //         tension: 0.1
-
-        //     }]
-        // }
-        // alertar(resposta, idLocal);
         console.log('----------------------------------------------')
         console.log('O gráfico será plotado com os respectivos valores:')
         console.log('Labels:')
@@ -915,24 +746,14 @@
         }
         };
 
-        // const config2 = {
-        //     type: 'line',
-        //     data: dados2,
-        // };
-
         // Adicionando gráfico criado em div na tela
         let myChartVinho = new Chart(
             document.getElementById(`myChartVinho${fkSensor}`),
             config
         );
 
-        // let myChart2 = new Chart(
-        //     document.getElementById(`myChart2${fkSensor}`),
-        //     config2
-        // );
-
         setTimeout(() => atualizarGrafico(fkSensor, dados, myChartVinho), 2000);
-        // setTimeout(() => atualizarGrafico(fkSensor, dados, myChart2), 2000);
+
     };
 
 
@@ -947,8 +768,6 @@
                     console.log(dados);
 
                     let avisoCaptura = document.getElementById(`avisoCaptura${fkSensor}`)
-                    // avisoCaptura.innerHTML = ""
-
 
                     if (novoRegistro[0].momento_grafico == dados.labels[dados.labels.length - 1]) {
                         console.log("---------------------------------------------------------------")
@@ -962,7 +781,6 @@
                     } else {
                         // tirando e colocando valores no gráfico
                         // console.log());
-                        // obterdados(fkSensor)
                         dados.labels.shift(); // apagar o primeiro
                         dados.labels.push(novoRegistro[0].momento_grafico); // incluir um novo momento
 
@@ -1014,7 +832,6 @@
                             temperatura: resposta[0].temperatura,
                             umidade: resposta[0].umidade
                         }
-                        // alertar(resposta[0].umidade, idLocal);
 
                     });
                 } else {
@@ -1042,7 +859,6 @@
                             temperatura: resposta[0].temperatura,
                             umidade: resposta[0].umidade
                         }
-                        // alertar(resposta[0].umidade, idLocal);
 
                     });
                 } else {
@@ -1070,7 +886,6 @@
                             temperatura: resposta[0].temperatura,
                             umidade: resposta[0].umidade
                         }
-                        // alertar(resposta[0].umidade, idLocal);
 
                     });
                 } else {
@@ -1098,7 +913,6 @@
                             temperatura: resposta[0].temperatura,
                             umidade: resposta[0].umidade
                         }
-                        // alertar(resposta[0].umidade, idLocal);
 
                     });
                 } else {

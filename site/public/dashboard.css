@@ -610,6 +610,8 @@ select {
     /* padding: 0vh 5vh 0vh 5vh; */
     margin-top: 10vh;
     display: none;
+    align-items: center;
+    justify-content: center;
     flex-wrap: wrap;
     width: 100%;
     /* background-color: #2F2325; */
